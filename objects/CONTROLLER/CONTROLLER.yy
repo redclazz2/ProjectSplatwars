@@ -9,8 +9,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "PRE",
-    "path": "folders/Extensions/Camera/PRE.yy",
+    "name": "ASSET_Camera_Objects",
+    "path": "folders/Extensions/Camera/ASSET_Camera_Objects.yy",
   },
   "parentObjectId": null,
   "persistent": true,

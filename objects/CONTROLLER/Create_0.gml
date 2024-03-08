@@ -81,4 +81,5 @@ global.TIME_SET = 1;
 #endregion
 
 // rPre --> Next Room
-room_goto_next();
+if(IS_DEBUG) room_goto(rm_debug);
+else room_goto(rm_scene1);

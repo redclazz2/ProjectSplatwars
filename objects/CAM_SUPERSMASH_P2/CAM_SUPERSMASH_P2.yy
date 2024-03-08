@@ -10,8 +10,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "ASSET_Camera_Basic",
-    "path": "folders/Extensions/Camera/ASSET_Camera_Basic.yy",
+    "name": "ASSET_Camera_Objects",
+    "path": "folders/Extensions/Camera/ASSET_Camera_Objects.yy",
   },
   "parentObjectId": null,
   "persistent": false,

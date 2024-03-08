@@ -27,8 +27,8 @@
   "nineSlice": null,
   "origin": 4,
   "parent": {
-    "name": "ASSET_General",
-    "path": "folders/Extensions/Camera/ASSET_General.yy",
+    "name": "ASSET_Camera_Sprites",
+    "path": "folders/Extensions/Camera/ASSET_Camera_Sprites.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {

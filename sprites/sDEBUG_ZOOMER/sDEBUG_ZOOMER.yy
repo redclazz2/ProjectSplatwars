@@ -25,8 +25,8 @@
   "nineSlice": null,
   "origin": 4,
   "parent": {
-    "name": "Camera",
-    "path": "folders/Extensions/Camera.yy",
+    "name": "ASSET_Camera_Objects",
+    "path": "folders/Extensions/Camera/ASSET_Camera_Objects.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {

@@ -11,7 +11,12 @@
 	Event System: Allows communication between objects in a scene.
 	Scene System: Allows loading different game "screens".
 	Game Configuration: Holds all the configuration data for the game.
+	
+	For detail description of these systems please check the game's
+	dev manual.
 */
+
+debug_views = [];
 
 #region Event System
 	enum ps_event{
@@ -94,64 +99,153 @@
 			}
 		}
 	}
+	
+	event_system_cleanup = function(){
+		self.remove_all_events();
+		delete self.event_struct;
+	}
 #endregion
 
 #region Scene System
 	scene_struct = {
-		current_scene: undefined,
-		previous_scene: undefined,
-		next_scene: undefined,
-		fallback_scene: undefined
+		current_scene: -1,
+		previous_scene: ds_stack_create(),
+		previous_scene_stack_limit: 3, //Greater than 2
+		next_scene: -1,
+		fallback_scene: rm_fallback
 	};
 	
 	#region Scene Struct Gets & Sets
 		/* Note: A set for current scene isn't declared
 				since in no point during gameplay you should
 				change the running scene. Instead move to
-				next scene or in error, move to fallback.
-				
-		Getter function for current_scene*/		
-		function get_current_scene() {
+				next scene or in error, move to fallback. */
+					
+		function scene_get_current() {
 		    return scene_struct.current_scene;
 		}
 
-		// Getter function for previous_scene
-		function get_previous_scene() {
+		function scene_get_previous() {
 		    return scene_struct.previous_scene;
 		}
 
-		// Setter function for previous_scene
-		function set_previous_scene(new_scene) {
+		function scene_set_previous(new_scene) {
 		    scene_struct.previous_scene = new_scene;
 		}
 
-		// Getter function for next_scene
-		function get_next_scene() {
+		function scene_get_next() {
 		    return scene_struct.next_scene;
 		}
 
-		// Setter function for next_scene
-		function set_next_scene(new_scene) {
+		function scene_set_next(new_scene) {
 		    scene_struct.next_scene = new_scene;
 		}
 
-		// Getter function for fallback_scene
-		function get_fallback_scene() {
+		function scene_get_fallback() {
 		    return scene_struct.fallback_scene;
 		}
 
-		// Setter function for fallback_scene
-		function set_fallback_scene(new_scene) {
+		function scene_set_fallback(new_scene) {
 		    scene_struct.fallback_scene = new_scene;
 		}	
 	#endregion
 	
+	#region Scene Logic
+		function scene_goto_previous(){
+			var rId = ds_stack_pop(self.scene_struct.previous_scene);
+			
+			if(rId == undefined || rId == -1){				
+				logger(LOGLEVEL.ERROR, "Unable to go to previous scene. Fallback.", "Scene System");
+				self.scene_goto_fallback();
+			}
+			else{
+				self.scene_struct.current_scene = rId;
+				room_goto(rId);
+			}
+		}
+		
+		function scene_goto_next(){
+			var crId = self.scene_struct.current_scene,
+				nxId = self.scene_struct.next_scene,
+				stkMax = self.scene_struct.previous_scene_stack_limit,
+				stk = self.scene_struct.previous_scene;
+			//Stack full? Clear then push last.
+			if(ds_stack_size(stk) == stkMax){	
+				logger(LOGLEVEL.WARN,"Prev Stck full. Clean-up. Are resources being overused?","Scene System");
+				var lstId = ds_stack_pop(stk);
+				ds_stack_clear(stk);
+				ds_stack_push(stk, lstId);
+			}
+			//Move to valid. Else fallback.	
+			if(nxId != -1) {
+				ds_stack_push(stk, crId);
+				self.scene_struct.current_scene = nxId;
+				self.scene_struct.next_scene = -1;
+				room_goto(nxId);
+			}
+			else
+			{
+				logger(LOGLEVEL.ERROR,"Unable to move to next scene. Reference invalid.","Scene System");
+				room_goto(self.scene_struct.fallback_scene);			
+			}
+		}
+		
+		function scene_goto_fallback(){
+			room_goto(self.scene_struct.fallback_scene);
+		}	
+	#endregion
+	
+	#region Scene Transition
+		function scene_show_transition(){
+		
+		}
+		
+		function scene_hide_transition(){
+			
+		}
+	#endregion
+	
+	#region Scene System Clean up
+		function scene_previous_stack_cleanup(){
+			logger(LOGLEVEL.INFO,"Cleaned Previous Scene Stack.","Scene System");
+			ds_stack_clear(self.scene_struct.previous_scene);	
+		}
+		
+		function scene_system_cleanup(){
+			self.scene_previous_stack_cleanup();
+			ds_stack_destroy(self.scene_struct.previous_scene);
+			self.scene_struct.previous_scene = -1;
+			delete self.scene_struct;
+		}
+	#endregion
+	
+	#region Scene System Debug
+		array_push(self.debug_views,dbg_view("Scene System",false));
+		array_push(self.debug_views,dbg_section("Scene Pointers"));
+		
+		var scnStc = ref_create(self,"scene_struct");
+		var nxtScn = ref_create(scnStc,"next_scene");
+		
+		array_push(self.debug_views,dbg_drop_down(nxtScn,
+			"Undefined:-1,Scene1:2,Scene2:3","Next Scene:"));
+		
+		array_push(self.debug_views,dbg_section("Scene Actions"));
+		
+		var nxtScnBtn = ref_create(self,"scene_goto_next");
+		array_push(self.debug_views,dbg_button("Goto Next",nxtScnBtn));
+		
+		var prvScnBtn = ref_create(self,"scene_goto_previous");
+		array_push(self.debug_views,dbg_button("Goto Prev",prvScnBtn));
+		
+		var stckClnBtn = ref_create(self,"scene_previous_stack_cleanup");
+		array_push(self.debug_views,dbg_button("Clean Prev. Stack",stckClnBtn));
+	#endregion
 #endregion
 
 #region Game Configuration
 	
 #endregion
 
-#region Debug Menus
+#region Debug Menu Activation
 	if(IS_DEBUG) show_debug_overlay(true,true);
 #endregion

@@ -93,7 +93,7 @@ function logger() {
 
 	var str = @'<log4j:event logger="'+loggername+@'" timestamp="'+timetxt+@'" level="'+leveltxt+@'" thread="[main]">
 	<log4j:message>'+logmessage+@'</log4j:message>
-	<log4j:locationInfo method="'+method+@'" class="" file="" />
+	<log4j:locationInfo method="'+_method+@'" class="" file="" />
 	<log4j:properties>'+xmlpropstr+@'</log4j:properties>
 	</log4j:event>
 	';
