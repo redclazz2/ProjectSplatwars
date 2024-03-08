@@ -29,8 +29,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "sControl",
-    "path": "sprites/sControl/sControl.yy",
+    "name": "plchldr_letter_a",
+    "path": "sprites/plchldr_letter_a/plchldr_letter_a.yy",
   },
   "spriteMaskId": null,
   "visible": false,
