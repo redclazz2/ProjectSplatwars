@@ -112,7 +112,9 @@ debug_views = [];
 		previous_scene: ds_stack_create(),
 		previous_scene_stack_limit: 3, //Greater than 2
 		next_scene: -1,
-		fallback_scene: rm_fallback
+		fallback_scene: rm_fallback,
+		mid_transition: false,
+		squence_layer: undefined
 	};
 	
 	#region Scene Struct Gets & Sets
@@ -151,17 +153,23 @@ debug_views = [];
 	#endregion
 	
 	#region Scene Logic
+		function scene_goto_target(){
+			self.scene_struct.current_scene = 
+					self.scene_struct.next_scene;
+			room_goto(self.scene_struct.next_scene);
+			self.scene_struct.next_scene = -1;
+		}
+		
 		function scene_goto_previous(){
-			var rId = ds_stack_pop(self.scene_struct.previous_scene);
+			var prvId = ds_stack_pop(self.scene_struct.previous_scene);
 			
-			if(rId == undefined || rId == -1){				
+			if(prvId == undefined || prvId == -1){				
 				logger(LOGLEVEL.ERROR, "Unable to go to previous scene. Fallback.", "Scene System");
-				self.scene_goto_fallback();
+				self.scene_struct.next_scene = 
+					self.scene_struct.fallback_scene;
 			}
-			else{
-				self.scene_struct.current_scene = rId;
-				room_goto(rId);
-			}
+			else self.scene_struct.next_scene = prvId;
+			scene_goto_start();
 		}
 		
 		function scene_goto_next(){
@@ -176,32 +184,46 @@ debug_views = [];
 				ds_stack_clear(stk);
 				ds_stack_push(stk, lstId);
 			}
-			//Move to valid. Else fallback.	
-			if(nxId != -1) {
+			//Save to stack. Else fallback.	
+			if(nxId != -1 && nxId != undefined)
 				ds_stack_push(stk, crId);
-				self.scene_struct.current_scene = nxId;
-				self.scene_struct.next_scene = -1;
-				room_goto(nxId);
-			}
 			else
-			{
-				logger(LOGLEVEL.ERROR,"Unable to move to next scene. Reference invalid.","Scene System");
-				room_goto(self.scene_struct.fallback_scene);			
-			}
+				logger(LOGLEVEL.ERROR,"Unable to move to next scene. Reference invalid. Fallback.","Scene System");			
+			
+			scene_goto_start();
 		}
 		
-		function scene_goto_fallback(){
-			room_goto(self.scene_struct.fallback_scene);
-		}	
+		function scene_goto_start(){
+			scene_transition_start(self.scene_struct.next_scene,
+				sqTransitionOut,sqTransitionIn);
+		}
 	#endregion
 	
 	#region Scene Transition
-		function scene_show_transition(){
-		
+		function scene_transition_place_sequence(type){
+			if (layer_exists("transition")) layer_destroy("transition")
+			var _lay = layer_create(-9999,"transition")
+			self.scene_struct.squence_layer = layer_sequence_create(_lay,0,0,type);	
 		}
 		
-		function scene_hide_transition(){
-			
+		function scene_transition_start(_roomObjective,_typeOut, _typeIn)
+		{
+			if (!self.scene_struct.mid_transition)
+			{
+				self.scene_struct.mid_transition = true;
+				scene_transition_place_sequence(_typeOut);
+				layer_set_target_room(_roomObjective)
+				scene_transition_place_sequence(_typeIn);
+				layer_reset_target_room();
+				return true;
+			}
+			else return false
+		}
+	
+		function scene_transition_finished()
+		{
+			layer_sequence_destroy(self.scene_struct.squence_layer);
+			self.scene_struct.mid_transition = false;
 		}
 	#endregion
 	
@@ -220,11 +242,21 @@ debug_views = [];
 	#endregion
 	
 	#region Scene System Debug
-		array_push(self.debug_views,dbg_view("Scene System",false));
-		array_push(self.debug_views,dbg_section("Scene Pointers"));
-		
 		var scnStc = ref_create(self,"scene_struct");
 		var nxtScn = ref_create(scnStc,"next_scene");
+		var crrScn = ref_create(scnStc,"current_scene");
+		var fllbScn = ref_create(scnStc,"fallback_scene");
+		
+		array_push(self.debug_views,dbg_view("Scene System",false));
+		
+		//Watch
+		array_push(self.debug_views,dbg_section("Scene Struct Watch:"));
+		array_push(self.debug_views,dbg_watch(nxtScn,"Next Scene"));
+		array_push(self.debug_views,dbg_watch(crrScn,"Current Scene"));
+		array_push(self.debug_views,dbg_watch(fllbScn,"Fallback Scene"));
+		
+		//Pointers
+		array_push(self.debug_views,dbg_section("Scene Pointers"));
 		
 		array_push(self.debug_views,dbg_drop_down(nxtScn,
 			"Undefined:-1,Scene1:2,Scene2:3","Next Scene:"));
