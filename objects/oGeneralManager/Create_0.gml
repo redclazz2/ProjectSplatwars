@@ -259,7 +259,7 @@ debug_views = [];
 		array_push(self.debug_views,dbg_section("Scene Pointers"));
 		
 		array_push(self.debug_views,dbg_drop_down(nxtScn,
-			"Undefined:-1,Scene1:2,Scene2:3","Next Scene:"));
+			"Undefined:-1,Scene1:2,Scene2:3,Main menu:5","Next Scene:"));
 		
 		array_push(self.debug_views,dbg_section("Scene Actions"));
 		
@@ -280,4 +280,5 @@ debug_views = [];
 
 #region Debug Menu Activation
 	if(IS_DEBUG) show_debug_overlay(true,true);
+	else show_debug_overlay(false);
 #endregion

@@ -1,0 +1,1 @@
+_drawManager = new UserInterfaceDebug(test_message);

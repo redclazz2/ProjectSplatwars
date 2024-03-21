@@ -237,7 +237,7 @@
             {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"d9d3a267-3c83-4c7e-923d-2da7735b6c3e","path":"sprites/sfont_jasontomlee/sfont_jasontomlee.yy",},},},"Disabled":false,"id":"0eecc09c-a669-46ce-ae5b-74fc2f1de0bb","IsCreationKey":false,"Key":90.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
-    "visibleRange": {"x":0.0,"y":0.0,},
+    "visibleRange": null,
     "volume": 1.0,
     "xorigin": 0,
     "yorigin": 0,
