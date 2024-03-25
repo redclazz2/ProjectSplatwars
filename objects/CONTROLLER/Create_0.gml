@@ -82,4 +82,4 @@ global.TIME_SET = 1;
 
 // rPre --> Next Room
 if(IS_DEBUG) room_goto(rm_debug);
-else room_goto(rm_scene1);
+else room_goto(rm_MainMenu);

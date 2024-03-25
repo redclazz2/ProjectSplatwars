@@ -36,7 +36,9 @@ function UserInterfaceMainMenu() : IUserInterface() constructor{
 	
 	DrawGUI = function(){
 		draw_sprite_ext(sWhitePixel,0,0,instruction_y,320,22,0,c_black,0.6);
+		draw_sprite_ext(sStudioLogo,0,15,170,0.2,0.2,0,c_white,1);
 		draw_sprite(sMainLogo,0,title_x,title_y);
+		
 		
 		instruction_text.draw(title_x, instruction_y);
 		announcer_text.draw(title_x,announcer_y);

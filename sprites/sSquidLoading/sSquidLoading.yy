@@ -1,7 +1,7 @@
 {
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
-  "name": "spr_squidLoading",
+  "name": "sSquidLoading",
   "bbox_bottom": 6,
   "bbox_left": 0,
   "bbox_right": 6,
@@ -36,7 +36,7 @@
   "sequence": {
     "resourceType": "GMSequence",
     "resourceVersion": "1.4",
-    "name": "spr_squidLoading",
+    "name": "sSquidLoading",
     "autoRecord": true,
     "backdropHeight": 768,
     "backdropImageOpacity": 0.5,
@@ -58,8 +58,8 @@
     "timeUnits": 1,
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"fbe762c0-80db-46fc-bea7-98379190983d","path":"sprites/spr_squidLoading/spr_squidLoading.yy",},},},"Disabled":false,"id":"43fe3762-ed6d-40fb-b1fc-aca7a0e871af","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"c3fe07f9-bca1-47a3-8fb9-d0d575831648","path":"sprites/spr_squidLoading/spr_squidLoading.yy",},},},"Disabled":false,"id":"4ecfdd8f-06e7-4a0b-8c0c-4ec9c62fea32","IsCreationKey":false,"Key":1.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"fbe762c0-80db-46fc-bea7-98379190983d","path":"sprites/sSquidLoading/sSquidLoading.yy",},},},"Disabled":false,"id":"43fe3762-ed6d-40fb-b1fc-aca7a0e871af","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"c3fe07f9-bca1-47a3-8fb9-d0d575831648","path":"sprites/sSquidLoading/sSquidLoading.yy",},},},"Disabled":false,"id":"4ecfdd8f-06e7-4a0b-8c0c-4ec9c62fea32","IsCreationKey":false,"Key":1.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,
