@@ -72,6 +72,7 @@
     {"name":"Notes","order":13,"path":"folders/Notes.yy",},
     {"name":"Objects","order":9,"path":"folders/Objects.yy",},
     {"name":"Managers","order":1,"path":"folders/Objects/Managers.yy",},
+    {"name":"UI Decoration","order":2,"path":"folders/Objects/UI Decoration.yy",},
     {"name":"Particle Systems","order":15,"path":"folders/Particle Systems.yy",},
     {"name":"Paths","order":4,"path":"folders/Paths.yy",},
     {"name":"Rooms","order":10,"path":"folders/Rooms.yy",},
@@ -100,7 +101,6 @@
     {"name":"Placeholders","order":3,"path":"folders/Tile Sets/Placeholders.yy",},
     {"name":"placeholders_8x8","order":1,"path":"folders/Tile Sets/Placeholders/placeholders_8x8.yy",},
     {"name":"Timelines","order":8,"path":"folders/Timelines.yy",},
-    {"name":"UI Decoration","order":2,"path":"folders/Objects/UI Decoration.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"__input_config_external_data","order":2,"path":"scripts/__input_config_external_data/__input_config_external_data.yy",},
@@ -209,6 +209,7 @@
     {"name":"plchldr_go_2_8","order":22,"path":"sprites/plchldr_go_2_8/plchldr_go_2_8.yy",},
     {"name":"Approach_Loop","order":4,"path":"scripts/Approach_Loop/Approach_Loop.yy",},
     {"name":"plchldr_letter_i","order":11,"path":"sprites/plchldr_letter_i/plchldr_letter_i.yy",},
+    {"name":"ConfigurationSystemGlobalFunctions","order":2,"path":"scripts/ConfigurationSystemGlobalFunctions/ConfigurationSystemGlobalFunctions.yy",},
     {"name":"plchldr_red_o","order":14,"path":"sprites/plchldr_red_o/plchldr_red_o.yy",},
     {"name":"scribble_color_set","order":1,"path":"scripts/scribble_color_set/scribble_color_set.yy",},
     {"name":"plchldr_wall_9","order":59,"path":"sprites/plchldr_wall_9/plchldr_wall_9.yy",},

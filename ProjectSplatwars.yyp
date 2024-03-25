@@ -88,6 +88,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Notes","folderPath":"folders/Notes.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Objects","folderPath":"folders/Objects.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Managers","folderPath":"folders/Objects/Managers.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"UI Decoration","folderPath":"folders/Objects/UI Decoration.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Particle Systems","folderPath":"folders/Particle Systems.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Paths","folderPath":"folders/Paths.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Rooms","folderPath":"folders/Rooms.yy",},
@@ -118,7 +119,6 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"placeholders_16x16","folderPath":"folders/Tile Sets/Placeholders/placeholders_16x16.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"placeholders_8x8","folderPath":"folders/Tile Sets/Placeholders/placeholders_8x8.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"UI Decoration","folderPath":"folders/Objects/UI Decoration.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"controllerblacklist.csv","CopyToMask":-1,"filePath":"datafiles",},
@@ -249,6 +249,7 @@
     {"id":{"name":"plchldr_go_2_8","path":"sprites/plchldr_go_2_8/plchldr_go_2_8.yy",},},
     {"id":{"name":"Approach_Loop","path":"scripts/Approach_Loop/Approach_Loop.yy",},},
     {"id":{"name":"plchldr_letter_i","path":"sprites/plchldr_letter_i/plchldr_letter_i.yy",},},
+    {"id":{"name":"ConfigurationSystemGlobalFunctions","path":"scripts/ConfigurationSystemGlobalFunctions/ConfigurationSystemGlobalFunctions.yy",},},
     {"id":{"name":"scribble_anim_blink","path":"scripts/scribble_anim_blink/scribble_anim_blink.yy",},},
     {"id":{"name":"plchldr_red_o","path":"sprites/plchldr_red_o/plchldr_red_o.yy",},},
     {"id":{"name":"scribble_color_set","path":"scripts/scribble_color_set/scribble_color_set.yy",},},

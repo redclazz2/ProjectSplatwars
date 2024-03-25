@@ -275,6 +275,11 @@ debug_views = [];
 #endregion
 
 #region Game Configuration
+	configuration_general = {
+		software_version_release : "A 1.0.0",
+		software_year_release : 2024,	
+	}
+	
 	
 #endregion
 
