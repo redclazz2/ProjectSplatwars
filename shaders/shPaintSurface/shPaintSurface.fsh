@@ -1,12 +1,8 @@
-//
-// Simple passthrough fragment shader
-//
 varying vec2 v_vTexcoord;
 varying vec4 v_vColour;
 
-uniform vec4 colorTeamOne;
-uniform vec4 colorTeamTwo;
-uniform sampler2D paintSurface;
+uniform vec3 colorTeamOne;
+uniform vec3 colorTeamTwo;
 //...
 
 vec3 hsv2rgb(vec3 c) 
@@ -21,9 +17,11 @@ void main()
 	vec4 surfaceSampler = v_vColour * texture2D(gm_BaseTexture,v_vTexcoord);
 	float surfaceRSampler = surfaceSampler.r;
 	
-	if(surfaceRSampler == 1.0){
-		discard;
-	}else{
-		gl_FragColor = v_vColour * texture2D( gm_BaseTexture, v_vTexcoord );
-	}    
+	if (surfaceRSampler == 1.0) {
+        discard;
+    } else if (surfaceRSampler == 0.0) {
+        gl_FragColor = vec4(hsv2rgb(colorTeamOne), 1.0);
+    } else if (surfaceRSampler > 0.070 && surfaceRSampler < 0.08) {
+        gl_FragColor = vec4(hsv2rgb(colorTeamTwo), 1.0);
+    }
 }

@@ -8,7 +8,7 @@ depth = -99999999;
 surface_depth_disable( false );
 
 #region Window Sizes
-	global.WINDOW		= 0; //which size preset to choose 
+	global.WINDOW		= 0;
 	window_create_dimension( 0, 320, 180);
 #endregion
 

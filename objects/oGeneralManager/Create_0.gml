@@ -61,16 +61,17 @@ debug_views = [];
 	}
 
 	unsubscribe = function(_id, _event) {
+		if(event_struct == undefined) return;
 		if (is_undefined(event_struct[$ _event])) return;
 	  
 		var _pos = is_subscribed(_id, _event);
 		if (_pos != -1) {
 			array_delete(event_struct[$ _event], _pos, 1);
 		}
-    
 	}
 
 	unsubscribe_all = function(_id) {
+		if(event_struct == undefined) return;
 		var _keys_array = variable_struct_get_names(event_struct);
 		for (var i = (array_length(_keys_array) - 1); i >= 0; i -= 1) {
 			unsubscribe(_id, _keys_array[i]);
@@ -240,7 +241,31 @@ debug_views = [];
 			delete self.scene_struct;
 		}
 	#endregion
+#endregion
+
+#region Game Configuration
+	configuration_general = {
+		software_version_release : "A 1.0.0",
+		software_year_release : 2024,	
+	}
 	
+	configuration_paint_system = {
+		paint_color_team_one_hue : 1,
+		paint_color_team_one_saturation: 1,
+		paint_color_team_one_brightness: 1,
+		paint_color_team_two_hue: 1,
+		paint_color_team_two_saturation: 1,
+		paint_color_team_two_brightness: 1,
+		
+		paint_color_abstract_channel_r_team_one: 0,
+		paint_color_abstract_channel_r_team_two: 20,
+		
+		paint_surface_fidelity: 0.75,
+		paint_surface_refresh_time: 4,
+	}
+#endregion
+
+#region Debug Menu
 	#region Scene System Debug
 		var scnStc = ref_create(self,"scene_struct");
 		var nxtScn = ref_create(scnStc,"next_scene");
@@ -272,18 +297,48 @@ debug_views = [];
 		var stckClnBtn = ref_create(self,"scene_previous_stack_cleanup");
 		array_push(self.debug_views,dbg_button("Clean Prev. Stack",stckClnBtn));
 	#endregion
-#endregion
-
-#region Game Configuration
-	configuration_general = {
-		software_version_release : "A 1.0.0",
-		software_year_release : 2024,	
-	}
 	
+	#region Paint Configuration Debug
+		function cleanSurfaceDebug(){
+			pubsub_publish("PaintSurfaceReset");
+		}
 	
-#endregion
-
-#region Debug Menu Activation
+		array_push(self.debug_views,dbg_view("Paint System",false));
+			
+		var paintCnfStruct = ref_create(self,"configuration_paint_system"),
+			toneh = ref_create(paintCnfStruct,"paint_color_team_one_hue"),
+			tones = ref_create(paintCnfStruct,"paint_color_team_one_saturation"),
+			toneb = ref_create(paintCnfStruct,"paint_color_team_one_brightness"),
+			ttwoh = ref_create(paintCnfStruct,"paint_color_team_two_hue"),
+			ttwos = ref_create(paintCnfStruct,"paint_color_team_two_saturation"),
+			ttwob = ref_create(paintCnfStruct,"paint_color_team_two_brightness"),
+			psFdl = ref_create(paintCnfStruct,"paint_surface_fidelity"),
+			toneabs = ref_create(paintCnfStruct,"paint_color_abstract_channel_r_team_one"),
+			ttwoabs = ref_create(paintCnfStruct,"paint_color_abstract_channel_r_team_two"),
+			srfrsh = ref_create(paintCnfStruct,"paint_surface_refresh_time"),
+			fncResetPntSrf = ref_create(self,"cleanSurfaceDebug");
+			
+		array_push(self.debug_views,dbg_section("Team 1 Color Watch:"));
+		array_push(self.debug_views,dbg_slider(toneh,0.0,1.0,"Color Hue"));
+		array_push(self.debug_views,dbg_slider(tones,0.0,1.0,"Color Saturation"));
+		array_push(self.debug_views,dbg_slider(toneb,0.0,1.0,"Color Brightness"));
+		
+		array_push(self.debug_views,dbg_section("Team 2 Color Watch:"));
+		array_push(self.debug_views,dbg_slider(ttwoh,0.0,1.0,"Color Hue"));
+		array_push(self.debug_views,dbg_slider(ttwos,0.0,1.0,"Color Saturation"));
+		array_push(self.debug_views,dbg_slider(ttwob,0.0,1.0,"Color Brightness"));
+		
+		array_push(self.debug_views,dbg_section("Team Abstract Channel (R):"));
+		array_push(self.debug_views,dbg_watch(toneabs,"Team 1 Channel:"));
+		array_push(self.debug_views,dbg_watch(ttwoabs,"Team 2 Channel:"));
+		
+		array_push(self.debug_views,dbg_section("Paint Surface Configuration:"));
+		array_push(self.debug_views,dbg_slider(psFdl,0.5,1.0,"Fidelity"));
+		array_push(self.debug_views,dbg_slider(
+			srfrsh,1,6,"Surface Refresh Timer: (Only updates in room restart)"));
+		array_push(self.debug_views,dbg_button("Reset Surface", fncResetPntSrf));
+	#endregion
+	
 	if(IS_DEBUG) show_debug_overlay(true,true);
 	else show_debug_overlay(false);
 #endregion

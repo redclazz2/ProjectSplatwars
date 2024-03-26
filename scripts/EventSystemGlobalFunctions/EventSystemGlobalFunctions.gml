@@ -1,6 +1,6 @@
 #region Event System Functions
 	function pubsub_subscribe(_event, _func) {
-	    with (pubsub_manager) {
+	    with (oGeneralManager) {
 	        subscribe(other.id, _event, _func);
 	        return true;
 	    }
@@ -8,7 +8,7 @@
 	}
 
 function pubsub_unsubscribe(_event) {
-    with (pubsub_manager) {
+    with (oGeneralManager) {
         unsubscribe(other.id, _event);
         return true;
     }
@@ -16,7 +16,7 @@ function pubsub_unsubscribe(_event) {
 }
 
 function pubsub_unsubscribe_all() {
-	with (pubsub_manager) {
+	with (oGeneralManager) {
         unsubscribe_all(other.id);
         return true;
     }
@@ -24,7 +24,7 @@ function pubsub_unsubscribe_all() {
 }
 
 function pubsub_publish(_event, _data) {
-    with (pubsub_manager) {
+    with (oGeneralManager) {
         publish(_event, _data);
         return true;
     }
