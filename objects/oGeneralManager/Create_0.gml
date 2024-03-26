@@ -300,7 +300,15 @@ debug_views = [];
 	
 	#region Paint Configuration Debug
 		function cleanSurfaceDebug(){
-			pubsub_publish("PaintSurfaceReset");
+			pubsub_publish("PaintSurfaceReset",[]);
+		}
+		
+		function enableDebugDraw(){
+			pubsub_publish("DebugPaintEnable",[]);
+		}
+		
+		function changeDebugTeam(){
+			pubsub_publish("DebugPaintTeam",[]);
 		}
 	
 		array_push(self.debug_views,dbg_view("Paint System",false));
@@ -316,7 +324,9 @@ debug_views = [];
 			toneabs = ref_create(paintCnfStruct,"paint_color_abstract_channel_r_team_one"),
 			ttwoabs = ref_create(paintCnfStruct,"paint_color_abstract_channel_r_team_two"),
 			srfrsh = ref_create(paintCnfStruct,"paint_surface_refresh_time"),
-			fncResetPntSrf = ref_create(self,"cleanSurfaceDebug");
+			fncResetPntSrf = ref_create(self,"cleanSurfaceDebug"),
+			fncEnableDbgPnt = ref_create(self,"enableDebugDraw"),
+			fncTggDbgTm = ref_create(self,"changeDebugTeam");
 			
 		array_push(self.debug_views,dbg_section("Team 1 Color Watch:"));
 		array_push(self.debug_views,dbg_slider(toneh,0.0,1.0,"Color Hue"));
@@ -337,6 +347,11 @@ debug_views = [];
 		array_push(self.debug_views,dbg_slider(
 			srfrsh,1,6,"Surface Refresh Timer: (Only updates in room restart)"));
 		array_push(self.debug_views,dbg_button("Reset Surface", fncResetPntSrf));
+		
+		array_push(self.debug_views,dbg_section("Debug Funcionality"));
+		array_push(self.debug_views,dbg_button("Toggle Debug Draw", fncEnableDbgPnt));
+		array_push(self.debug_views,dbg_button("Toggle Debug Team", fncTggDbgTm));
+		
 	#endregion
 	
 	if(IS_DEBUG) show_debug_overlay(true,true);

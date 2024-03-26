@@ -34,6 +34,21 @@
 	
 	colorTeamOne = shader_get_uniform(shPaintSurface,"colorTeamOne");
 	colorTeamTwo = shader_get_uniform(shPaintSurface,"colorTeamTwo");
+	
+	//Debug
+	debug_draw_mouse_enable = false;
+	debug_draw_mouse_team = paint_team_one_color_abstract;
+	
+	function debug_draw_mouse_toggle(){
+		debug_draw_mouse_enable = debug_draw_mouse_enable ? false : true;
+	}
+	
+	function debug_draw_change_team(){
+		if(debug_draw_mouse_team == paint_team_one_color_abstract)
+			debug_draw_mouse_team = paint_team_two_color_abstract;
+		else debug_draw_mouse_team = paint_team_one_color_abstract;
+	}
+	
 #endregion
 
 function paint_team_color_refresh(){
