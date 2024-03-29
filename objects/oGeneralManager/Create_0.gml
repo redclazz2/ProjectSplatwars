@@ -265,6 +265,35 @@ debug_views = [];
 	}
 #endregion
 
+#region Input Manager System
+	input_manager_map = ds_map_create();
+	
+	input_system_cleanup = function(){
+		//TODO:::: Loop to destroy all input manager instances.
+		ds_map_destroy(input_manager_map);
+	}
+	
+	GenerateInputManagerId = function(){
+		var _id = -1;
+		do{
+			_id = irandom_range(1,50);
+		}
+		until(!ds_map_exists(self.input_manager_map,_id));
+		
+		return _id;
+	}
+	
+	CreateInputManager = function(_state){
+		var _id = GenerateInputManagerId(),
+			_config = {};
+			
+			_config[$ "State"] = _state;
+		
+		ds_map_add(self.input_manager_map,_id,
+				instance_create_depth(0,20,0,oInputManager,_config));
+	}
+#endregion
+
 #region Debug Menu
 	#region Scene System Debug
 		var scnStc = ref_create(self,"scene_struct");
@@ -354,6 +383,28 @@ debug_views = [];
 		
 	#endregion
 	
+	#region Local Input Manager
+		//Generalizar con el ID del controlador de input local.
+		function createLocalControllableCharacter(){
+			pubsub_publish("CreateLocalControllableCharacter",[]);
+		}
+		
+		function enableLocalInputListening(){
+			pubsub_publish("EnableLocalInputListening",[]);
+		}
+		
+		var fncCrtChr = ref_create(self,"createLocalControllableCharacter"),
+			fncTggLis = ref_create(self,"enableLocalInputListening");
+		
+		array_push(self.debug_views,dbg_view("Local Input System",false));
+		array_push(self.debug_views,dbg_section("Local Character Debug Funcionality"));
+		array_push(self.debug_views,dbg_button("Create Local Character", fncCrtChr));
+		array_push(self.debug_views,dbg_button("Toggle InputListening", fncTggLis));
+		
+	#endregion
+	
 	if(IS_DEBUG) show_debug_overlay(true,true);
 	else show_debug_overlay(false);
 #endregion
+
+CreateInputManager(InputTypes.LOCAL);
