@@ -1,0 +1,4 @@
+enum InputTypes{
+	LOCAL,
+	REMOTE
+}
