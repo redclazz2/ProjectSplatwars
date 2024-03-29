@@ -13,35 +13,34 @@ either configured to read local or remote input data.
 */
 
 #region Functions
-	CreateControllableState = function(){
+	function CreateControllableState(){
 		var _return = undefined;
 		
 		if(controllable_type == InputTypes.LOCAL){
-			show_debug_message("estoy entrando");
-
 			_return = PLATFORM_TARGET == 0 ? new DesktopInputStrategy(self) : undefined; 
 		}else if(InputTypes.REMOTE){
 			//
 		}
-		show_debug_message("OK, STATE.");
-		show_debug_message(_return);
 		return _return;
 	}
 
 	function CreateDepthControllableCharacter(_x,_y,_depth){
 		if(controllable_character == undefined){
-			var _config = {};
-			_config[$ "input_manager"] = self;
-			_config[$ "player_type"] = self.controllable_type; 
+			var _config = new AgentControllableDescription(
+				AgentTeamTypes.ALPHA,
+				AgentTeamChannelTypes.ALPHA,
+				self,
+				self.controllable_type
+			);
 			
 			//TODO CAMBIAR EL TIPO DE AGENTE QUE SE CREA
-			controllable_character = instance_create_depth(_x,_y,_depth,oAgentControllable,_config);
+			controllable_character = instance_create_depth(_x,_y,_depth,oAgentPlayer,_config);
 		}else{
 			show_debug_message("W: Unable to create a controllable character. One is already instantiated!");
 		}
 	}
 
-	DestroyControllableCharacter =  function(){
+	function DestroyControllableCharacter(){
 		if(controllable_character != undefined){
 			instance_destroy(controllable_character);
 			controllable_character = undefined;
@@ -50,42 +49,47 @@ either configured to read local or remote input data.
 		}
 	}
 
-	DestroyInputManager = function(){
+	function DestroyInputManager(){
+		DestroyControllableCharacter();
 		delete controllable_state;
 	}
 #endregion
 
 #region Input Management	
-	InputCheckMovement = function(){
+	function InputCheckMovement(){
 		return controllable_state.InputCheckMovement();
 	}
 	
-	InputCheckAction = function(){
+	function InputCheckAction(){
 		return controllable_state.InputCheckAction();
 	}
 #endregion
 
-#region Properties
+#region Properties Initialization
+	controllable_id = self[$ "Id"] ?? undefined;
 	controllable_type = self[$ "State"] ?? undefined;
+	
 	controllable_state = CreateControllableState();
-	if(controllable_state == undefined) instance_destroy(self);
+	if(controllable_state == undefined ||
+		controllable_id == -1
+	) instance_destroy(self);
 
 	controllable_character = undefined;
 #endregion
 
 #region Events
-	function EventControllableCharacterCreate(){
-		show_debug_message("RECIBI EL EVENTO!")
-		CreateDepthControllableCharacter(20,20,-1);
+	function EventControllableCharacterCreate(_id){
+		if(_id == controllable_id) 
+			CreateDepthControllableCharacter(20,20,-1);
 	}
 	
-	function EventToggleInputListening(){
-		controllable_character.ToggleInputListening();
+	function EventToggleInputListening(_id){
+		if(_id == controllable_id && controllable_character != undefined)	
+			controllable_character.ToggleInputListening();
 	}
-
-	pubsub_subscribe("CreateLocalControllableCharacter",EventControllableCharacterCreate);
-	pubsub_subscribe("EnableLocalInputListening",EventToggleInputListening);
+	
+	function EventControllableCharacterDestroy(_id){
+		if(_id == controllable_id) 
+			DestroyControllableCharacter();
+	}
 #endregion
-
-CreateDepthControllableCharacter(20,20,-1);
-EventToggleInputListening();

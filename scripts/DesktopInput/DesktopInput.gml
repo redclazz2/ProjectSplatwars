@@ -33,17 +33,17 @@ function DesktopInputStrategy(_player_manager):IInputManagerStrategy(_player_man
 		
 		_return[$ "aim_x"] = mouse_x;	//IMPORTANT: CHANGE THIS
 		_return[$ "aim_y"] = mouse_y;	//IMPORTANT: CHANGE THIS
-		_return[$ "state"] = ControllableCharacterActionTypes.HumanIdle;
+		_return[$ "state"] = 1;
 		
 		switch (true) {
 		    case movementInputPressed:
-		        _return[$ "state"] = new ControllableCharacterWalkAction(self.player_manager.controllable_character);
+		        _return[$ "state"] = new AgentPlayerWalk(self.player_manager.controllable_character);
 		        break;
 		    // Add more cases if needed
 
 		    // Default case for idle state
 		    default:
-		        _return[$ "state"] = new ControllableCharacterIdleAction(self.player_manager.controllable_character);
+		        _return[$ "state"] = new AgentPlayerIdle(self.player_manager.controllable_character);
 		        break;
 		}
 		

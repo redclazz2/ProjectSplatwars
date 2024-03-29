@@ -266,6 +266,7 @@ debug_views = [];
 #endregion
 
 #region Input Manager System
+	input_manager_local_id = -1;
 	input_manager_map = ds_map_create();
 	
 	input_system_cleanup = function(){
@@ -287,10 +288,15 @@ debug_views = [];
 		var _id = GenerateInputManagerId(),
 			_config = {};
 			
+			_config[$ "Id"] = _id;
 			_config[$ "State"] = _state;
 		
+		if(_state == InputTypes.LOCAL && input_manager_local_id == -1){
+			input_manager_local_id = _id;
+		}else return;
+		
 		ds_map_add(self.input_manager_map,_id,
-				instance_create_depth(0,20,0,oInputManager,_config));
+				instance_create_depth(-10,-10,0,oInputManager,_config));
 	}
 #endregion
 
@@ -386,21 +392,26 @@ debug_views = [];
 	#region Local Input Manager
 		//Generalizar con el ID del controlador de input local.
 		function createLocalControllableCharacter(){
-			pubsub_publish("CreateLocalControllableCharacter",[]);
+			pubsub_publish("CreateLocalControllableCharacter",input_manager_local_id);
 		}
 		
 		function enableLocalInputListening(){
-			pubsub_publish("EnableLocalInputListening",[]);
+			pubsub_publish("EnableLocalInputListening",input_manager_local_id);
+		}
+		
+		function destroyLocalControllableCharacter(){
+			pubsub_publish("DestroyLocalControllableCharacter",input_manager_local_id);
 		}
 		
 		var fncCrtChr = ref_create(self,"createLocalControllableCharacter"),
-			fncTggLis = ref_create(self,"enableLocalInputListening");
+			fncTggLis = ref_create(self,"enableLocalInputListening"),
+			fncDstChr = ref_create(self,"destroyLocalControllableCharacter");
 		
 		array_push(self.debug_views,dbg_view("Local Input System",false));
 		array_push(self.debug_views,dbg_section("Local Character Debug Funcionality"));
 		array_push(self.debug_views,dbg_button("Create Local Character", fncCrtChr));
-		array_push(self.debug_views,dbg_button("Toggle InputListening", fncTggLis));
-		
+		array_push(self.debug_views,dbg_button("Toggle Input Listening", fncTggLis));	
+		array_push(self.debug_views,dbg_button("Destroy Local Character", fncDstChr));	
 	#endregion
 	
 	if(IS_DEBUG) show_debug_overlay(true,true);

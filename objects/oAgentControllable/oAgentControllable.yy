@@ -10,8 +10,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Agents",
-    "path": "folders/Objects/Agents.yy",
+    "name": "Agents Controllable",
+    "path": "folders/Objects/Agents/Agents Controllable.yy",
   },
   "parentObjectId": {
     "name": "oAgent",
