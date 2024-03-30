@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "IAgentControllablePosition",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Agent Controllable",
-    "path": "folders/Scripts/Agent Scripts/Agent Controllable.yy",
+  "$GMScript":"",
+  "%Name":"IAgentControllablePosition",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"IAgentControllablePosition",
+  "parent":{
+    "name":"Agent Controllable",
+    "path":"folders/Scripts/Agent Scripts/Agent Controllable.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

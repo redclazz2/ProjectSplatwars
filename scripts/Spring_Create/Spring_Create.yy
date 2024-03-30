@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "Spring_Create",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Spring",
-    "path": "folders/Extensions/Camera/ASSET_Scripts/Tweens/Spring.yy",
+  "$GMScript":"",
+  "%Name":"Spring_Create",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Spring_Create",
+  "parent":{
+    "name":"Spring",
+    "path":"folders/Extensions/Camera/ASSET_Scripts/Tweens/Spring.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

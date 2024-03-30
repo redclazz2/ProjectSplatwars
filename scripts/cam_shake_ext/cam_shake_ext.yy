@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "cam_shake_ext",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "work-in-progress",
-    "path": "folders/Extensions/Camera/ASSET_Cam/work-in-progress.yy",
+  "$GMScript":"",
+  "%Name":"cam_shake_ext",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"cam_shake_ext",
+  "parent":{
+    "name":"work-in-progress",
+    "path":"folders/Extensions/Camera/ASSET_Cam/work-in-progress.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

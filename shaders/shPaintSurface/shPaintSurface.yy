@@ -1,10 +1,12 @@
 {
-  "resourceType": "GMShader",
-  "resourceVersion": "1.0",
-  "name": "shPaintSurface",
-  "parent": {
-    "name": "Paint Manager Shaders",
-    "path": "folders/Shaders/Paint Manager Shaders.yy",
+  "$GMShader":"",
+  "%Name":"shPaintSurface",
+  "name":"shPaintSurface",
+  "parent":{
+    "name":"Paint Manager Shaders",
+    "path":"folders/Shaders/Paint Manager Shaders.yy",
   },
-  "type": 1,
+  "resourceType":"GMShader",
+  "resourceVersion":"2.0",
+  "type":1,
 }

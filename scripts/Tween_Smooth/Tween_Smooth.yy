@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "Tween_Smooth",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Tweens",
-    "path": "folders/Extensions/Camera/ASSET_Scripts/Tweens.yy",
+  "$GMScript":"",
+  "%Name":"Tween_Smooth",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Tween_Smooth",
+  "parent":{
+    "name":"Tweens",
+    "path":"folders/Extensions/Camera/ASSET_Scripts/Tweens.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

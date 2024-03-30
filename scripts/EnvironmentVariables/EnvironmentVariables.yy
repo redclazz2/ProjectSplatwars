@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "EnvironmentVariables",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Env",
-    "path": "folders/Env.yy",
+  "$GMScript":"",
+  "%Name":"EnvironmentVariables",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"EnvironmentVariables",
+  "parent":{
+    "name":"Env",
+    "path":"folders/Env.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

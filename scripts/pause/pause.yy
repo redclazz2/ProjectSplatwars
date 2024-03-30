@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "pause",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "General",
-    "path": "folders/Extensions/Camera/ASSET_Scripts/General.yy",
+  "$GMScript":"",
+  "%Name":"pause",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"pause",
+  "parent":{
+    "name":"General",
+    "path":"folders/Extensions/Camera/ASSET_Scripts/General.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

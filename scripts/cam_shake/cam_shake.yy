@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "cam_shake",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "ASSET_Cam",
-    "path": "folders/Extensions/Camera/ASSET_Cam.yy",
+  "$GMScript":"",
+  "%Name":"cam_shake",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"cam_shake",
+  "parent":{
+    "name":"ASSET_Cam",
+    "path":"folders/Extensions/Camera/ASSET_Cam.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

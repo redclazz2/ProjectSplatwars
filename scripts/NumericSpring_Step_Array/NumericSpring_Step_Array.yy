@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "NumericSpring_Step_Array",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "NumericSpring",
-    "path": "folders/Extensions/Camera/ASSET_Scripts/Tweens/NumericSpring.yy",
+  "$GMScript":"",
+  "%Name":"NumericSpring_Step_Array",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"NumericSpring_Step_Array",
+  "parent":{
+    "name":"NumericSpring",
+    "path":"folders/Extensions/Camera/ASSET_Scripts/Tweens/NumericSpring.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

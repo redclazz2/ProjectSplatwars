@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "note",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "NOTE",
-    "path": "folders/Extensions/Camera/ASSET_Scripts/NOTE.yy",
+  "$GMScript":"",
+  "%Name":"note",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"note",
+  "parent":{
+    "name":"NOTE",
+    "path":"folders/Extensions/Camera/ASSET_Scripts/NOTE.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "ProjectileItem",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Projectile Scripts",
-    "path": "folders/Scripts/Projectile Scripts.yy",
+  "$GMScript":"",
+  "%Name":"ProjectileItem",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"ProjectileItem",
+  "parent":{
+    "name":"Projectile Scripts",
+    "path":"folders/Scripts/Projectile Scripts.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }

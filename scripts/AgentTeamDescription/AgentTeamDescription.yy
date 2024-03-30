@@ -1,11 +1,13 @@
 {
-  "resourceType": "GMScript",
-  "resourceVersion": "1.0",
-  "name": "AgentTeamDescription",
-  "isCompatibility": false,
-  "isDnD": false,
-  "parent": {
-    "name": "Agent Descriptions",
-    "path": "folders/Scripts/Agent Scripts/Agent Descriptions.yy",
+  "$GMScript":"",
+  "%Name":"AgentTeamDescription",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"AgentTeamDescription",
+  "parent":{
+    "name":"Agent Descriptions",
+    "path":"folders/Scripts/Agent Scripts/Agent Descriptions.yy",
   },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
 }
