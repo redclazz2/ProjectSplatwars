@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "AgentTeamDescription",
+  "name": "AgentTeamTypes",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
