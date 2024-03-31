@@ -31,3 +31,20 @@ function configuration_set_paint_property(prop,value){
 			configuration_paint_system[$ prop] = value;
 	}
 }
+
+function configuration_get_gameplay_property(prop){
+	var result = undefined;
+	
+	with(oGeneralManager){
+		result = configuration_gameplay[$ prop] ?? undefined;
+	}
+	
+	return result;
+}
+
+function configuration_set_gameplay_property(prop,value){
+	with(oGeneralManager){
+		if(configuration_gameplay[$ prop] != undefined)
+			configuration_gameplay[$ prop] = value;
+	}
+}

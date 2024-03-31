@@ -300,6 +300,12 @@ debug_views = [];
 		paint_surface_fidelity: 0.75,
 		paint_surface_refresh_time: 4,
 	}
+
+	configuration_gameplay = {
+		current_team: AgentTeamTypes.ALPHA,
+		current_team_channel: AgentTeamChannelTypes.ALPHA,
+		current_weapon_index: -1,
+	}
 #endregion
 
 #region Input Manager System
@@ -333,7 +339,7 @@ debug_views = [];
 		}else return;
 		
 		ds_map_add(self.input_manager_map,_id,
-				instance_create_depth(-10,-10,0,oInputManager,_config));
+				instance_create_depth(-60,-60,0,oInputManager,_config));
 	}
 #endregion
 

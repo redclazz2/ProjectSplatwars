@@ -1,18 +1,21 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "oShooterTest",
+  "name": "oAgentMainWeapon",
   "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Agents Weapon",
+    "path": "folders/Objects/Agents/Agents Weapon.yy",
   },
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "oAgent",
+    "path": "objects/oAgent/oAgent.yy",
+  },
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
@@ -29,8 +32,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "plchldr_letter_j_8",
-    "path": "sprites/plchldr_letter_j_8/plchldr_letter_j_8.yy",
+    "name": "plchldr_question",
+    "path": "sprites/plchldr_question/plchldr_question.yy",
   },
   "spriteMaskId": null,
   "visible": true,
