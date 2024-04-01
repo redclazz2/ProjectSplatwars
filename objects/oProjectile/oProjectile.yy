@@ -34,8 +34,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "sWhitePixel",
-    "path": "sprites/sWhitePixel/sWhitePixel.yy",
+    "name": "sProyectile",
+    "path": "sprites/sProyectile/sProyectile.yy",
   },
   "spriteMaskId": null,
   "visible": true,

@@ -145,6 +145,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"placeholders_16x16","folderPath":"folders/Tile Sets/Placeholders/placeholders_16x16.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"placeholders_8x8","folderPath":"folders/Tile Sets/Placeholders/placeholders_8x8.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Proyectile","folderPath":"folders/Sprites/Proyectile.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"controllerblacklist.csv","CopyToMask":-1,"filePath":"datafiles",},
@@ -918,6 +919,7 @@
     {"id":{"name":"input_debug_player_input","path":"scripts/input_debug_player_input/input_debug_player_input.yy",},},
     {"id":{"name":"sPlayerIdle","path":"sprites/sPlayerIdle/sPlayerIdle.yy",},},
     {"id":{"name":"clamp_loop","path":"scripts/clamp_loop/clamp_loop.yy",},},
+    {"id":{"name":"sProyectile","path":"sprites/sProyectile/sProyectile.yy",},},
     {"id":{"name":"plchldr_circle_0_8","path":"sprites/plchldr_circle_0_8/plchldr_circle_0_8.yy",},},
     {"id":{"name":"plchldr_input","path":"sprites/plchldr_input/plchldr_input.yy",},},
     {"id":{"name":"plchldr_block_2_8","path":"sprites/plchldr_block_2_8/plchldr_block_2_8.yy",},},

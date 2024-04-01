@@ -125,6 +125,7 @@
     {"name":"Placeholders","order":3,"path":"folders/Tile Sets/Placeholders.yy",},
     {"name":"placeholders_8x8","order":1,"path":"folders/Tile Sets/Placeholders/placeholders_8x8.yy",},
     {"name":"Timelines","order":8,"path":"folders/Timelines.yy",},
+    {"name":"Proyectile","order":10,"path":"folders/Sprites/Proyectile.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"__input_config_external_data","order":2,"path":"scripts/__input_config_external_data/__input_config_external_data.yy",},
