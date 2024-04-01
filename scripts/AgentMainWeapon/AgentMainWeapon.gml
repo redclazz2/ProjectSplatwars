@@ -53,6 +53,8 @@ function AgentMainWeapon(
 		if(_input[$ "ShootPressed"] ?? false) Shoot_pressed();
 		if(_input[$ "ShootOnReleased"] ?? false) Shoot_on_release();
 	}
+	
+	Draw = function(){}
 
 	CleanUp = function(){
 		delete WeaponProyectile;

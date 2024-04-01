@@ -11,6 +11,8 @@ paintWidth = self[$ "PaintWidth"] ?? 0.25;
 paintHeight = self[$ "PaintHeight"] ?? 0.25;
 aimDir = self[$ "Direction"] ?? 0;
 
+image_angle = aimDir;
+
 spread = spreadmin + random(spreadmax);
 direction = aimDir + spread;
 
@@ -35,3 +37,6 @@ paintTimer = time_source_create(
 	-1); 
 	
 time_source_start(paintTimer);
+
+image_xscale = 0.5;
+image_yscale = image_xscale;

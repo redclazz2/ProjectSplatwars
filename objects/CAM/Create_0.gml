@@ -32,7 +32,7 @@
 						 
 	if ( !instance_exists( CONTROLLER )){
 		global.WINDOW		= 0; //which size preset to choose 
-		window_create_dimension( 0, 960, 720 );
+		window_create_dimension( 0, 320, 180 );
 		window_create_dimension( 1, 640, 360 );
 		window_create_dimension( 2, 1024, 768 );
 	}

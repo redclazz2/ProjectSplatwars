@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "UserInterfaceInterface",
+  "name": "IUserInterface",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {

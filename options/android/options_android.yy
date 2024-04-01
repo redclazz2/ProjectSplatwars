@@ -2,6 +2,9 @@
   "resourceType": "GMAndroidOptions",
   "resourceVersion": "1.0",
   "name": "Android",
+  "ConfigValues": {
+    "DesktopDebug": {"option_android_build_tools":"","option_android_support_lib":"34.0.0","option_android_target_sdk":"34","option_android_compile_sdk":"34","option_android_minimum_sdk":"16",},
+  },
   "option_android_application_tag_inject": "",
   "option_android_arch_arm64": true,
   "option_android_arch_armv7": false,
