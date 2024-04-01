@@ -37,10 +37,10 @@ function DesktopInputStrategy(_player_manager):IInputManagerStrategy(_player_man
 	
 	InputCheckAction = function(){
 		var _return = {},
-			movementInputPressed = InputCheckLeft() || InputCheckRight() || InputCheckUp() || InputCheckDown();
+			movementInputPressed = InputCheckLeft() || InputCheckRight() || InputCheckUp() || InputCheckDown(),
+			player_agent = player_manager.controllable_character;
 		
-		_return[$ "aim_x"] = mouse_x;	//IMPORTANT: CHANGE THIS
-		_return[$ "aim_y"] = mouse_y;	//IMPORTANT: CHANGE THIS
+		_return[$ "aim"] = point_direction(player_agent.x,player_agent.y,mouse_x,mouse_y);
 		
 		_return[$ "ShootOnPressed"] = InputCheckShootButtonPressed();
 		_return[$ "ShootPressed"] = InputCheckShootButtonPressed();
