@@ -32,6 +32,11 @@ function UserInterfaceMainMenu() : IUserInterface() constructor{
 			instance_create_depth(_squid_creation_x,
 				_squid_creation_y, 0, obj_SquidDecor);
 		}
+		
+		if device_mouse_check_button_pressed(0,mb_any){
+			scene_system_set_target(2);
+			scene_system_goto_target();
+		}
 	}
 	
 	DrawGUI = function(){
