@@ -10,12 +10,6 @@ function scene_system_set_target(scene){
 	}
 }
 
-function scene_system_check_scene_loaded(){
-	with(oGeneralManager){
-		scene_transition_loop();
-	}
-}
-
 function scene_system_finish_transition(){
 	with(oGeneralManager){
 		scene_transition_finished();
