@@ -1,5 +1,5 @@
 #macro IS_DEBUG							0
-#macro PLATFORM_TARGET					0
+#macro PLATFORM_TARGET					1
 
 #macro DesktopRelease:PLATFORM_TARGET	0
 #macro DesktopRelease:IS_DEBUG			0
