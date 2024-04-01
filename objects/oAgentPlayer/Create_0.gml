@@ -73,6 +73,32 @@ state_action = new AgentPlayerIdle(self);
 	}
 #endregion
 
+#region Main Weapon
+	var _team = configuration_get_gameplay_property("current_team"),
+		_team_channel = configuration_get_gameplay_property("current_team_channel");
+
+	main_weapon = instance_create_depth(
+		x,y,depth - 1, oAgentWeaponShooter,
+		{
+			Team:			_team,
+			TeamChannel:	_team_channel,
+			WeaponConfig:	new AgentWeaponShooter(
+								input_manager,
+								input_manager.controllable_type,
+								_team,
+								_team_channel,
+								generate_weapon(
+									configuration_get_gameplay_property("current_weapon_index")
+								),self
+							)
+		}
+		
+	);
+	
+	
+	
+#endregion
+
 //Execution
 if(strategy_position == undefined || 
 	//state_action == undefined || 

@@ -25,8 +25,8 @@
   "nineSlice": null,
   "origin": 4,
   "parent": {
-    "name": "UserInterfaceSprites",
-    "path": "folders/Sprites/UserInterfaceSprites.yy",
+    "name": "Title Screen",
+    "path": "folders/Sprites/UserInterfaceSprites/Title Screen.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {

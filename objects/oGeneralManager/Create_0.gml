@@ -115,7 +115,8 @@ debug_views = [];
 		next_scene: -1,
 		fallback_scene: rm_fallback,
 		mid_transition: false,
-		squence_layer: undefined
+		squence_layer: undefined,
+		current_scene_loaded: false
 	};
 	
 	#region Scene Struct Gets & Sets
@@ -201,9 +202,44 @@ debug_views = [];
 	#endregion
 	
 	#region Scene Transition
+		transition_surface = -1;		
+
+		layerBegin = function(){
+		    if event_type == ev_draw {
+		        if event_number == ev_draw_normal {
+		            if !surface_exists(transition_surface) 
+						transition_surface = surface_create(320, 180);
+		            surface_set_target(transition_surface);
+		            draw_clear_alpha(c_black, 0);
+		        }
+		    }
+		}
+		
+		layerEnd = function()
+		{   
+		    if event_type == ev_draw {
+		        if event_number == ev_draw_normal { // Normal draw event
+		            surface_reset_target();
+				}
+			}
+		}
+		
+		function scene_transition_loop(){
+			if(!scene_struct.current_scene_loaded){
+				layer_sequence_headpos(scene_struct.squence_layer,0);
+			}else{
+				layer_sequence_play(scene_struct.squence_layer); 
+				scene_struct.current_scene_loaded = false;
+			}	
+		}
+		
 		function scene_transition_place_sequence(type){
 			if (layer_exists("transition")) layer_destroy("transition")
-			var _lay = layer_create(-9999,"transition")
+			var _lay = layer_create(-9999,"transition");
+			
+			layer_script_begin(layer_get_id("transition"), layerBegin);
+			layer_script_end(layer_get_id("transition"), layerEnd);
+			
 			self.scene_struct.squence_layer = layer_sequence_create(_lay,0,0,type);	
 		}
 		
@@ -225,6 +261,7 @@ debug_views = [];
 		{
 			layer_sequence_destroy(self.scene_struct.squence_layer);
 			self.scene_struct.mid_transition = false;
+			surface_free(transition_surface);
 		}
 	#endregion
 	
@@ -263,6 +300,12 @@ debug_views = [];
 		paint_surface_fidelity: 0.75,
 		paint_surface_refresh_time: 4,
 	}
+
+	configuration_gameplay = {
+		current_team: AgentTeamTypes.ALPHA,
+		current_team_channel: AgentTeamChannelTypes.ALPHA,
+		current_weapon_index: WeaponTypes.RegularShooter01,
+	}
 #endregion
 
 #region Input Manager System
@@ -296,7 +339,7 @@ debug_views = [];
 		}else return;
 		
 		ds_map_add(self.input_manager_map,_id,
-				instance_create_depth(-10,-10,0,oInputManager,_config));
+				instance_create_depth(-60,-60,0,oInputManager,_config));
 	}
 #endregion
 
@@ -418,4 +461,5 @@ debug_views = [];
 	else show_debug_overlay(false);
 #endregion
 
+depth = -10;
 CreateInputManager(InputTypes.LOCAL);

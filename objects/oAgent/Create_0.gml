@@ -15,3 +15,7 @@
 	agent_base_description[$ "TeamChannel"] = self[$ "TeamChannel"] ?? 
 												AgentTeamChannelTypes.ALPHA;
 #endregion
+
+function get_base_agent_property(_prop){
+	return agent_base_description[$ _prop];
+}

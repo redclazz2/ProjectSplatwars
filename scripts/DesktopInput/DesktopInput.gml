@@ -19,8 +19,16 @@ function DesktopInputStrategy(_player_manager):IInputManagerStrategy(_player_man
 		return keyboard_check_pressed(ord("E"));
 	}
 	
-	InputCheckShootButton = function(){
+	InputCheckShootButtonOnPressed = function(){
+		return mouse_check_button_pressed(mb_left);
+	}
+	
+	InputCheckShootButtonPressed = function(){
 		return mouse_check_button(mb_left);
+	}
+	
+	InputCheckShootButtonOnReleased = function(){
+		return mouse_check_button_released(mb_left);
 	}
 	
 	InputCheckSubmergeButton = function(){
@@ -29,10 +37,17 @@ function DesktopInputStrategy(_player_manager):IInputManagerStrategy(_player_man
 	
 	InputCheckAction = function(){
 		var _return = {},
-			movementInputPressed = InputCheckLeft() || InputCheckRight() || InputCheckUp() || InputCheckDown();
+			movementInputPressed = InputCheckLeft() || InputCheckRight() || InputCheckUp() || InputCheckDown(),
+			player_agent = player_manager.controllable_character;
 		
-		_return[$ "aim_x"] = mouse_x;	//IMPORTANT: CHANGE THIS
-		_return[$ "aim_y"] = mouse_y;	//IMPORTANT: CHANGE THIS
+		_return[$ "aim"] = point_direction(player_agent.x,player_agent.y,mouse_x,mouse_y);
+		
+		_return[$ "ShootOnPressed"] = InputCheckShootButtonPressed();
+		_return[$ "ShootPressed"] = InputCheckShootButtonPressed();
+		_return[$ "ShootOnReleased"] = InputCheckShootButtonOnReleased();
+		
+		_return[$ "SubmergeButton"] = InputCheckSubmergeButton();
+		
 		_return[$ "state"] = 1;
 		
 		switch (true) {
