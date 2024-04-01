@@ -1,20 +1,15 @@
 function AgentWeaponShooter(
-	_InputManager,_ControlType,
-	_Team,_TeamChannel,
-	_Damage,_SpreadMin,
-	_SpreadMax,_Range,
-	_ProjectileSpeed,_PaintWidth,
-	_PaintHeight,_Comsuption,_Special,
-	_ShootingCooldown
+	_InputManager,
+	_ControlType,
+	_Team,
+	_TeamChannel,
+	_WeaponStats,
+	_ParentAgent
 ):AgentMainWeapon(
-	_InputManager,_ControlType,_Team,
-	_TeamChannel,_Damage,
-	_SpreadMin,_SpreadMax,
-	_Range,_ProjectileSpeed,
-	_PaintWidth,_PaintHeight,
-	_Comsuption,_Special
+	_InputManager,_ParentAgent,_ControlType,_Team,
+	_TeamChannel,_WeaponStats
 ) constructor{
-	ShootingCooldown = _ShootingCooldown;		
+	ShootingCooldown = _WeaponStats.ShootingCooldown;		
 	ShootingEnabled = true;
 
 	Shooting_cooldown_release = function(){
@@ -23,9 +18,9 @@ function AgentWeaponShooter(
 
 	ShootingTimer = time_source_create(
 						time_source_global,
-						shootingCooldown,
+						ShootingCooldown,
 						time_source_units_frames,
-						shooting_cooldown_release,
+						Shooting_cooldown_release,
 						[],
 						1
 					);
@@ -33,7 +28,7 @@ function AgentWeaponShooter(
 	
 	Shoot_pressed = function(){
 		if(ShootingEnabled){
-			create_projectile(WeaponProyectile,ProjectileDirection);
+			create_projectile(WeaponProyectile,x,y,ProjectileDirection);
 			ShootingEnabled = false;
 			time_source_start(ShootingTimer);
 		}
@@ -42,5 +37,6 @@ function AgentWeaponShooter(
 	CleanUp = function(){
 		time_source_stop(ShootingTimer);
 		time_source_destroy(ShootingTimer);
+		delete WeaponProyectile;
 	}
 }

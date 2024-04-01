@@ -1,33 +1,25 @@
 function AgentMainWeapon(
 	_InputManager,
 	_ParentAgent,
-	_WeaponSprite,
-	_ControlType,
+	_ControlType, //DELETE: INPUT MANAGER ALREADY KNOWS
 	_Team,
 	_TeamChannel,
-	_Damage,
-	_SpreadMin,
-	_SpreadMax,
-	_Range,
-	_ProjectileSpeed,
-	_PaintWidth,
-	_PaintHeight,
-	_Comsuption,
-	_Special):AgentDescription(_Team,_TeamChannel) constructor{
+	_WeaponStats
+	):AgentDescription(_Team,_TeamChannel) constructor{
 	
 	ParentAgent = _ParentAgent;
 	InputManager = _InputManager;
-	WeaponSprite = _WeaponSprite;
+	WeaponSprite = _WeaponStats.WeaponSprite;
 	ControlType = _ControlType;
-	Damage = _Damage;
-	SpreadMin = _SpreadMin;
-	SpreadMax = _SpreadMax;
-	Range = _Range;
-	ProjectileSpeed = _ProjectileSpeed;
-	PaintWidth = _PaintWidth;
-	PaintHeight = _paintHeight;
-	Consumption = _Consumption;
-	Special = _Special;
+	Damage = _WeaponStats.Damage;
+	SpreadMin = _WeaponStats.SpreadMin;
+	SpreadMax = _WeaponStats.SpreadMax;
+	Range = _WeaponStats.Range;
+	ProjectileSpeed = _WeaponStats.ProjectileSpeed;
+	PaintWidth = _WeaponStats.PaintWidth;
+	PaintHeight = _WeaponStats.PaintHeight;
+	Consumption = _WeaponStats.Consumption;
+	Special = _WeaponStats.Special;
 	ProjectileDirection = 0;
 	
 	WeaponProyectile = new Projectile(
@@ -40,7 +32,7 @@ function AgentMainWeapon(
 		ProjectileSpeed,
 		PaintWidth,
 		PaintHeight,
-		PaintDirection
+		ProjectileDirection
 	);
 	
 	Shoot_on_pressed = function(){}
@@ -55,13 +47,14 @@ function AgentMainWeapon(
 		
 		var _input = InputManager.InputCheckAction();
 		
-		ProjectileDirection = point_direction(x,y,
-			_input[$ "aim_x"],_input[$ "aim_y"]);
+		ProjectileDirection = _input[$ "aim"] ?? 0;
 			
-		if(_input[$ "ShootOnPressed"]) Shoot_on_pressed();
-		if(_input[$ "ShootPressed"]) Shoot_pressed();
-		if(_input[$ "ShootOnReleased"]) Shoot_on_release();
+		if(_input[$ "ShootOnPressed"] ?? false) Shoot_on_pressed();
+		if(_input[$ "ShootPressed"] ?? false) Shoot_pressed();
+		if(_input[$ "ShootOnReleased"] ?? false) Shoot_on_release();
 	}
 
-	CleanUp = function(){}
+	CleanUp = function(){
+		delete WeaponProyectile;
+	}
 }

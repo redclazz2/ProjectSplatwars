@@ -304,7 +304,7 @@ debug_views = [];
 	configuration_gameplay = {
 		current_team: AgentTeamTypes.ALPHA,
 		current_team_channel: AgentTeamChannelTypes.ALPHA,
-		current_weapon_index: -1,
+		current_weapon_index: WeaponTypes.RegularShooter01,
 	}
 #endregion
 
