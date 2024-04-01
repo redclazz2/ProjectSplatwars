@@ -8,12 +8,12 @@
   "inheritLayers": false,
   "instanceCreationOrder": [
     {"name":"inst_696BDC44","path":"rooms/rm_scene1/rm_scene1.yy",},
-    {"name":"inst_70AE1C98","path":"rooms/rm_scene1/rm_scene1.yy",},
     {"name":"inst_50536C71","path":"rooms/rm_scene1/rm_scene1.yy",},
     {"name":"inst_1DB1EC71","path":"rooms/rm_scene1/rm_scene1.yy",},
     {"name":"inst_5521844","path":"rooms/rm_scene1/rm_scene1.yy",},
     {"name":"inst_775DBDF0","path":"rooms/rm_scene1/rm_scene1.yy",},
     {"name":"inst_3FE121DA","path":"rooms/rm_scene1/rm_scene1.yy",},
+    {"name":"inst_70AE1C98","path":"rooms/rm_scene1/rm_scene1.yy",},
   ],
   "isDnd": false,
   "layers": [

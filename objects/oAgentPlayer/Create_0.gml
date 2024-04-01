@@ -105,4 +105,4 @@ if(strategy_position == undefined ||
 	input_manager == undefined) 
 		DestroyControllableCharacter();
 		
-cam_follow(follow.mpeek,self);
+cam_follow(follow.target,self);
