@@ -17,7 +17,7 @@ either configured to read local or remote input data.
 		var _return = undefined;
 		
 		if(controllable_type == InputTypes.LOCAL){
-			_return = PLATFORM_TARGET == 0 ? new DesktopInputStrategy(self) : new MobileInputStrategy(self); 
+			_return = PLATFORM_TARGET == 0 ? new DesktopInputStrategy(self) : undefined; 
 		}else if(InputTypes.REMOTE){
 			//
 		}
