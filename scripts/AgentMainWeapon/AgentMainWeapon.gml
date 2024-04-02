@@ -47,7 +47,7 @@ function AgentMainWeapon(
 		
 		var _input = InputManager.InputCheckAction();
 		
-		ProjectileDirection = _input[$ "aim"] ?? 0;
+		ProjectileDirection = ceil(_input[$ "aim"]) ?? 0;
 			
 		if(_input[$ "ShootOnPressed"] ?? false) Shoot_on_pressed();
 		if(_input[$ "ShootPressed"] ?? false) Shoot_pressed();

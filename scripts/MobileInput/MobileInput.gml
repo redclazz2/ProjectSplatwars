@@ -36,26 +36,39 @@ function MobileInputStrategy(_player_manager):IInputManagerStrategy(_player_mana
 	}
 	
 	InputCheckSpecialButton = function(){
-		//TODO: change to UI btn
 		return keyboard_check_pressed(ord("E"));
 	}
 	
-	InputCheckShootButton = function(){
-		//TODO: change to UI btn
+	InputCheckShootButtonOnPressed = function(){
+		return mouse_check_button_pressed(mb_left);
+	}
+	
+	InputCheckShootButtonPressed = function(){
 		return mouse_check_button(mb_left);
 	}
 	
+	InputCheckShootButtonOnReleased = function(){
+		return mouse_check_button_released(mb_left);
+	}
+	
 	InputCheckSubmergeButton = function(){
-		//TODO: change to UI btn
 		return mouse_check_button(mb_right);
 	}
 	
 	InputCheckAction = function(){
 		var _return = {},
-			movementInputPressed = InputCheckLeft() || InputCheckRight() || InputCheckUp() || InputCheckDown();
+			movementInputPressed = InputCheckLeft() || InputCheckRight() || InputCheckUp() || InputCheckDown(),
+			player_agent = player_manager.controllable_character;
+		with(oJoyStickAim){
+		_return[$ "aim"] = point_direction(player_agent.x,player_agent.y,player_agent.x + joy_x,player_agent.y + joy_y);
+		}
 		
-		_return[$ "aim_x"] = mouse_x;	//IMPORTANT: CHANGE THIS
-		_return[$ "aim_y"] = mouse_y;	//IMPORTANT: CHANGE THIS
+		_return[$ "ShootOnPressed"] = InputCheckShootButtonPressed();
+		_return[$ "ShootPressed"] = InputCheckShootButtonPressed();
+		_return[$ "ShootOnReleased"] = InputCheckShootButtonOnReleased();
+		
+		_return[$ "SubmergeButton"] = InputCheckSubmergeButton();
+		
 		_return[$ "state"] = 1;
 		
 		switch (true) {

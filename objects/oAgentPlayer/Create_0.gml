@@ -49,8 +49,8 @@ state_action = new AgentPlayerIdle(self);
 	Step = function(){
 		if(self.listen_to_input){
 			strategy_position.Step();
-			
 			var _ActionData = self.InputCheckAction();
+			XscaleCharacter(_ActionData);
 			ChangeStateAction(_ActionData[$ "state"]);
 			struct_remove(_ActionData,"state");
 			
@@ -97,6 +97,18 @@ state_action = new AgentPlayerIdle(self);
 	
 	
 	
+#endregion
+
+#region Xscale Character
+	XscaleCharacter = function(_Data){
+	if(_Data[$ "aim"] > 90 && _Data[$ "aim"] < 270){
+		image_xscale = -1;
+		image_yscale = 1;
+	}else{
+		image_xscale = 1;
+		image_yscale = 1;
+	}
+	}
 #endregion
 
 //Execution
