@@ -104,3 +104,6 @@ if(strategy_position == undefined ||
 	//state_action == undefined || 
 	input_manager == undefined) 
 		DestroyControllableCharacter();
+
+global.k_set_target(self);
+global.k_set_mode("peak_follow_target");

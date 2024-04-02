@@ -494,8 +494,9 @@ machine.Initialize		 = function() {
 		}
 		global.k_set_mode		 = function (_mode)											{
 			var _alert = true;
-			for (var i = 0; i < array_length(machine.GetStateBank()[0]); ++i) {
-				if (!is_undefined(_mode) && string(_mode) == string(machine.GetStateBank()[0][i]))
+			var _modes = machine.GetStateBank(0);
+			for (var i = 0; i < array_length(_modes) - 1; i++) {
+				if (!is_undefined(_mode) && string(_mode) == string(_modes[i]))
 					{_alert = false;}
 			}
 
@@ -628,7 +629,6 @@ celeste_mode.Start		 = function() {
 
 	bound_object = o_bound; // Pick the Bound Object
 }
-
 follow_target.Step		 = function() {
 	if (instance_exists(k_target))	{
 		var _dest_x = lerp(camera_get_view_x(kamera), round((k_target.x + k_offset_x) - camera_get_view_width(kamera)/2),  k_spd);
