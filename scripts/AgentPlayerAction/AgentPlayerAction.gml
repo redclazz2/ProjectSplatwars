@@ -1,5 +1,4 @@
-function IAgentPlayerAction(_character) constructor{
-	
+function AgentPlayerAction(_character) constructor{
 	controllable_character = _character;
 	
 	ModifySpriteDirection = function(_aim){
@@ -17,4 +16,6 @@ function IAgentPlayerAction(_character) constructor{
 	Draw = function(){
 		draw_self();
 	}
+	
+	DrawUI = function(){}
 }

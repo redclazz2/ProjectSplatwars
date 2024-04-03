@@ -320,7 +320,7 @@
     {"id":{"name":"__input_system_tick","path":"scripts/__input_system_tick/__input_system_tick.yy",},},
     {"id":{"name":"plchldr_circle_3_8","path":"sprites/plchldr_circle_3_8/plchldr_circle_3_8.yy",},},
     {"id":{"name":"input_direction","path":"scripts/input_direction/input_direction.yy",},},
-    {"id":{"name":"IAgentPlayerAction","path":"scripts/IAgentPlayerAction/IAgentPlayerAction.yy",},},
+    {"id":{"name":"AgentPlayerAction","path":"scripts/AgentPlayerAction/AgentPlayerAction.yy",},},
     {"id":{"name":"input_cursor_limit_circle","path":"scripts/input_cursor_limit_circle/input_cursor_limit_circle.yy",},},
     {"id":{"name":"input_combo_params_reset","path":"scripts/input_combo_params_reset/input_combo_params_reset.yy",},},
     {"id":{"name":"plchldr_blue_x_8","path":"sprites/plchldr_blue_x_8/plchldr_blue_x_8.yy",},},
