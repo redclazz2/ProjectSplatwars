@@ -22,6 +22,7 @@ function __input_config_verbs()
             
             accept:  input_binding_key(vk_space),
             cancel:  input_binding_key(vk_backspace),
+			
             action:  input_binding_key(vk_enter),
             special: input_binding_key(vk_shift),
             
