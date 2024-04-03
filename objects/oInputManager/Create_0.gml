@@ -23,7 +23,7 @@ either configured to read local or remote input data.
 		}
 		return _return;
 	}
-//current_local_player_instance
+	//current_local_player_instance
 	function CreateDepthControllableCharacter(_x,_y,_depth,_team,_team_channel){
 		if(controllable_character == undefined){
 			var _config = new AgentControllableDescription(

@@ -4,7 +4,7 @@ event_inherited();
 
 damage = self[$ "Damage"] ?? 1;
 range = self[$ "Range"] ?? 20;
-speed = self[$ "Speed"] ?? 1;
+_speed = self[$ "Speed"] ?? 1;
 spreadmin = self[$ "Spreadmin"] ?? -10;
 spreadmax = self[$ "Spreadmax"] ?? 20;
 paintWidth = self[$ "PaintWidth"] ?? 0.25;

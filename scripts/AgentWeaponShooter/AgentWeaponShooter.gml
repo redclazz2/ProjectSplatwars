@@ -36,11 +36,12 @@ function AgentWeaponShooter(
 	
 	Shoot_pressed = function(){
 		if(ShootingEnabled){
+			ShootingEnabled = false;
+			
 			var bullet_spawn_x = x + lengthdir_x(gunLength,image_angle + gunDirection * sign(image_yscale)),
 				bullet_spawn_y = y + lengthdir_y(gunLength,image_angle + gunDirection * sign(image_yscale));
 			
-			create_projectile(WeaponProyectile,bullet_spawn_x,bullet_spawn_y,ProjectileDirection);
-			ShootingEnabled = false;
+			create_projectile(WeaponProyectile,bullet_spawn_x,bullet_spawn_y,ProjectileDirection);			
 			time_source_start(ShootingTimer);
 		}
 	}

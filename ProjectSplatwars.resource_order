@@ -79,7 +79,7 @@
     {"name":"Agent Player","order":3,"path":"folders/Scripts/Agent Scripts/Agent Player.yy",},
     {"name":"Agent Weapon","order":4,"path":"folders/Scripts/Agent Scripts/Agent Weapon.yy",},
     {"name":"Agent Weapon Shooters","order":1,"path":"folders/Scripts/Agent Scripts/Agent Weapon/Agent Weapon Shooters.yy",},
-    {"name":"General Event Functions","order":7,"path":"folders/Scripts/General Event Functions.yy",},
+    {"name":"General Camera Functions","order":7,"path":"folders/Scripts/General Camera Functions.yy",},
     {"name":"General Manager Scripts","order":1,"path":"folders/Scripts/General Manager Scripts.yy",},
     {"name":"Input Manager Scripts","order":4,"path":"folders/Scripts/Input Manager Scripts.yy",},
     {"name":"Controller Strategy","order":1,"path":"folders/Scripts/Input Manager Scripts/Controller Strategy.yy",},
