@@ -104,5 +104,3 @@ if(strategy_position == undefined ||
 	//state_action == undefined || 
 	input_manager == undefined) 
 		DestroyControllableCharacter();
-		
-cam_follow(follow.target,self);

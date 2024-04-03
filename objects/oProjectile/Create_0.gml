@@ -4,17 +4,16 @@ event_inherited();
 
 damage = self[$ "Damage"] ?? 1;
 range = self[$ "Range"] ?? 20;
-speed = self[$ "Speed"] ?? 1;
+_speed = self[$ "Speed"] ?? 1;
 spreadmin = self[$ "Spreadmin"] ?? -10;
 spreadmax = self[$ "Spreadmax"] ?? 20;
 paintWidth = self[$ "PaintWidth"] ?? 0.25;
 paintHeight = self[$ "PaintHeight"] ?? 0.25;
 aimDir = self[$ "Direction"] ?? 0;
 
-image_angle = aimDir;
-
-spread = spreadmin + random(spreadmax);
-direction = aimDir + spread;
+spread = random_range(spreadmin,spreadmax);
+image_angle = aimDir + spread;
+direction = image_angle;
 
 function createPaint(bullet) {
 	var _x = bullet.x, 

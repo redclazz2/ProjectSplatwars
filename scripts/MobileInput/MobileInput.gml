@@ -1,61 +1,63 @@
 function MobileInputStrategy(_player_manager):IInputManagerStrategy(_player_manager) constructor{	
 	InputCheckLeft = function(){
-		with(oJoyStickMovement){
-		if((joy_x/radius) < -0.1){
+		if(input_check("left") > 0){
 			return true;
 		}
 		return false;
-		}
 	}
 
 	InputCheckRight = function(){
-		with(oJoyStickMovement){
-		if((joy_x/radius) > 0.1){
+		if(input_check("right") > 0){
 			return true;
 		}
-		return false;
-		}
+		return false;		
 	}
 
 	InputCheckUp = function(){
-		with(oJoyStickMovement){
-		if((joy_y/radius) < -0.1){
+		if(input_check("up") > 0){
 			return true;
 		}
-		return false;
-		}
+		return false;	
 	}
 
 	InputCheckDown = function(){
-		with(oJoyStickMovement){
-		if((joy_y/radius) > 0.1){
+		if(input_check("down") > 0){
 			return true;
 		}
-		return false;
-		}
+		return false;	
 	}
 	
 	InputCheckSpecialButton = function(){
-		//TODO: change to UI btn
 		return keyboard_check_pressed(ord("E"));
 	}
 	
-	InputCheckShootButton = function(){
-		//TODO: change to UI btn
-		return mouse_check_button(mb_left);
+	InputCheckShootButtonOnPressed = function(){
+		return mouse_check_button_pressed(mb_left);
+	}
+	
+	InputCheckShootButtonPressed = function(){
+		return input_check("shoot")
+	}
+	
+	InputCheckShootButtonOnReleased = function(){
+		return mouse_check_button_released(mb_left);
 	}
 	
 	InputCheckSubmergeButton = function(){
-		//TODO: change to UI btn
 		return mouse_check_button(mb_right);
 	}
 	
 	InputCheckAction = function(){
 		var _return = {},
 			movementInputPressed = InputCheckLeft() || InputCheckRight() || InputCheckUp() || InputCheckDown();
+			
+		_return[$ "aim"] = point_direction(
+			0,0,
+			oInputManager.vAimStick.get_x(),
+			oInputManager.vAimStick.get_y());
 		
-		_return[$ "aim_x"] = mouse_x;	//IMPORTANT: CHANGE THIS
-		_return[$ "aim_y"] = mouse_y;	//IMPORTANT: CHANGE THIS
+		_return[$ "ShootPressed"] = InputCheckShootButtonPressed();
+		
 		_return[$ "state"] = 1;
 		
 		switch (true) {

@@ -302,6 +302,7 @@ debug_views = [];
 	}
 
 	configuration_gameplay = {
+		current_local_player_instance: noone,
 		current_team: AgentTeamTypes.ALPHA,
 		current_team_channel: AgentTeamChannelTypes.ALPHA,
 		current_weapon_index: WeaponTypes.RegularShooter01,
@@ -435,26 +436,43 @@ debug_views = [];
 	#region Local Input Manager
 		//Generalizar con el ID del controlador de input local.
 		function createLocalControllableCharacter(){
-			pubsub_publish("CreateLocalControllableCharacter",input_manager_local_id);
+			pubsub_publish("CreateLocalControllableCharacter",
+				[
+					configuration_gameplay.current_team,
+					configuration_gameplay.current_team_channel
+				]
+			);
 		}
 		
 		function enableLocalInputListening(){
-			pubsub_publish("EnableLocalInputListening",input_manager_local_id);
+			pubsub_publish("EnableLocalInputListening",[]);
 		}
 		
 		function destroyLocalControllableCharacter(){
-			pubsub_publish("DestroyLocalControllableCharacter",input_manager_local_id);
+			pubsub_publish("DestroyLocalControllableCharacter",[]);
 		}
 		
 		var fncCrtChr = ref_create(self,"createLocalControllableCharacter"),
 			fncTggLis = ref_create(self,"enableLocalInputListening"),
-			fncDstChr = ref_create(self,"destroyLocalControllableCharacter");
+			fncDstChr = ref_create(self,"destroyLocalControllableCharacter"),
+			refConfStruct = ref_create(self,"configuration_gameplay"),
+			refLclTm = ref_create(refConfStruct,"current_team"),
+			refLclTmChn = ref_create(refConfStruct,"current_team_channel");
 		
 		array_push(self.debug_views,dbg_view("Local Input System",false));
+		
 		array_push(self.debug_views,dbg_section("Local Character Debug Funcionality"));
 		array_push(self.debug_views,dbg_button("Create Local Character", fncCrtChr));
 		array_push(self.debug_views,dbg_button("Toggle Input Listening", fncTggLis));	
 		array_push(self.debug_views,dbg_button("Destroy Local Character", fncDstChr));	
+		
+		array_push(self.debug_views,dbg_section("Local Team Debug Funcionality"));
+		array_push(self.debug_views,dbg_drop_down(refLclTm,"Alpha:0,Bravo:1","Debug Local Team:"));
+		array_push(self.debug_views,dbg_drop_down(refLclTmChn,"Alpha:0,Bravo:20","Debug Local Team Channel:"));
+	#endregion
+	
+	#region Local Weapon Manager
+	
 	#endregion
 	
 	if(IS_DEBUG) show_debug_overlay(true,true);

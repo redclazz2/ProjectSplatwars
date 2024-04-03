@@ -23,12 +23,12 @@ either configured to read local or remote input data.
 		}
 		return _return;
 	}
-
-	function CreateDepthControllableCharacter(_x,_y,_depth){
+	//current_local_player_instance
+	function CreateDepthControllableCharacter(_x,_y,_depth,_team,_team_channel){
 		if(controllable_character == undefined){
 			var _config = new AgentControllableDescription(
-				AgentTeamTypes.ALPHA,
-				AgentTeamChannelTypes.ALPHA,
+				_team,
+				_team_channel,
 				self,
 				self.controllable_type
 			);
@@ -75,21 +75,33 @@ either configured to read local or remote input data.
 	) instance_destroy(self);
 
 	controllable_character = undefined;
+	
+	vMovementStick = input_virtual_create()
+		.circle(50,128,25)
+		.thumbstick(undefined, "left", "right", "up", "down")
+		.threshold(0.3,1.0)
+		.follow(true)
+		.release_behavior(INPUT_VIRTUAL_RELEASE.RESET_POSITION);
+	
+	vAimStick = input_virtual_create()
+		.circle(265,128,25)
+		.thumbstick("shoot",undefined, undefined, undefined, undefined)
+		.threshold(0.3,1.0)
+		.follow(true)
+		.release_behavior(INPUT_VIRTUAL_RELEASE.RESET_POSITION);
 #endregion
 
 #region Events
-	function EventControllableCharacterCreate(_id){
-		if(_id == controllable_id) 
-			CreateDepthControllableCharacter(20,20,-1);
+	function EventControllableCharacterCreate(_data){
+		CreateDepthControllableCharacter(20,20,-1,_data[0],_data[1]);
 	}
 	
-	function EventToggleInputListening(_id){
-		if(_id == controllable_id && controllable_character != undefined)	
+	function EventToggleInputListening(){
+		if(controllable_character != undefined)	
 			controllable_character.ToggleInputListening();
 	}
 	
-	function EventControllableCharacterDestroy(_id){
-		if(_id == controllable_id) 
-			DestroyControllableCharacter();
+	function EventControllableCharacterDestroy(){
+		DestroyControllableCharacter();
 	}
 #endregion

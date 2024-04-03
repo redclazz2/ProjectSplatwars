@@ -10,7 +10,7 @@ function AgentWeaponShooter(
 	_TeamChannel,_WeaponStats
 ) constructor{
 	gunOffSetX = _WeaponStats.WeaponOffSetX;
-	gunOffSetY = _WeaponStats.WeaponOffSetX;
+	gunOffSetY = _WeaponStats.WeaponOffSetY;
 	gunDirection = point_direction(0,0,gunOffSetX,gunOffSetY);
 	gunLength = point_distance(0,0,gunOffSetX,gunOffSetY);
 	ShootingCooldown = _WeaponStats.ShootingCooldown;		
@@ -36,32 +36,38 @@ function AgentWeaponShooter(
 	
 	Shoot_pressed = function(){
 		if(ShootingEnabled){
-			create_projectile(WeaponProyectile,x,y,ProjectileDirection);
 			ShootingEnabled = false;
+			
+			var bullet_spawn_x = x + lengthdir_x(gunLength,image_angle + gunDirection * sign(image_yscale)),
+				bullet_spawn_y = y + lengthdir_y(gunLength,image_angle + gunDirection * sign(image_yscale));
+			
+			create_projectile(WeaponProyectile,bullet_spawn_x,bullet_spawn_y,ProjectileDirection);			
 			time_source_start(ShootingTimer);
 		}
 	}
 	
 	Step = function(){
-		x = ParentAgent.x;
-		y = ParentAgent.y;
+		if(ParentAgent.listen_to_input){
+			x = ParentAgent.x;
+			y = ParentAgent.y;
 		
-		var _input = InputManager.InputCheckAction();
+			var _input = InputManager.InputCheckAction();
 
-		ProjectileDirection = _input[$ "aim"] ?? 0;
+			ProjectileDirection = _input[$ "aim"] ?? 0;
 		
-		image_angle = ProjectileDirection;
+			image_angle = ProjectileDirection;
 		
-		if(ProjectileDirection < 270 && 
-			ProjectileDirection > 90) {
-			image_yscale = -1;
-		}else{ 
-			image_yscale = 1;
+			if(ProjectileDirection < 270 && 
+				ProjectileDirection > 90) {
+				image_yscale = -1;
+			}else{ 
+				image_yscale = 1;
+			}
+		
+			if(_input[$ "ShootOnPressed"] ?? false) Shoot_on_pressed();
+			if(_input[$ "ShootPressed"] ?? false) Shoot_pressed();
+			if(_input[$ "ShootOnReleased"] ?? false) Shoot_on_release();
 		}
-		
-		if(_input[$ "ShootOnPressed"] ?? false) Shoot_on_pressed();
-		if(_input[$ "ShootPressed"] ?? false) Shoot_pressed();
-		if(_input[$ "ShootOnReleased"] ?? false) Shoot_on_release();
 	}
 	
 	Draw = function(){
