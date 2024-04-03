@@ -46,25 +46,27 @@ function AgentWeaponShooter(
 	}
 	
 	Step = function(){
-		x = ParentAgent.x;
-		y = ParentAgent.y;
+		if(ParentAgent.listen_to_input){
+			x = ParentAgent.x;
+			y = ParentAgent.y;
 		
-		var _input = InputManager.InputCheckAction();
+			var _input = InputManager.InputCheckAction();
 
-		ProjectileDirection = _input[$ "aim"] ?? 0;
+			ProjectileDirection = _input[$ "aim"] ?? 0;
 		
-		image_angle = ProjectileDirection;
+			image_angle = ProjectileDirection;
 		
-		if(ProjectileDirection < 270 && 
-			ProjectileDirection > 90) {
-			image_yscale = -1;
-		}else{ 
-			image_yscale = 1;
+			if(ProjectileDirection < 270 && 
+				ProjectileDirection > 90) {
+				image_yscale = -1;
+			}else{ 
+				image_yscale = 1;
+			}
+		
+			if(_input[$ "ShootOnPressed"] ?? false) Shoot_on_pressed();
+			if(_input[$ "ShootPressed"] ?? false) Shoot_pressed();
+			if(_input[$ "ShootOnReleased"] ?? false) Shoot_on_release();
 		}
-		
-		if(_input[$ "ShootOnPressed"] ?? false) Shoot_on_pressed();
-		if(_input[$ "ShootPressed"] ?? false) Shoot_pressed();
-		if(_input[$ "ShootOnReleased"] ?? false) Shoot_on_release();
 	}
 	
 	Draw = function(){

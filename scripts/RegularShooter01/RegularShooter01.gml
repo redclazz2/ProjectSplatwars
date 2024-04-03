@@ -1,8 +1,8 @@
 function RegularShooter01() constructor{
 	WeaponSprite = sRegularShooter01;
 	Damage = 300;
-	SpreadMin = -17;
-	SpreadMax = 17;
+	SpreadMin = -18;
+	SpreadMax = 18;
 	Range = 50;
 	ProjectileSpeed = 6.5;
 	PaintWidth = 0.62;

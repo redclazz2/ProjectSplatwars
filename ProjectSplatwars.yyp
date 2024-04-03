@@ -96,6 +96,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Agent Player","folderPath":"folders/Scripts/Agent Scripts/Agent Player.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Agent Weapon","folderPath":"folders/Scripts/Agent Scripts/Agent Weapon.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Agent Weapon Shooters","folderPath":"folders/Scripts/Agent Scripts/Agent Weapon/Agent Weapon Shooters.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"General Event Functions","folderPath":"folders/Scripts/General Event Functions.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"General Manager Scripts","folderPath":"folders/Scripts/General Manager Scripts.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Input Manager Scripts","folderPath":"folders/Scripts/Input Manager Scripts.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Controller Strategy","folderPath":"folders/Scripts/Input Manager Scripts/Controller Strategy.yy",},
@@ -133,7 +134,6 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"placeholders_16x16","folderPath":"folders/Tile Sets/Placeholders/placeholders_16x16.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"placeholders_8x8","folderPath":"folders/Tile Sets/Placeholders/placeholders_8x8.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"General Event Functions","folderPath":"folders/Scripts/General Event Functions.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"controllerblacklist.csv","CopyToMask":-1,"filePath":"datafiles",},

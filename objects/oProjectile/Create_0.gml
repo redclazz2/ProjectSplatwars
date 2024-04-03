@@ -11,10 +11,9 @@ paintWidth = self[$ "PaintWidth"] ?? 0.25;
 paintHeight = self[$ "PaintHeight"] ?? 0.25;
 aimDir = self[$ "Direction"] ?? 0;
 
-image_angle = aimDir;
-
-spread = spreadmin + random(spreadmax);
-direction = aimDir + spread;
+spread = random_range(spreadmin,spreadmax);
+image_angle = aimDir + spread;
+direction = image_angle;
 
 function createPaint(bullet) {
 	var _x = bullet.x, 
