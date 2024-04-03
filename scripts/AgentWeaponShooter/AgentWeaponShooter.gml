@@ -10,7 +10,7 @@ function AgentWeaponShooter(
 	_TeamChannel,_WeaponStats
 ) constructor{
 	gunOffSetX = _WeaponStats.WeaponOffSetX;
-	gunOffSetY = _WeaponStats.WeaponOffSetX;
+	gunOffSetY = _WeaponStats.WeaponOffSetY;
 	gunDirection = point_direction(0,0,gunOffSetX,gunOffSetY);
 	gunLength = point_distance(0,0,gunOffSetX,gunOffSetY);
 	ShootingCooldown = _WeaponStats.ShootingCooldown;		
@@ -36,7 +36,10 @@ function AgentWeaponShooter(
 	
 	Shoot_pressed = function(){
 		if(ShootingEnabled){
-			create_projectile(WeaponProyectile,x,y,ProjectileDirection);
+			var bullet_spawn_x = x + lengthdir_x(gunLength,image_angle + gunDirection * sign(image_yscale)),
+				bullet_spawn_y = y + lengthdir_y(gunLength,image_angle + gunDirection * sign(image_yscale));
+			
+			create_projectile(WeaponProyectile,bullet_spawn_x,bullet_spawn_y,ProjectileDirection);
 			ShootingEnabled = false;
 			time_source_start(ShootingTimer);
 		}
