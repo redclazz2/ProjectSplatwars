@@ -16,6 +16,7 @@ state_action = new AgentPlayerIdle(self);
 		speed_walking						: 1.5,
 		speed_unsubmerged					: 1,
 		speed_submerged						: 5,
+		speed_shooting						: 0,
 		health_regen_unsubmerged			: 70,
 		health_regen_submerged				: 200,
 		health_regen_cooldown_unsubmerged	: 2,

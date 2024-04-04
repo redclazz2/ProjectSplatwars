@@ -38,6 +38,7 @@ function DesktopInputStrategy(_player_manager):IInputManagerStrategy(_player_man
 	InputCheckAction = function(){
 		var _return = {},
 			movementInputPressed = InputCheckLeft() || InputCheckRight() || InputCheckUp() || InputCheckDown(),
+			shootInput = InputCheckShootButtonOnPressed() || InputCheckShootButtonPressed() || InputCheckShootButtonOnReleased(),
 			player_agent = player_manager.controllable_character;
 		
 		_return[$ "aim"] = point_direction(player_agent.x,player_agent.y,mouse_x,mouse_y);
@@ -51,6 +52,12 @@ function DesktopInputStrategy(_player_manager):IInputManagerStrategy(_player_man
 		_return[$ "state"] = 1;
 		
 		switch (true) {
+			
+			
+			case shootInput:
+				_return[$ "state"] = new AgentPlayerShoot(self.player_manager.controllable_character);
+				break;
+			
 		    case movementInputPressed:
 		        _return[$ "state"] = new AgentPlayerWalk(self.player_manager.controllable_character);
 		        break;

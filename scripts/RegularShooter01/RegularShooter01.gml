@@ -12,4 +12,5 @@ function RegularShooter01() constructor{
 	ShootingCooldown = 10;
 	WeaponOffSetX = 10;
 	WeaponOffSetY = 1;
+	ShootingWalkSpeedMultiplier = 0.7;
 }

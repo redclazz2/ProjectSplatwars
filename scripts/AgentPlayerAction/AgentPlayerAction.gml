@@ -14,7 +14,9 @@ function AgentPlayerAction(_character) constructor{
 	}
 	
 	Draw = function(){
-		draw_self();
+		with(controllable_character){
+			draw_self();
+		}
 	}
 	
 	DrawUI = function(){}

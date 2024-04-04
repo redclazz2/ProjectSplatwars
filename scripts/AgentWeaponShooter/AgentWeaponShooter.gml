@@ -19,6 +19,10 @@ function AgentWeaponShooter(
 	image_yscale = 1;
 	x = ParentAgent.x;
 	y = ParentAgent.y;
+	ParentAgent.stats[$ "speed_shooting"] = 
+		ParentAgent.stats[$ "speed_walking"] *
+		_WeaponStats.ShootingWalkSpeedMultiplier;
+	
 
 	Shooting_cooldown_release = function(){
 		ShootingEnabled = true;

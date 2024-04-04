@@ -207,6 +207,7 @@
     {"id":{"name":"input_player_import","path":"scripts/input_player_import/input_player_import.yy",},},
     {"id":{"name":"__input_steam_handles_changed","path":"scripts/__input_steam_handles_changed/__input_steam_handles_changed.yy",},},
     {"id":{"name":"input_debug_all_input","path":"scripts/input_debug_all_input/input_debug_all_input.yy",},},
+    {"id":{"name":"AgentPlayerShoot","path":"scripts/AgentPlayerShoot/AgentPlayerShoot.yy",},},
     {"id":{"name":"input_source_share","path":"scripts/input_source_share/input_source_share.yy",},},
     {"id":{"name":"__scribble_class_font","path":"scripts/__scribble_class_font/__scribble_class_font.yy",},},
     {"id":{"name":"input_y","path":"scripts/input_y/input_y.yy",},},
