@@ -287,11 +287,11 @@ debug_views = [];
 	}
 	
 	configuration_paint_system = {
-		paint_color_team_one_hue : 1,
-		paint_color_team_one_saturation: 1,
+		paint_color_team_one_hue : 0.603,
+		paint_color_team_one_saturation: 0.956,
 		paint_color_team_one_brightness: 1,
-		paint_color_team_two_hue: 1,
-		paint_color_team_two_saturation: 1,
+		paint_color_team_two_hue: 0.088,
+		paint_color_team_two_saturation: 0.897,
 		paint_color_team_two_brightness: 1,
 		
 		paint_color_abstract_channel_r_team_one: 0,
@@ -303,6 +303,7 @@ debug_views = [];
 
 	configuration_gameplay = {
 		current_local_player_instance: noone,
+		current_local_player_sampler: 1,
 		current_team: AgentTeamTypes.ALPHA,
 		current_team_channel: AgentTeamChannelTypes.ALPHA,
 		current_weapon_index: WeaponTypes.RegularShooter01,
@@ -457,7 +458,9 @@ debug_views = [];
 			fncDstChr = ref_create(self,"destroyLocalControllableCharacter"),
 			refConfStruct = ref_create(self,"configuration_gameplay"),
 			refLclTm = ref_create(refConfStruct,"current_team"),
-			refLclTmChn = ref_create(refConfStruct,"current_team_channel");
+			refLclTmChn = ref_create(refConfStruct,"current_team_channel"),
+			refSmplr = ref_create(refConfStruct,"current_local_player_sampler"),
+			refCrrPl = ref_create(refConfStruct,"current_local_player_instance");
 		
 		array_push(self.debug_views,dbg_view("Local Input System",false));
 		
@@ -467,8 +470,12 @@ debug_views = [];
 		array_push(self.debug_views,dbg_button("Destroy Local Character", fncDstChr));	
 		
 		array_push(self.debug_views,dbg_section("Local Team Debug Funcionality"));
-		array_push(self.debug_views,dbg_drop_down(refLclTm,"Alpha:0,Bravo:1","Debug Local Team:"));
+		array_push(self.debug_views,dbg_drop_down(refLclTm,"Alpha:1,Bravo:2","Debug Local Team:"));
 		array_push(self.debug_views,dbg_drop_down(refLclTmChn,"Alpha:0,Bravo:20","Debug Local Team Channel:"));
+		
+		array_push(self.debug_views,dbg_section("Local Player Position Sampler"));
+		array_push(self.debug_views,dbg_watch(refCrrPl,"Current Player:"));
+		array_push(self.debug_views,dbg_watch(refSmplr,"Current Sampler:"));
 	#endregion
 	
 	#region Local Weapon Manager
