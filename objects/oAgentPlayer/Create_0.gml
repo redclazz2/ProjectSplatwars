@@ -16,28 +16,26 @@ state_action = new AgentPlayerIdle(self);
 		speed_walking						: 1.5,
 		speed_unsubmerged					: 1,
 		speed_submerged						: 5,
-		speed_shooting						: 2.5,
-		health_regen_unsubmerged			: 0.7,
-		health_regen_submerged				: 4,
+		health_regen_unsubmerged			: 70,
+		health_regen_submerged				: 200,
 		health_regen_cooldown_unsubmerged	: 2,
 		health_regen_cooldown_submerged		: 1
 	};
 	
 	active_stats = {
 		speed_active			: self.stats.speed_walking,
+		health_active			: 1000,
 		health_regen			: self.stats.health_regen_unsubmerged,
 		health_regen_cooldown	: self.stats.health_regen_cooldown_unsubmerged
 	};
 #endregion
 
-#region Action Checking	
+#region State Actions Functions
 	InputCheckAction = function(){
 		if (self.input_manager == undefined) return false;
 		return self.input_manager.InputCheckAction();
 	}
-#endregion
 
-#region State Actions Functions
 	ChangeStateAction = function(new_state){
 		delete state_action;
 		state_action = new_state;

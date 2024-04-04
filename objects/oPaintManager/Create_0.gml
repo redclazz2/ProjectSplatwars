@@ -47,9 +47,29 @@
 		if(debug_draw_mouse_team == paint_team_one_color_abstract)
 			debug_draw_mouse_team = paint_team_two_color_abstract;
 		else debug_draw_mouse_team = paint_team_one_color_abstract;
+	}	
+#endregion
+
+function update_local_player_sampler(manager){
+	var local_player = configuration_get_gameplay_property("current_local_player_instance"),
+		_return = 1;
+		
+	if(local_player != noone && surface_exists(manager.paint_surface)){	
+
+		var surface = manager.paint_surface, 
+			ccr = surface_getpixel(surface,
+				local_player.x * manager.paint_room_to_surface_scale_x,
+				local_player.y * manager.paint_room_to_surface_scale_y);
+				
+		_return = ccr;
+		
 	}
 	
-#endregion
+	configuration_set_gameplay_property("current_local_player_sampler",_return)
+}
+
+RefreshPlayerSamplerTimer = time_source_create(time_source_global,4,time_source_units_frames,
+	update_local_player_sampler,[self],-1);
 
 function paint_team_color_refresh(){
 	paint_team_one_color = [
@@ -84,16 +104,16 @@ function paint_surface_create(){
 	paint_surface_to_room_scale_x = room_width / paint_surface_width;
 	paint_surface_to_room_scale_y = room_height / paint_surface_height;
 	
-	paint_surface_position_x = x - 
-		(surface_get_width(paint_surface) / 2) * paint_surface_to_room_scale_x;
-	paint_surface_position_y = y - 
-		(surface_get_height(paint_surface) / 2) * paint_surface_to_room_scale_y;
+	paint_surface_position_x = x - (surface_get_width(paint_surface) / 2) * paint_surface_to_room_scale_x;
+	paint_surface_position_y = y - (surface_get_height(paint_surface) / 2) * paint_surface_to_room_scale_y;
 	
 	alarm[0] = paint_surface_refresh_time;
 	
 	surface_set_target(paint_surface);
     draw_clear_alpha(c_white, 0);
     surface_reset_target();
+	
+	time_source_start(RefreshPlayerSamplerTimer);
 }
 
 function paint_surface_destroy(){

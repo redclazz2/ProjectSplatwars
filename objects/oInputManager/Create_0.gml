@@ -44,6 +44,9 @@ either configured to read local or remote input data.
 		if(controllable_character != undefined){
 			instance_destroy(controllable_character);
 			controllable_character = undefined;
+			
+			if(controllable_type == InputTypes.LOCAL) 
+				configuration_set_gameplay_property("current_local_player_instance",noone);
 		}else{
 			show_debug_message("W: Unable to destroy a controllable character. None defined!");
 		}
@@ -91,9 +94,12 @@ either configured to read local or remote input data.
 		.release_behavior(INPUT_VIRTUAL_RELEASE.RESET_POSITION);
 #endregion
 
-#region Events
+#region Local Events
 	function EventControllableCharacterCreate(_data){
 		CreateDepthControllableCharacter(20,20,-1,_data[0],_data[1]);
+		
+		configuration_set_gameplay_property("current_local_player_instance",
+			self.controllable_character);
 	}
 	
 	function EventToggleInputListening(){

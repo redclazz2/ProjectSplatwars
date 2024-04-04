@@ -435,6 +435,7 @@
     {"name":"__input_gamepad_set_vid_pid","order":7,"path":"scripts/__input_gamepad_set_vid_pid/__input_gamepad_set_vid_pid.yy",},
     {"name":"input_keyboard_virtual_hide","order":7,"path":"scripts/input_keyboard_virtual_hide/input_keyboard_virtual_hide.yy",},
     {"name":"input_check_quick_pressed_2d","order":11,"path":"scripts/input_check_quick_pressed_2d/input_check_quick_pressed_2d.yy",},
+    {"name":"PaintManagerFunctions","order":1,"path":"scripts/PaintManagerFunctions/PaintManagerFunctions.yy",},
     {"name":"sPlayerWalk","order":1,"path":"sprites/sPlayerWalk/sPlayerWalk.yy",},
     {"name":"plchldr_letter_b_8","order":4,"path":"sprites/plchldr_letter_b_8/plchldr_letter_b_8.yy",},
     {"name":"__input_snap_to_json","order":11,"path":"scripts/__input_snap_to_json/__input_snap_to_json.yy",},
