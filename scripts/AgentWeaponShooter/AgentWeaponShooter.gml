@@ -64,9 +64,14 @@ function AgentWeaponShooter(
 				image_yscale = 1;
 			}
 			
-			if(ParentAgent.latest_action[$ "shoot_pressed"] ?? false) Shoot_on_pressed();
-			if(ParentAgent.latest_action[$ "shoot"] ?? false) Shoot_pressed();
-			if(ParentAgent.latest_action[$ "shoot_released"] ?? false) Shoot_on_release();
+			var weapon_interaction = ParentAgent.latest_action[$ "able_to_weapon"];
+			
+			if((ParentAgent.latest_action[$ "shoot_pressed"] ?? false) 
+				&& weapon_interaction) Shoot_on_pressed();
+			if((ParentAgent.latest_action[$ "shoot"] ?? false)
+				&& weapon_interaction) Shoot_pressed();
+			if((ParentAgent.latest_action[$ "shoot_released"] ?? false)
+				&& weapon_interaction) Shoot_on_release();
 		}
 	}
 	

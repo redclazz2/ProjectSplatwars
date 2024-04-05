@@ -35,17 +35,15 @@ function IInputManagerStrategy(_player_manager) constructor{
 	}
 	
 	InputCheckSubmergeButton = function(){
-		return false;
+		return input_check("transform");
 	}
 
 	InputCheckAimDirection = function(){
 		return 0;
 	}
-
+		
 	InputCheckAction = function(_MovementData){
-		var _return = {},
-			movementInputPressed = _MovementData[$ "Left"] || _MovementData[$ "Right"] || _MovementData[$ "Up"] || _MovementData[$ "Down"],
-			shootInput = InputCheckShootButtonOnPressed() || InputCheckShootButtonPressed() || InputCheckShootButtonOnReleased();
+		var _return = {};
 		
 		_return[$ "aim"] = InputCheckAimDirection();
 		_return[$ "ShootOnPressed"] = InputCheckShootButtonPressed();
@@ -54,7 +52,23 @@ function IInputManagerStrategy(_player_manager) constructor{
 		_return[$ "SubmergeButton"] = InputCheckSubmergeButton();
 		_return[$ "state"] = 1;
 		
+		var	movementInputPressed = _MovementData[$ "Left"] || _MovementData[$ "Right"] || _MovementData[$ "Up"] || _MovementData[$ "Down"],
+			shootInput = _return[$ "ShootOnPressed"] || _return[$ "ShootPressed"] || _return[$ "ShootOnReleased"],
+			submergeInput = _return[$ "SubmergeButton"];
+		
 		switch (true) {
+			case submergeInput:
+				var	_currentSampler = configuration_get_gameplay_property("current_local_player_sampler"),
+					_currentTeamChannel =	configuration_get_gameplay_property("current_team_channel");
+				
+				_currentTeamChannel = _currentTeamChannel == 18 ? _currentTeamChannel + 2 : _currentTeamChannel;
+
+				if(_currentSampler == _currentTeamChannel){
+					//My Ink
+					_return[$ "state"] = new AgentPlayerSubmerged(self.player_manager.controllable_character);
+					break;
+				}
+			
 			case shootInput:
 				_return[$ "state"] = new AgentPlayerShoot(self.player_manager.controllable_character);
 				break;
@@ -62,11 +76,9 @@ function IInputManagerStrategy(_player_manager) constructor{
 		    case movementInputPressed:
 		        _return[$ "state"] = new AgentPlayerWalk(self.player_manager.controllable_character);
 		        break;
-		    // Add more cases if needed
 
-		    // Default case for idle state
 		    default:
-		        _return[$ "state"] = new AgentPlayerIdle(self.player_manager.controllable_character);
+		        _return[$ "state"] = new AgentPlayerAction(self.player_manager.controllable_character);
 		        break;
 		}
 		
@@ -80,7 +92,7 @@ function IInputManagerStrategy(_player_manager) constructor{
 		_return[$ "Right"] = self.InputCheckRight();
 		_return[$ "Up"] = self.InputCheckUp();
 		_return[$ "Down"] = self.InputCheckDown();
-		
+		_return[$ "Input"] = _return[$ "Left"] || _return[$ "Right"] || _return[$ "Up"] || _return[$ "Down"]
 		return _return;
 	}
 }

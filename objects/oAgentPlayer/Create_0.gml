@@ -9,14 +9,13 @@
 
 event_inherited();
 
-state_action = new AgentPlayerIdle(self);
-
 #region Stats
 	stats = {
-		speed_walking						: 1.5,
+		speed_walking						: 1.4,
 		speed_unsubmerged					: 1,
-		speed_submerged						: 5,
+		speed_submerged						: 2.1,
 		speed_shooting						: 0,
+		speed_enemy_ink						: 0.5,
 		health_regen_unsubmerged			: 70,
 		health_regen_submerged				: 200,
 		health_regen_cooldown_unsubmerged	: 2,
@@ -34,9 +33,12 @@ state_action = new AgentPlayerIdle(self);
 		aim_direction			: 0,
 		shoot_pressed			: 0,
 		shoot					: 0,
-		shoot_released			: 0
-	}
+		shoot_released			: 0,
+		able_to_weapon			: true,
+	};
 #endregion
+
+state_action = new AgentPlayerAction(self);
 
 #region Step Functions
 	InputCheckMovement = function(){
@@ -70,7 +72,7 @@ state_action = new AgentPlayerIdle(self);
 			latest_action[$ "shoot"]		  = _ActionData[$ "ShootPressed"];
 			latest_action[$ "shoot_released"] = _ActionData[$ "ShootOnReleased"];
 			
-			state_action.Step(_ActionData);
+			state_action.Step(_ActionData,_MovementData);
 		}
 	}
 	
