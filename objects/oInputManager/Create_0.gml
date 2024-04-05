@@ -63,8 +63,8 @@ either configured to read local or remote input data.
 		return controllable_state.InputCheckMovement();
 	}
 	
-	function InputCheckAction(){
-		return controllable_state.InputCheckAction();
+	function InputCheckAction(_MovementData){
+		return controllable_state.InputCheckAction(_MovementData);
 	}
 #endregion
 
@@ -73,6 +73,7 @@ either configured to read local or remote input data.
 	controllable_type = self[$ "State"] ?? undefined;
 	
 	controllable_state = CreateControllableState();
+	
 	if(controllable_state == undefined ||
 		controllable_id == -1
 	) instance_destroy(self);

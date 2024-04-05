@@ -27,14 +27,26 @@ state_action = new AgentPlayerIdle(self);
 		speed_active			: self.stats.speed_walking,
 		health_active			: 1000,
 		health_regen			: self.stats.health_regen_unsubmerged,
-		health_regen_cooldown	: self.stats.health_regen_cooldown_unsubmerged
+		health_regen_cooldown	: self.stats.health_regen_cooldown_unsubmerged,
 	};
+	
+	latest_action = {
+		aim_direction			: 0,
+		shoot_pressed			: 0,
+		shoot					: 0,
+		shoot_released			: 0
+	}
 #endregion
 
-#region State Actions Functions
-	InputCheckAction = function(){
+#region Step Functions
+	InputCheckMovement = function(){
 		if (self.input_manager == undefined) return false;
-		return self.input_manager.InputCheckAction();
+		return self.input_manager.InputCheckMovement();
+	}
+	
+	InputCheckAction = function(_MovementData){
+		if (self.input_manager == undefined) return false;
+		return self.input_manager.InputCheckAction(_MovementData);
 	}
 
 	ChangeStateAction = function(new_state){
@@ -47,11 +59,16 @@ state_action = new AgentPlayerIdle(self);
 	//Step Event
 	Step = function(){
 		if(self.listen_to_input){
-			strategy_position.Step();
+			var _MovementData = self.InputCheckMovement();
+			strategy_position.Step(_MovementData);
 			
-			var _ActionData = self.InputCheckAction();
+			var _ActionData = self.InputCheckAction(_MovementData);
 			ChangeStateAction(_ActionData[$ "state"]);
-			struct_remove(_ActionData,"state");
+			
+			latest_action[$ "aim_direction"]  = _ActionData[$ "aim"];
+			latest_action[$ "shoot_pressed"]  = _ActionData[$ "ShootOnPressed"];
+			latest_action[$ "shoot"]		  = _ActionData[$ "ShootPressed"];
+			latest_action[$ "shoot_released"] = _ActionData[$ "ShootOnReleased"];
 			
 			state_action.Step(_ActionData);
 		}
