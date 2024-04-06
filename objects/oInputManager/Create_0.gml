@@ -18,6 +18,22 @@ either configured to read local or remote input data.
 		
 		if(controllable_type == InputTypes.LOCAL){
 			_return = PLATFORM_TARGET == 0 ? new DesktopInputStrategy(self) : new MobileInputStrategy(self); 
+			
+			if(PLATFORM_TARGET == 1){
+				vMovementStick = input_virtual_create()
+				.circle(50,128,25)
+				.thumbstick(undefined, "left", "right", "up", "down")
+				.threshold(0.3,1.0)
+				.follow(true)
+				.release_behavior(INPUT_VIRTUAL_RELEASE.RESET_POSITION);
+	
+				vAimStick = input_virtual_create()
+					.circle(265,128,25)
+					.thumbstick("shoot",undefined, undefined, undefined, undefined)
+					.threshold(0.3,1.0)
+					.follow(true)
+					.release_behavior(INPUT_VIRTUAL_RELEASE.RESET_POSITION);
+			}
 		}else if(InputTypes.REMOTE){
 			//
 		}
@@ -63,8 +79,8 @@ either configured to read local or remote input data.
 		return controllable_state.InputCheckMovement();
 	}
 	
-	function InputCheckAction(){
-		return controllable_state.InputCheckAction();
+	function InputCheckAction(_MovementData){
+		return controllable_state.InputCheckAction(_MovementData);
 	}
 #endregion
 
@@ -73,25 +89,12 @@ either configured to read local or remote input data.
 	controllable_type = self[$ "State"] ?? undefined;
 	
 	controllable_state = CreateControllableState();
+	
 	if(controllable_state == undefined ||
 		controllable_id == -1
 	) instance_destroy(self);
 
 	controllable_character = undefined;
-	
-	vMovementStick = input_virtual_create()
-		.circle(50,128,25)
-		.thumbstick(undefined, "left", "right", "up", "down")
-		.threshold(0.3,1.0)
-		.follow(true)
-		.release_behavior(INPUT_VIRTUAL_RELEASE.RESET_POSITION);
-	
-	vAimStick = input_virtual_create()
-		.circle(265,128,25)
-		.thumbstick("shoot",undefined, undefined, undefined, undefined)
-		.threshold(0.3,1.0)
-		.follow(true)
-		.release_behavior(INPUT_VIRTUAL_RELEASE.RESET_POSITION);
 #endregion
 
 #region Local Events

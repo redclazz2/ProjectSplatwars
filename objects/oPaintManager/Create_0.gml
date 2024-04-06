@@ -68,7 +68,7 @@ function update_local_player_sampler(manager){
 	configuration_set_gameplay_property("current_local_player_sampler",_return)
 }
 
-RefreshPlayerSamplerTimer = time_source_create(time_source_global,4,time_source_units_frames,
+RefreshPlayerSamplerTimer = time_source_create(time_source_global,12,time_source_units_frames,
 	update_local_player_sampler,[self],-1);
 
 function paint_team_color_refresh(){

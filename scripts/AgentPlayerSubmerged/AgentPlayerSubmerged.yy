@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "AgentPlayerIdle",
+  "name": "AgentPlayerSubmerged",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {

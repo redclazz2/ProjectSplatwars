@@ -1,3 +1,3 @@
 function AgentPlayerWalk(_character):AgentPlayerAction(_character) constructor{
-	self.controllable_character.sprite_index = sPlayerWalk;
+	current_optional_speed = self.controllable_character.stats[$ "speed_walking"];
 }

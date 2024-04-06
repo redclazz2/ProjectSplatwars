@@ -9,13 +9,13 @@
 
 event_inherited();
 
-state_action = new AgentPlayerIdle(self);
-
 #region Stats
 	stats = {
-		speed_walking						: 1.5,
+		speed_walking						: 1.4,
 		speed_unsubmerged					: 1,
-		speed_submerged						: 5,
+		speed_submerged						: 2.1,
+		speed_shooting						: 0,
+		speed_enemy_ink						: 0.5,
 		health_regen_unsubmerged			: 70,
 		health_regen_submerged				: 200,
 		health_regen_cooldown_unsubmerged	: 2,
@@ -26,14 +26,29 @@ state_action = new AgentPlayerIdle(self);
 		speed_active			: self.stats.speed_walking,
 		health_active			: 1000,
 		health_regen			: self.stats.health_regen_unsubmerged,
-		health_regen_cooldown	: self.stats.health_regen_cooldown_unsubmerged
+		health_regen_cooldown	: self.stats.health_regen_cooldown_unsubmerged,
+	};
+	
+	latest_action = {
+		aim_direction			: 0,
+		shoot_pressed			: 0,
+		shoot					: 0,
+		shoot_released			: 0,
+		able_to_weapon			: true,
 	};
 #endregion
 
-#region State Actions Functions
-	InputCheckAction = function(){
+state_action = new AgentPlayerAction(self);
+
+#region Step Functions
+	InputCheckMovement = function(){
 		if (self.input_manager == undefined) return false;
-		return self.input_manager.InputCheckAction();
+		return self.input_manager.InputCheckMovement();
+	}
+	
+	InputCheckAction = function(_MovementData){
+		if (self.input_manager == undefined) return false;
+		return self.input_manager.InputCheckAction(_MovementData);
 	}
 
 	ChangeStateAction = function(new_state){
@@ -46,13 +61,18 @@ state_action = new AgentPlayerIdle(self);
 	//Step Event
 	Step = function(){
 		if(self.listen_to_input){
-			strategy_position.Step();
+			var _MovementData = self.InputCheckMovement();
+			strategy_position.Step(_MovementData);
 			
-			var _ActionData = self.InputCheckAction();
+			var _ActionData = self.InputCheckAction(_MovementData);
 			ChangeStateAction(_ActionData[$ "state"]);
-			struct_remove(_ActionData,"state");
 			
-			state_action.Step(_ActionData);
+			latest_action[$ "aim_direction"]  = _ActionData[$ "aim"];
+			latest_action[$ "shoot_pressed"]  = _ActionData[$ "ShootOnPressed"];
+			latest_action[$ "shoot"]		  = _ActionData[$ "ShootPressed"];
+			latest_action[$ "shoot_released"] = _ActionData[$ "ShootOnReleased"];
+			
+			state_action.Step(_ActionData,_MovementData);
 		}
 	}
 	

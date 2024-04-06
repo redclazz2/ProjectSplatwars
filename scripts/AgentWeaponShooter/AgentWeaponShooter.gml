@@ -19,6 +19,10 @@ function AgentWeaponShooter(
 	image_yscale = 1;
 	x = ParentAgent.x;
 	y = ParentAgent.y;
+	ParentAgent.stats[$ "speed_shooting"] = 
+		ParentAgent.stats[$ "speed_walking"] *
+		_WeaponStats.ShootingWalkSpeedMultiplier;
+	
 
 	Shooting_cooldown_release = function(){
 		ShootingEnabled = true;
@@ -47,26 +51,27 @@ function AgentWeaponShooter(
 	}
 	
 	Step = function(){
-		if(ParentAgent.listen_to_input){
+		if(instance_exists(ParentAgent) && ParentAgent.listen_to_input){
 			x = ParentAgent.x;
 			y = ParentAgent.y;
-		
-			var _input = InputManager.InputCheckAction();
-
-			ProjectileDirection = _input[$ "aim"] ?? 0;
-		
+			
+			ProjectileDirection = ParentAgent.latest_action[$ "aim_direction"];
 			image_angle = ProjectileDirection;
 		
-			if(ProjectileDirection < 270 && 
-				ProjectileDirection > 90) {
+			if(ProjectileDirection < 270 && ProjectileDirection > 90) {
 				image_yscale = -1;
 			}else{ 
 				image_yscale = 1;
 			}
-		
-			if(_input[$ "ShootOnPressed"] ?? false) Shoot_on_pressed();
-			if(_input[$ "ShootPressed"] ?? false) Shoot_pressed();
-			if(_input[$ "ShootOnReleased"] ?? false) Shoot_on_release();
+			
+			var weapon_interaction = ParentAgent.latest_action[$ "able_to_weapon"];
+			
+			if((ParentAgent.latest_action[$ "shoot_pressed"] ?? false) 
+				&& weapon_interaction) Shoot_on_pressed();
+			if((ParentAgent.latest_action[$ "shoot"] ?? false)
+				&& weapon_interaction) Shoot_pressed();
+			if((ParentAgent.latest_action[$ "shoot_released"] ?? false)
+				&& weapon_interaction) Shoot_on_release();
 		}
 	}
 	

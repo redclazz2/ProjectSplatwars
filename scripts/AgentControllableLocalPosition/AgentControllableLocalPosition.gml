@@ -1,8 +1,7 @@
 function ControllableAgentLocalPosition(_character):IAgentControllablePosition(_character) constructor{	
-	Step = function(){
+	Step = function(input_map){
 		var character = self.controllable_character,
 			c_speed = self.controllable_character.GetActiveStat("speed_active"),
-			input_map = self.controllable_character.InputCheckMovement(),
 			hor = input_map[$ "Right"] - input_map[$ "Left"],
 			ver = input_map[$ "Down"] - input_map[$ "Up"],
 			move_dir = point_direction(0,0,hor,ver),
