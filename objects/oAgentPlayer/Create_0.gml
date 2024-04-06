@@ -17,9 +17,9 @@ event_inherited();
 		speed_shooting						: 0,
 		speed_enemy_ink						: 0.5,
 		health_regen_unsubmerged			: 10,
-		health_regen_submerged				: 80,
+		health_regen_submerged				: 40,
 		health_regen_cooldown_unsubmerged	: 120,
-		health_regen_cooldown_submerged		: 60
+		health_regen_cooldown_submerged		: 80
 	};
 	
 	active_stats = {
@@ -38,8 +38,6 @@ event_inherited();
 		able_to_heal			: true,
 	};
 #endregion
-
-state_action = new AgentPlayerAction(self);
 
 #region Step Functions
 	InputCheckMovement = function(){
@@ -94,7 +92,7 @@ state_action = new AgentPlayerAction(self);
 		latest_action[$ "able_to_heal"] = false;
 		
 		if(_appliedHealth <= 0){
-			//Rip
+			//TODO: Death State
 		}else{
 			active_stats[$ "health_active"] = _appliedHealth;
 			time_source_start(allow_health_regen_timer);
@@ -148,6 +146,34 @@ state_action = new AgentPlayerAction(self);
 		[],
 		1
 	);
+	
+	ReconfigureHealthRegenTimer = function(_period){
+		time_source_reconfigure(
+			time_source_global,
+			active_stats[$ "health_regen_cooldown"],
+			time_source_units_frames,
+			_period,
+			[],
+			1
+		);
+	}
+	
+	ModifyHealthRegenTimer = function(){
+		var _timer_running = time_source_get_state(allow_health_regen_timer),
+			_new_period = active_stats[$ "health_regen_cooldown"],
+			_should_restart = false;
+		
+		if(_timer_running == time_source_state_active){
+			_new_period = time_source_get_period(allow_health_regen_timer) 
+				- time_source_get_time_remaining(allow_health_regen_timer);
+			_should_restart = true;
+		}
+		
+		ReconfigureHealthRegenTimer(_new_period);
+		if(_should_restart) time_source_start(allow_health_regen_timer);
+	}
+
+	state_action = new AgentPlayerAction(self);
 #endregion
 
 //Execution
