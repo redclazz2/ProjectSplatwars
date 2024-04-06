@@ -1,0 +1,1 @@
+ApplyDamage(300);

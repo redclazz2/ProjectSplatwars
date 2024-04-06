@@ -16,10 +16,10 @@ event_inherited();
 		speed_submerged						: 2.1,
 		speed_shooting						: 0,
 		speed_enemy_ink						: 0.5,
-		health_regen_unsubmerged			: 70,
-		health_regen_submerged				: 200,
-		health_regen_cooldown_unsubmerged	: 2,
-		health_regen_cooldown_submerged		: 1
+		health_regen_unsubmerged			: 10,
+		health_regen_submerged				: 40,
+		health_regen_cooldown_unsubmerged	: 120,
+		health_regen_cooldown_submerged		: 80
 	};
 	
 	active_stats = {
@@ -35,10 +35,9 @@ event_inherited();
 		shoot					: 0,
 		shoot_released			: 0,
 		able_to_weapon			: true,
+		able_to_heal			: true,
 	};
 #endregion
-
-state_action = new AgentPlayerAction(self);
 
 #region Step Functions
 	InputCheckMovement = function(){
@@ -74,10 +73,34 @@ state_action = new AgentPlayerAction(self);
 			
 			state_action.Step(_ActionData,_MovementData);
 		}
+		
+		if(latest_action[$ "able_to_heal"] && active_stats[$ "health_active"] < 1000){
+			active_stats[$ "health_active"] += active_stats[$ "health_regen"];
+		}else if(active_stats[$ "health_active"] > 1000){
+			active_stats[$ "health_active"] = 1000;
+		}
 	}
 	
 	Draw = function(){
 		state_action.Draw();
+	}
+
+	ApplyDamage = function(_damage){
+		var _currentHealth = active_stats[$ "health_active"],
+			_appliedHealth = _currentHealth - _damage;
+		
+		latest_action[$ "able_to_heal"] = false;
+		
+		if(_appliedHealth <= 0){
+			//TODO: Death State
+		}else{
+			active_stats[$ "health_active"] = _appliedHealth;
+			time_source_start(allow_health_regen_timer);
+		}
+	}
+	
+	AllowHealthRegen = function(){
+		latest_action[$ "able_to_heal"] = true;
 	}
 #endregion
 
@@ -112,13 +135,49 @@ state_action = new AgentPlayerAction(self);
 		}
 		
 	);
+#endregion
+
+#region Properties
+	allow_health_regen_timer = time_source_create(
+		time_source_global,
+		active_stats[$ "health_regen_cooldown"],
+		time_source_units_frames,
+		AllowHealthRegen,
+		[],
+		1
+	);
 	
+	ReconfigureHealthRegenTimer = function(_period){
+		time_source_reconfigure(
+			time_source_global,
+			active_stats[$ "health_regen_cooldown"],
+			time_source_units_frames,
+			_period,
+			[],
+			1
+		);
+	}
 	
-	
+	ModifyHealthRegenTimer = function(){
+		var _timer_running = time_source_get_state(allow_health_regen_timer),
+			_new_period = active_stats[$ "health_regen_cooldown"],
+			_should_restart = false;
+		
+		if(_timer_running == time_source_state_active){
+			_new_period = time_source_get_period(allow_health_regen_timer) 
+				- time_source_get_time_remaining(allow_health_regen_timer);
+			_should_restart = true;
+		}
+		
+		ReconfigureHealthRegenTimer(_new_period);
+		if(_should_restart) time_source_start(allow_health_regen_timer);
+	}
+
+	state_action = new AgentPlayerAction(self);
 #endregion
 
 //Execution
 if(strategy_position == undefined || 
-	//state_action == undefined || 
+	state_action == undefined || 
 	input_manager == undefined) 
 		DestroyControllableCharacter();

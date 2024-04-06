@@ -3,6 +3,12 @@ function AgentPlayerAction(_character) constructor{
 	self.controllable_character.image_alpha = 1;
 	current_optional_speed = 0;
 	self.controllable_character.latest_action[$ "able_to_weapon"] = true;
+	self.controllable_character.active_stats[$ "health_regen"] = 
+		self.controllable_character.stats[$ "health_regen_unsubmerged"];
+	self.controllable_character.active_stats[$ "health_regen_cooldown"] = 
+		self.controllable_character.stats[$ "health_regen_cooldown_unsubmerged"];
+	
+	self.controllable_character.ModifyHealthRegenTimer();
 	
 	ModifySprite = function(_Movement){
 		if(_Movement) self.controllable_character.sprite_index = sPlayerWalk;
@@ -23,7 +29,7 @@ function AgentPlayerAction(_character) constructor{
 		
 		var _currentSampler = configuration_get_gameplay_property("current_local_player_sampler"),
 			_currentTeamChannel =	configuration_get_gameplay_property("current_team_channel");	
-		_currentTeamChannel = _currentTeamChannel == 18 ? _currentTeamChannel + 2 : _currentTeamChannel;
+		_currentSampler = _currentSampler == 18 ? 20 : _currentSampler;
 		
 		if(_currentSampler == 255 || _currentTeamChannel == _currentSampler){
 			controllable_character.active_stats[$ "speed_active"] = current_optional_speed;
@@ -31,8 +37,6 @@ function AgentPlayerAction(_character) constructor{
 			self.controllable_character.active_stats[$ "speed_active"] =
 			self.controllable_character.stats[$ "speed_enemy_ink"];
 		}
-		
-		
 	}
 	
 	Draw = function(){

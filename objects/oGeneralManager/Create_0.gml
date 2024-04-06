@@ -460,7 +460,8 @@ debug_views = [];
 			refLclTm = ref_create(refConfStruct,"current_team"),
 			refLclTmChn = ref_create(refConfStruct,"current_team_channel"),
 			refSmplr = ref_create(refConfStruct,"current_local_player_sampler"),
-			refCrrPl = ref_create(refConfStruct,"current_local_player_instance");
+			refCrrPl = ref_create(refConfStruct,"current_local_player_instance"),
+			refPlySts= ref_create(refCrrPl,"active_stats");
 		
 		array_push(self.debug_views,dbg_view("Local Input System",false));
 		
@@ -476,10 +477,6 @@ debug_views = [];
 		array_push(self.debug_views,dbg_section("Local Player Position Sampler"));
 		array_push(self.debug_views,dbg_watch(refCrrPl,"Current Player:"));
 		array_push(self.debug_views,dbg_watch(refSmplr,"Current Sampler:"));
-	#endregion
-	
-	#region Local Weapon Manager
-	
 	#endregion
 	
 	if(IS_DEBUG) show_debug_overlay(true,true);
