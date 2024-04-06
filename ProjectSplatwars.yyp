@@ -505,7 +505,6 @@
     {"id":{"name":"input_keyboard_virtual_hide","path":"scripts/input_keyboard_virtual_hide/input_keyboard_virtual_hide.yy",},},
     {"id":{"name":"input_check_quick_pressed_2d","path":"scripts/input_check_quick_pressed_2d/input_check_quick_pressed_2d.yy",},},
     {"id":{"name":"input_icons","path":"scripts/input_icons/input_icons.yy",},},
-    {"id":{"name":"PaintManagerFunctions","path":"scripts/PaintManagerFunctions/PaintManagerFunctions.yy",},},
     {"id":{"name":"input_cursor_elastic_get","path":"scripts/input_cursor_elastic_get/input_cursor_elastic_get.yy",},},
     {"id":{"name":"sPlayerWalk","path":"sprites/sPlayerWalk/sPlayerWalk.yy",},},
     {"id":{"name":"plchldr_letter_b_8","path":"sprites/plchldr_letter_b_8/plchldr_letter_b_8.yy",},},

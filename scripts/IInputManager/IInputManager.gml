@@ -61,10 +61,9 @@ function IInputManagerStrategy(_player_manager) constructor{
 				var	_currentSampler = configuration_get_gameplay_property("current_local_player_sampler"),
 					_currentTeamChannel =	configuration_get_gameplay_property("current_team_channel");
 				
-				_currentTeamChannel = _currentTeamChannel == 18 ? _currentTeamChannel + 2 : _currentTeamChannel;
+				_currentSampler = _currentSampler == 18 ? 20 : _currentSampler;
 
 				if(_currentSampler == _currentTeamChannel){
-					//My Ink
 					_return[$ "state"] = new AgentPlayerSubmerged(self.player_manager.controllable_character);
 					break;
 				}

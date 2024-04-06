@@ -16,10 +16,10 @@ event_inherited();
 		speed_submerged						: 2.1,
 		speed_shooting						: 0,
 		speed_enemy_ink						: 0.5,
-		health_regen_unsubmerged			: 70,
-		health_regen_submerged				: 200,
-		health_regen_cooldown_unsubmerged	: 2,
-		health_regen_cooldown_submerged		: 1
+		health_regen_unsubmerged			: 10,
+		health_regen_submerged				: 80,
+		health_regen_cooldown_unsubmerged	: 120,
+		health_regen_cooldown_submerged		: 60
 	};
 	
 	active_stats = {
@@ -35,6 +35,7 @@ event_inherited();
 		shoot					: 0,
 		shoot_released			: 0,
 		able_to_weapon			: true,
+		able_to_heal			: true,
 	};
 #endregion
 
@@ -74,10 +75,34 @@ state_action = new AgentPlayerAction(self);
 			
 			state_action.Step(_ActionData,_MovementData);
 		}
+		
+		if(latest_action[$ "able_to_heal"] && active_stats[$ "health_active"] < 1000){
+			active_stats[$ "health_active"] += active_stats[$ "health_regen"];
+		}else if(active_stats[$ "health_active"] > 1000){
+			active_stats[$ "health_active"] = 1000;
+		}
 	}
 	
 	Draw = function(){
 		state_action.Draw();
+	}
+
+	ApplyDamage = function(_damage){
+		var _currentHealth = active_stats[$ "health_active"],
+			_appliedHealth = _currentHealth - _damage;
+		
+		latest_action[$ "able_to_heal"] = false;
+		
+		if(_appliedHealth <= 0){
+			//Rip
+		}else{
+			active_stats[$ "health_active"] = _appliedHealth;
+			time_source_start(allow_health_regen_timer);
+		}
+	}
+	
+	AllowHealthRegen = function(){
+		latest_action[$ "able_to_heal"] = true;
 	}
 #endregion
 
@@ -112,13 +137,21 @@ state_action = new AgentPlayerAction(self);
 		}
 		
 	);
-	
-	
-	
+#endregion
+
+#region Properties
+	allow_health_regen_timer = time_source_create(
+		time_source_global,
+		active_stats[$ "health_regen_cooldown"],
+		time_source_units_frames,
+		AllowHealthRegen,
+		[],
+		1
+	);
 #endregion
 
 //Execution
 if(strategy_position == undefined || 
-	//state_action == undefined || 
+	state_action == undefined || 
 	input_manager == undefined) 
 		DestroyControllableCharacter();

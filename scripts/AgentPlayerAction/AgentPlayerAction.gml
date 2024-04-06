@@ -23,7 +23,7 @@ function AgentPlayerAction(_character) constructor{
 		
 		var _currentSampler = configuration_get_gameplay_property("current_local_player_sampler"),
 			_currentTeamChannel =	configuration_get_gameplay_property("current_team_channel");	
-		_currentTeamChannel = _currentTeamChannel == 18 ? _currentTeamChannel + 2 : _currentTeamChannel;
+		_currentSampler = _currentSampler == 18 ? 20 : _currentSampler;
 		
 		if(_currentSampler == 255 || _currentTeamChannel == _currentSampler){
 			controllable_character.active_stats[$ "speed_active"] = current_optional_speed;
