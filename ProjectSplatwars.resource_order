@@ -78,6 +78,7 @@
     {"name":"Agent Scripts","order":5,"path":"folders/Scripts/Agent Scripts.yy",},
     {"name":"Agent Controllable","order":1,"path":"folders/Scripts/Agent Scripts/Agent Controllable.yy",},
     {"name":"Agent Descriptions","order":2,"path":"folders/Scripts/Agent Scripts/Agent Descriptions.yy",},
+    {"name":"Agent Dummy","order":5,"path":"folders/Scripts/Agent Scripts/Agent Dummy.yy",},
     {"name":"Agent Player","order":3,"path":"folders/Scripts/Agent Scripts/Agent Player.yy",},
     {"name":"Agent Weapon","order":4,"path":"folders/Scripts/Agent Scripts/Agent Weapon.yy",},
     {"name":"Agent Weapon Shooters","order":1,"path":"folders/Scripts/Agent Scripts/Agent Weapon/Agent Weapon Shooters.yy",},
