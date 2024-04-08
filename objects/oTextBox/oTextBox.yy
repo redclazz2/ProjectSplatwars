@@ -30,8 +30,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "sTextBox",
-    "path": "sprites/sTextBox/sTextBox.yy",
+    "name": "sTextButton",
+    "path": "sprites/sTextButton/sTextButton.yy",
   },
   "spriteMaskId": null,
   "visible": true,

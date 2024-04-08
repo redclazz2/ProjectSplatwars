@@ -412,7 +412,6 @@
     {"name":"plchldr_go_1","order":21,"path":"sprites/plchldr_go_1/plchldr_go_1.yy",},
     {"name":"__input_gamepad_stop_trigger_effects","order":8,"path":"scripts/__input_gamepad_stop_trigger_effects/__input_gamepad_stop_trigger_effects.yy",},
     {"name":"input_source_clear","order":1,"path":"scripts/input_source_clear/input_source_clear.yy",},
-    {"name":"oNameDisplay","order":3,"path":"objects/oNameDisplay/oNameDisplay.yy",},
     {"name":"plchldr_block_9_8","order":9,"path":"sprites/plchldr_block_9_8/plchldr_block_9_8.yy",},
     {"name":"__input_config_icons","order":6,"path":"scripts/__input_config_icons/__input_config_icons.yy",},
     {"name":"plchldr_surface_1_8","order":41,"path":"sprites/plchldr_surface_1_8/plchldr_surface_1_8.yy",},

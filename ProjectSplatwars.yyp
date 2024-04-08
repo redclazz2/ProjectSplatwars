@@ -478,7 +478,6 @@
     {"id":{"name":"plchldr_go_1","path":"sprites/plchldr_go_1/plchldr_go_1.yy",},},
     {"id":{"name":"__input_gamepad_stop_trigger_effects","path":"scripts/__input_gamepad_stop_trigger_effects/__input_gamepad_stop_trigger_effects.yy",},},
     {"id":{"name":"input_source_clear","path":"scripts/input_source_clear/input_source_clear.yy",},},
-    {"id":{"name":"oNameDisplay","path":"objects/oNameDisplay/oNameDisplay.yy",},},
     {"id":{"name":"plchldr_block_9_8","path":"sprites/plchldr_block_9_8/plchldr_block_9_8.yy",},},
     {"id":{"name":"__input_config_icons","path":"scripts/__input_config_icons/__input_config_icons.yy",},},
     {"id":{"name":"plchldr_surface_1_8","path":"sprites/plchldr_surface_1_8/plchldr_surface_1_8.yy",},},
