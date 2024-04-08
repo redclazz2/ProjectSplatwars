@@ -1,18 +1,30 @@
-/// @description Standard projectile behavior
+/// @description Standard Projectile Definition
 
-damage = self[$ "damage"] ?? 1;
-range = self[$ "range"] ?? 20;
-speed = self[$ "speed"] ?? 1;
-spreadmin = self[$ "spreadmin"] ?? -10;
-spreadmax = self[$ "spreadmax"] ?? 20;
+event_inherited();
 
-aimDir = point_direction(x, y, mouse_x, mouse_y);
-spread = spreadmin + random(spreadmax);
-direction = aimDir + spread;
+damage = self[$ "Damage"] ?? 1;
+range = self[$ "Range"] ?? 20;
+_speed = self[$ "Speed"] ?? 1;
+spreadmin = self[$ "Spreadmin"] ?? -10;
+spreadmax = self[$ "Spreadmax"] ?? 20;
+paintWidth = self[$ "PaintWidth"] ?? 0.25;
+paintHeight = self[$ "PaintHeight"] ?? 0.25;
+aimDir = self[$ "Direction"] ?? 0;
+
+spread = random_range(spreadmin,spreadmax);
+image_angle = aimDir + spread;
+direction = image_angle;
 
 function createPaint(bullet) {
-	var _x = bullet.x, _y = bullet.y;
-	pubsub_publish("PaintSurfaceApply", new PaintItemStructure(_x, _y, 0.25, 0.25, sSplat01, 0));
+	var _x = bullet.x, 
+		_y = bullet.y, 
+		_channel = bullet.get_base_agent_property("TeamChannel"),
+		_height = bullet.paintHeight,
+		_width = bullet.paintWidth;
+		
+	pubsub_publish("PaintSurfaceApply", 
+		new PaintItemStructure(_x, _y, _width, 
+		_height, sSplat01, _channel));
 }
 
 paintTimer = time_source_create(
@@ -24,3 +36,6 @@ paintTimer = time_source_create(
 	-1); 
 	
 time_source_start(paintTimer);
+
+image_xscale = 0.5;
+image_yscale = image_xscale;

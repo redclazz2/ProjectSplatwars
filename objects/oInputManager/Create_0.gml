@@ -17,18 +17,34 @@ either configured to read local or remote input data.
 		var _return = undefined;
 		
 		if(controllable_type == InputTypes.LOCAL){
-			_return = PLATFORM_TARGET == 0 ? new DesktopInputStrategy(self) : undefined; 
+			_return = PLATFORM_TARGET == 0 ? new DesktopInputStrategy(self) : new MobileInputStrategy(self); 
+			
+			if(PLATFORM_TARGET == 1){
+				vMovementStick = input_virtual_create()
+				.circle(50,128,25)
+				.thumbstick(undefined, "left", "right", "up", "down")
+				.threshold(0.3,1.0)
+				.follow(true)
+				.release_behavior(INPUT_VIRTUAL_RELEASE.RESET_POSITION);
+	
+				vAimStick = input_virtual_create()
+					.circle(265,128,25)
+					.thumbstick("shoot",undefined, undefined, undefined, undefined)
+					.threshold(0.3,1.0)
+					.follow(true)
+					.release_behavior(INPUT_VIRTUAL_RELEASE.RESET_POSITION);
+			}
 		}else if(InputTypes.REMOTE){
 			//
 		}
 		return _return;
 	}
-
-	function CreateDepthControllableCharacter(_x,_y,_depth){
+	//current_local_player_instance
+	function CreateDepthControllableCharacter(_x,_y,_depth,_team,_team_channel){
 		if(controllable_character == undefined){
 			var _config = new AgentControllableDescription(
-				AgentTeamTypes.ALPHA,
-				AgentTeamChannelTypes.ALPHA,
+				_team,
+				_team_channel,
 				self,
 				self.controllable_type
 			);
@@ -44,6 +60,9 @@ either configured to read local or remote input data.
 		if(controllable_character != undefined){
 			instance_destroy(controllable_character);
 			controllable_character = undefined;
+			
+			if(controllable_type == InputTypes.LOCAL) 
+				configuration_set_gameplay_property("current_local_player_instance",noone);
 		}else{
 			show_debug_message("W: Unable to destroy a controllable character. None defined!");
 		}
@@ -60,8 +79,8 @@ either configured to read local or remote input data.
 		return controllable_state.InputCheckMovement();
 	}
 	
-	function InputCheckAction(){
-		return controllable_state.InputCheckAction();
+	function InputCheckAction(_MovementData){
+		return controllable_state.InputCheckAction(_MovementData);
 	}
 #endregion
 
@@ -70,6 +89,7 @@ either configured to read local or remote input data.
 	controllable_type = self[$ "State"] ?? undefined;
 	
 	controllable_state = CreateControllableState();
+	
 	if(controllable_state == undefined ||
 		controllable_id == -1
 	) instance_destroy(self);
@@ -77,19 +97,20 @@ either configured to read local or remote input data.
 	controllable_character = undefined;
 #endregion
 
-#region Events
-	function EventControllableCharacterCreate(_id){
-		if(_id == controllable_id) 
-			CreateDepthControllableCharacter(20,20,-1);
+#region Local Events
+	function EventControllableCharacterCreate(_data){
+		CreateDepthControllableCharacter(20,20,-1,_data[0],_data[1]);
+		
+		configuration_set_gameplay_property("current_local_player_instance",
+			self.controllable_character);
 	}
 	
-	function EventToggleInputListening(_id){
-		if(_id == controllable_id && controllable_character != undefined)	
+	function EventToggleInputListening(){
+		if(controllable_character != undefined)	
 			controllable_character.ToggleInputListening();
 	}
 	
-	function EventControllableCharacterDestroy(_id){
-		if(_id == controllable_id) 
-			DestroyControllableCharacter();
+	function EventControllableCharacterDestroy(){
+		DestroyControllableCharacter();
 	}
 #endregion

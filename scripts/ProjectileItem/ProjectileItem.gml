@@ -1,8 +1,15 @@
-
-function Projectile(_damage, _spreadmin, _spreadmax, _range, _speed) constructor {
-	damage = _damage;
-	spreadmin = _spreadmin;
-	spreadmax = _spreadmax;
-	range = _range;
-	speed = _speed;
+function Projectile(_team,_teamChannel,_damage, 
+	_spreadmin, _spreadmax, _range, _speed,
+	_paintWidth, _paintHeight,
+	_direction)
+	:AgentDescription(_team,_teamChannel) constructor {
+		
+	Damage = _damage;
+	Spreadmin = _spreadmin;
+	Spreadmax = _spreadmax;
+	Range = _range;
+	Speed = _speed;
+	PaintWidth = _paintWidth;
+	PaintHeight = _paintHeight;
+	Direction = _direction;
 }

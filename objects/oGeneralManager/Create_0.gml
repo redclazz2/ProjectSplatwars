@@ -115,7 +115,8 @@ debug_views = [];
 		next_scene: -1,
 		fallback_scene: rm_fallback,
 		mid_transition: false,
-		squence_layer: undefined
+		squence_layer: undefined,
+		current_scene_loaded: false
 	};
 	
 	#region Scene Struct Gets & Sets
@@ -201,9 +202,44 @@ debug_views = [];
 	#endregion
 	
 	#region Scene Transition
+		transition_surface = -1;		
+
+		layerBegin = function(){
+		    if event_type == ev_draw {
+		        if event_number == ev_draw_normal {
+		            if !surface_exists(transition_surface) 
+						transition_surface = surface_create(320, 180);
+		            surface_set_target(transition_surface);
+		            draw_clear_alpha(c_black, 0);
+		        }
+		    }
+		}
+		
+		layerEnd = function()
+		{   
+		    if event_type == ev_draw {
+		        if event_number == ev_draw_normal { // Normal draw event
+		            surface_reset_target();
+				}
+			}
+		}
+		
+		function scene_transition_loop(){
+			if(!scene_struct.current_scene_loaded){
+				layer_sequence_headpos(scene_struct.squence_layer,0);
+			}else{
+				layer_sequence_play(scene_struct.squence_layer); 
+				scene_struct.current_scene_loaded = false;
+			}	
+		}
+		
 		function scene_transition_place_sequence(type){
 			if (layer_exists("transition")) layer_destroy("transition")
-			var _lay = layer_create(-9999,"transition")
+			var _lay = layer_create(-9999,"transition");
+			
+			layer_script_begin(layer_get_id("transition"), layerBegin);
+			layer_script_end(layer_get_id("transition"), layerEnd);
+			
 			self.scene_struct.squence_layer = layer_sequence_create(_lay,0,0,type);	
 		}
 		
@@ -225,6 +261,7 @@ debug_views = [];
 		{
 			layer_sequence_destroy(self.scene_struct.squence_layer);
 			self.scene_struct.mid_transition = false;
+			surface_free(transition_surface);
 		}
 	#endregion
 	
@@ -250,11 +287,11 @@ debug_views = [];
 	}
 	
 	configuration_paint_system = {
-		paint_color_team_one_hue : 1,
-		paint_color_team_one_saturation: 1,
+		paint_color_team_one_hue : 0.603,
+		paint_color_team_one_saturation: 0.956,
 		paint_color_team_one_brightness: 1,
-		paint_color_team_two_hue: 1,
-		paint_color_team_two_saturation: 1,
+		paint_color_team_two_hue: 0.088,
+		paint_color_team_two_saturation: 0.897,
 		paint_color_team_two_brightness: 1,
 		
 		paint_color_abstract_channel_r_team_one: 0,
@@ -262,6 +299,14 @@ debug_views = [];
 		
 		paint_surface_fidelity: 0.75,
 		paint_surface_refresh_time: 4,
+	}
+
+	configuration_gameplay = {
+		current_local_player_instance: noone,
+		current_local_player_sampler: 1,
+		current_team: AgentTeamTypes.ALPHA,
+		current_team_channel: AgentTeamChannelTypes.ALPHA,
+		current_weapon_index: WeaponTypes.RegularShooter01,
 	}
 #endregion
 
@@ -296,7 +341,7 @@ debug_views = [];
 		}else return;
 		
 		ds_map_add(self.input_manager_map,_id,
-				instance_create_depth(-10,-10,0,oInputManager,_config));
+				instance_create_depth(-60,-60,0,oInputManager,_config));
 	}
 #endregion
 
@@ -392,30 +437,51 @@ debug_views = [];
 	#region Local Input Manager
 		//Generalizar con el ID del controlador de input local.
 		function createLocalControllableCharacter(){
-			pubsub_publish("CreateLocalControllableCharacter",input_manager_local_id);
+			pubsub_publish("CreateLocalControllableCharacter",
+				[
+					configuration_gameplay.current_team,
+					configuration_gameplay.current_team_channel
+				]
+			);
 		}
 		
 		function enableLocalInputListening(){
-			pubsub_publish("EnableLocalInputListening",input_manager_local_id);
+			pubsub_publish("EnableLocalInputListening",[]);
 		}
 		
 		function destroyLocalControllableCharacter(){
-			pubsub_publish("DestroyLocalControllableCharacter",input_manager_local_id);
+			pubsub_publish("DestroyLocalControllableCharacter",[]);
 		}
 		
 		var fncCrtChr = ref_create(self,"createLocalControllableCharacter"),
 			fncTggLis = ref_create(self,"enableLocalInputListening"),
-			fncDstChr = ref_create(self,"destroyLocalControllableCharacter");
+			fncDstChr = ref_create(self,"destroyLocalControllableCharacter"),
+			refConfStruct = ref_create(self,"configuration_gameplay"),
+			refLclTm = ref_create(refConfStruct,"current_team"),
+			refLclTmChn = ref_create(refConfStruct,"current_team_channel"),
+			refSmplr = ref_create(refConfStruct,"current_local_player_sampler"),
+			refCrrPl = ref_create(refConfStruct,"current_local_player_instance"),
+			refPlySts= ref_create(refCrrPl,"active_stats");
 		
 		array_push(self.debug_views,dbg_view("Local Input System",false));
+		
 		array_push(self.debug_views,dbg_section("Local Character Debug Funcionality"));
 		array_push(self.debug_views,dbg_button("Create Local Character", fncCrtChr));
 		array_push(self.debug_views,dbg_button("Toggle Input Listening", fncTggLis));	
 		array_push(self.debug_views,dbg_button("Destroy Local Character", fncDstChr));	
+		
+		array_push(self.debug_views,dbg_section("Local Team Debug Funcionality"));
+		array_push(self.debug_views,dbg_drop_down(refLclTm,"Alpha:1,Bravo:2","Debug Local Team:"));
+		array_push(self.debug_views,dbg_drop_down(refLclTmChn,"Alpha:0,Bravo:20","Debug Local Team Channel:"));
+		
+		array_push(self.debug_views,dbg_section("Local Player Position Sampler"));
+		array_push(self.debug_views,dbg_watch(refCrrPl,"Current Player:"));
+		array_push(self.debug_views,dbg_watch(refSmplr,"Current Sampler:"));
 	#endregion
 	
 	if(IS_DEBUG) show_debug_overlay(true,true);
 	else show_debug_overlay(false);
 #endregion
 
+depth = -10;
 CreateInputManager(InputTypes.LOCAL);

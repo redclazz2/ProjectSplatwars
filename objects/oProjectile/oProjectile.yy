@@ -11,10 +11,13 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "Agents Projectile",
+    "path": "folders/Objects/Agents/Agents Projectile.yy",
   },
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "oAgent",
+    "path": "objects/oAgent/oAgent.yy",
+  },
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
@@ -31,8 +34,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "sWhitePixel",
-    "path": "sprites/sWhitePixel/sWhitePixel.yy",
+    "name": "sProyectile",
+    "path": "sprites/sProyectile/sProyectile.yy",
   },
   "spriteMaskId": null,
   "visible": true,

@@ -52,6 +52,10 @@ event_inherited();
 	ToggleInputListening = function(){
 		self.listen_to_input = self.listen_to_input ? false : true;
 	}
+	
+	GetInputListening = function(){
+		return self.listen_to_input;
+	}
 #endregion	
 
 #region Input Checking
