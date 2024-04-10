@@ -7,7 +7,7 @@ function ControllableAgentLocalPosition(_character):IAgentControllablePosition(_
 			move_dir = point_direction(0,0,hor,ver),
 			xvec = 0, 
 			yvec = 0,
-			lay_id = layer_get_id("LevelCollisions"),
+			lay_id = layer_get_id("Walls"),
 			tile_id = layer_tilemap_get_id(lay_id);
 
 		if (abs(hor)+abs(ver) != 0) { 
