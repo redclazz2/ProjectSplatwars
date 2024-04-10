@@ -99,7 +99,7 @@ either configured to read local or remote input data.
 
 #region Local Events
 	function EventControllableCharacterCreate(_data){
-		CreateDepthControllableCharacter(20,20,-1,_data[0],_data[1]);
+		CreateDepthControllableCharacter(120,70,-1,_data[0],_data[1]);
 		
 		configuration_set_gameplay_property("current_local_player_instance",
 			self.controllable_character);

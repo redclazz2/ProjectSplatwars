@@ -6,7 +6,7 @@ function UserInterfaceDebug(_test_message) : IUserInterface() constructor{
 	}
 }
 
-function UserInterfaceSquidDecored():IUserInterface() constructor{
+function UserInterfaceSquidDecored() : IUserInterface() constructor{
 	squid_max_instances = 6;
 	
 	SquidInstances = function(){
@@ -35,6 +35,15 @@ function UserInterfaceMainMenu() : UserInterfaceSquidDecored() constructor{
 		scribble($"[fa_center][scale,0.25]v.{announcer_software_version},{announcer_software_year}");
 	announcer_y = room_height - 5;
 	
+	/*
+		adjustTimer = function(){
+		
+		}
+	*/
+	
+	//minutos, segundos ...
+	//match_timer = time_source_create(...)
+	//time_source_start(match_timer);
 	
 	Step = function(){
 		self.SquidInstances();
@@ -56,7 +65,7 @@ function UserInterfaceMainMenu() : UserInterfaceSquidDecored() constructor{
 	}	
 }
 
-function UserInterfaceSetUsername():UserInterfaceSquidDecored() constructor{
+function UserInterfaceSetUsername() : UserInterfaceSquidDecored() constructor{
 	title_x = room_width / 2;
 	title_y = (room_height / 2) + 40;
 	

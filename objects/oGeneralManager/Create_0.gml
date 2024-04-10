@@ -364,7 +364,7 @@ debug_views = [];
 		array_push(self.debug_views,dbg_section("Scene Pointers"));
 		
 		array_push(self.debug_views,dbg_drop_down(nxtScn,
-			"Undefined:-1,Scene1:2,Scene2:3,Main menu:5,Username:6","Next Scene:"));
+			"Undefined:-1,Scene1:2,Scene2:3,Main menu:5,Username:6,VS_PaintResort:7","Next Scene:"));
 		
 		array_push(self.debug_views,dbg_section("Scene Actions"));
 		
