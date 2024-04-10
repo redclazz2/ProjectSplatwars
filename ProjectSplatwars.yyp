@@ -317,7 +317,6 @@
     {"id":{"name":"scribble_font_force_bilinear_filtering","path":"scripts/scribble_font_force_bilinear_filtering/scribble_font_force_bilinear_filtering.yy",},},
     {"id":{"name":"__input_config_mouse","path":"scripts/__input_config_mouse/__input_config_mouse.yy",},},
     {"id":{"name":"sWhitePixel","path":"sprites/sWhitePixel/sWhitePixel.yy",},},
-    {"id":{"name":"oPlayerName","path":"objects/oPlayerName/oPlayerName.yy",},},
     {"id":{"name":"plchldr_green_r","path":"sprites/plchldr_green_r/plchldr_green_r.yy",},},
     {"id":{"name":"__input_key_get_name","path":"scripts/__input_key_get_name/__input_key_get_name.yy",},},
     {"id":{"name":"sWalls","path":"sprites/sWalls/sWalls.yy",},},

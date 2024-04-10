@@ -2,9 +2,9 @@
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
   "name": "sRegularShooter01",
-  "bbox_bottom": 7,
+  "bbox_bottom": 9,
   "bbox_left": 0,
-  "bbox_right": 17,
+  "bbox_right": 19,
   "bbox_top": 0,
   "bboxMode": 0,
   "collisionKind": 1,
@@ -13,14 +13,14 @@
   "edgeFiltering": false,
   "For3D": false,
   "frames": [
-    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"98a5ade2-2710-4747-acea-3c85f98df868",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"15d25d1e-f236-4b10-8a46-e0bfad538db6",},
   ],
   "gridX": 0,
   "gridY": 0,
-  "height": 8,
+  "height": 10,
   "HTile": false,
   "layers": [
-    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"fb3b1e45-7c55-4e49-9cf2-97a17c0eaad0","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"424fa01e-b9f9-4a6a-85e2-92d27b0581dd","blendMode":0,"displayName":"default","isLocked":false,"opacity":100.0,"visible":true,},
   ],
   "nineSlice": {
     "resourceType": "GMNineSliceData",
@@ -77,7 +77,7 @@
     "timeUnits": 1,
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"98a5ade2-2710-4747-acea-3c85f98df868","path":"sprites/sRegularShooter01/sRegularShooter01.yy",},},},"Disabled":false,"id":"2a2560e5-ec94-473a-8ec6-17120b5bb98e","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"15d25d1e-f236-4b10-8a46-e0bfad538db6","path":"sprites/sRegularShooter01/sRegularShooter01.yy",},},},"Disabled":false,"id":"bcdaa341-136a-4a16-a651-d9eb1ef98f4b","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,
@@ -93,5 +93,5 @@
   },
   "type": 0,
   "VTile": false,
-  "width": 18,
+  "width": 20,
 }

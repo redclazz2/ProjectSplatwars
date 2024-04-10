@@ -35,16 +35,6 @@ function UserInterfaceMainMenu() : UserInterfaceSquidDecored() constructor{
 		scribble($"[fa_center][scale,0.25]v.{announcer_software_version},{announcer_software_year}");
 	announcer_y = room_height - 5;
 	
-	/*
-		adjustTimer = function(){
-		
-		}
-	*/
-	
-	//minutos, segundos ...
-	//match_timer = time_source_create(...)
-	//time_source_start(match_timer);
-	
 	Step = function(){
 		self.SquidInstances();
 		

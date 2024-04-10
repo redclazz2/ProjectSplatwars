@@ -762,4 +762,4 @@ celeste_mode.Step		 = function() {
 machine.Initialize(); // (Start) The machine
 
 if(IS_DEBUG) room_goto(rm_debug);
-else room_goto(rm_MainMenu);
+else room_goto(rm_Username);

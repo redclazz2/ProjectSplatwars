@@ -7,17 +7,9 @@ else {
 	pressed = true;
 }
 
-// Apparently this works for touch input as well?
-global.playerName = oTextBox.inputUsername;  // TODO: Store variable in game config
+configuration_set_gameplay_property(
+	"current_local_player_username",
+	oTextBox.inputUsername);
 
-show_debug_message("Your username is: " + global.playerName);
-
-
-
-
-
-
-
-
-
-
+scene_system_set_target(5);
+scene_system_goto_next();
