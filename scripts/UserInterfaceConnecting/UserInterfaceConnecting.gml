@@ -2,7 +2,8 @@ function UserInterfaceConnecting():UserInterfaceSquidDecored() constructor{
 	title_x = room_width / 2;
 	title_y = (room_height / 2) - 10;
 	
-	instruction_text = scribble("[fGeneralFont][fa_center]Connecting to the internet...");
+	scribble_anim_pulse(0.2,0.05);
+	instruction_text = scribble("[fGeneralFont][pulse][fa_center]Connecting to the internet...");
 	
 	InitiliazeNetworking();
 	
