@@ -1,4 +1,4 @@
-function UserInterfaceDebug(_test_message) : IUserInterface() constructor{
+function UserInterfaceDebug(_test_message,_manager) : IUserInterface(_manager) constructor{
 	test_message = _test_message;
 	
 	DrawGUI = function(){
@@ -6,7 +6,7 @@ function UserInterfaceDebug(_test_message) : IUserInterface() constructor{
 	}
 }
 
-function UserInterfaceSquidDecored() : IUserInterface() constructor{
+function UserInterfaceSquidDecored(_manager) : IUserInterface(_manager) constructor{
 	squid_max_instances = 6;
 	
 	SquidInstances = function(){
@@ -21,7 +21,7 @@ function UserInterfaceSquidDecored() : IUserInterface() constructor{
 	}
 }
 
-function UserInterfaceMainMenu() : UserInterfaceSquidDecored() constructor{
+function UserInterfaceMainMenu(_manager) : UserInterfaceSquidDecored(_manager) constructor{
 	title_x = room_width / 2;
 	title_y = (room_height / 2) - 15;
 	
@@ -39,8 +39,10 @@ function UserInterfaceMainMenu() : UserInterfaceSquidDecored() constructor{
 		self.SquidInstances();
 		
 		if device_mouse_check_button_pressed(0,mb_any){
-			scene_system_set_target(2);
-			scene_system_goto_next();
+			/*scene_system_set_target(2);
+			scene_system_goto_next();*/
+			
+			manager.change_user_interface(new UserInterfaceConnecting(manager));		
 		}
 	}
 	
@@ -49,13 +51,12 @@ function UserInterfaceMainMenu() : UserInterfaceSquidDecored() constructor{
 		draw_sprite_ext(sStudioLogo,0,15,170,0.2,0.2,0,c_white,1);
 		draw_sprite(sMainLogo,0,title_x,title_y);
 		
-		
 		instruction_text.draw(title_x, instruction_y);
 		announcer_text.draw(title_x,announcer_y);
 	}	
 }
 
-function UserInterfaceSetUsername() : UserInterfaceSquidDecored() constructor{
+function UserInterfaceSetUsername(_manager) : UserInterfaceSquidDecored(_manager) constructor{
 	title_x = room_width / 2;
 	title_y = (room_height / 2) + 40;
 	
