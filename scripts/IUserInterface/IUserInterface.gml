@@ -1,5 +1,4 @@
-function IUserInterface(_manager) constructor{
-	manager = _manager;
+function IUserInterface() constructor{
 	Step = function() {};
 	Draw = function() {};
 	DrawGUI = function() {};

@@ -13,6 +13,7 @@ function CommunicatorUDP(_manager):ICommunicator(_manager) constructor{
 	
 	authentication_timer	= -1;
 	authentication_attemps	= 0;
+	authentication_max_attemps = 5;
 	debug_logger_name = "OEPF - UDP COMMUNICATOR";
 	
 	create = function(){
@@ -41,6 +42,7 @@ function CommunicatorUDP(_manager):ICommunicator(_manager) constructor{
 		}
 		if(buffer_exists(buffer)) buffer_delete(buffer);
 		network_destroy(socket);
+		logger(LOGLEVEL.INFO,"Destroyed UDP Communicator",debug_logger_name);
 	}
 	
 	notify_manager = function(_message,_data = undefined){
@@ -68,7 +70,7 @@ function CommunicatorUDP(_manager):ICommunicator(_manager) constructor{
 	}
 	
 	execute_port_authentication = function(){
-		if(authentication_attemps <= 15){
+		if(authentication_attemps <= authentication_max_attemps){
 			change_writer(new PortAuthorization(self));
 			writer.write();
 			authentication_attemps++;

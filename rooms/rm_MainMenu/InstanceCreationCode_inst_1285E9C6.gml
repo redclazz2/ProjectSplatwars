@@ -1,1 +1,1 @@
-_drawManager = new UserInterfaceMainMenu(self);
+_drawManager = new UserInterfaceMainMenu();

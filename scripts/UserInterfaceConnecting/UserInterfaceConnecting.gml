@@ -1,4 +1,4 @@
-function UserInterfaceConnecting(_manager):UserInterfaceSquidDecored(_manager) constructor{
+function UserInterfaceConnecting():UserInterfaceSquidDecored() constructor{
 	title_x = room_width / 2;
 	title_y = (room_height / 2) - 10;
 	

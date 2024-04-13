@@ -63,7 +63,8 @@ function handle_communicator_udp_notification(command,data){
 		break;
 		
 		case CommunicatorUDPNotificationCommands.CreationFailed:
-			
+			change_manager_user_interface(new UserInterfaceCommunicationError());
+			destroy_network_framework();
 		break;
 		
 		case CommunicatorUDPNotificationCommands.PortAuthenticationOk:
@@ -71,7 +72,8 @@ function handle_communicator_udp_notification(command,data){
 		break;
 		
 		case CommunicatorUDPNotificationCommands.PortAuthenticationFailed:
-		
+			destroy_network_framework();
+			change_manager_user_interface(new UserInterfaceCommunicationError());
 		break;
 	}
 }
