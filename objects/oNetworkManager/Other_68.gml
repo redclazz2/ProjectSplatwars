@@ -10,18 +10,27 @@ try{
 				
 			buffer_seek(buffer,buffer_seek_start,0);
 			var Identification = buffer_read(buffer,buffer_u16);
-			
-			if (Identification == 0){ //UDP
+			//UDP
+			if (Identification == 0){ 
 				read_udp_message(IncomingIP,IncomingPort,buffer);
-			}else if(Identification == 1){ //TCP
-			
+			//TCP
+			}else if(Identification == 1){ 
+				read_tcp_message(IncomingIP,IncomingPort,buffer);
 			}
 		break;
 	
 		case network_type_non_blocking_connect:
 			var succeeded = ds_map_find_value(async_load, "succeeded");
-			if (succeeded == 0) PeerFramework.Notify(MediatorNotificationKey.TCP,new NotificationData(TCPNotificationKey.Failed));
-			else if (succeeded == 1) PeerFramework.Notify(MediatorNotificationKey.TCP,new NotificationData(TCPNotificationKey.Connected));	
+			if (succeeded == 0) 
+				network_manager_notify(
+					NetworkManagerNotificationKey.CommunicatorTCP,
+					CommunicatorTCPNotificationCommands.ServerConnectionFailed
+				);
+			else if (succeeded == 1) 
+				network_manager_notify(
+					NetworkManagerNotificationKey.CommunicatorTCP,
+					CommunicatorTCPNotificationCommands.ServerConnectionOk
+				);	
 		break;
 	}
 }catch(e){

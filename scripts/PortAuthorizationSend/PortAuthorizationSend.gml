@@ -12,7 +12,7 @@ function PortAuthorization(_communicator):IWriter(_communicator) constructor{
 			
 			network_send_udp(socket,url,port,buffer,buffer_tell(buffer));
 			
-			logger(LOGLEVEL.INFO,"Send Port Auth Request to main server UDP.","UDP - WRITER");
+			logger(LOGLEVEL.INFO,"Sent Port Auth Request to main server UDP.","UDP - WRITER");
 		}
 	}
 }

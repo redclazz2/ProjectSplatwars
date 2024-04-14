@@ -94,6 +94,7 @@
     {"name":"Paint Manager Scripts","order":3,"path":"folders/Scripts/Paint Manager Scripts.yy",},
     {"name":"Projectile Scripts","order":4,"path":"folders/Scripts/Projectile Scripts.yy",},
     {"name":"User Interface Scripts","order":2,"path":"folders/Scripts/User Interface Scripts.yy",},
+    {"name":"Networking Interfaces","order":4,"path":"folders/Scripts/User Interface Scripts/Networking Interfaces.yy",},
     {"name":"Weapon Scripts","order":6,"path":"folders/Scripts/Weapon Scripts.yy",},
     {"name":"Shooters","order":2,"path":"folders/Scripts/Weapon Scripts/Shooters.yy",},
     {"name":"Sequences","order":11,"path":"folders/Sequences.yy",},
@@ -126,7 +127,8 @@
     {"name":"Stages","order":4,"path":"folders/Tile Sets/Stages.yy",},
     {"name":"PaintResort","order":1,"path":"folders/Tile Sets/Stages/PaintResort.yy",},
     {"name":"Timelines","order":8,"path":"folders/Timelines.yy",},
-    {"name":"Networking Interfaces","order":4,"path":"folders/Scripts/User Interface Scripts/Networking Interfaces.yy",},
+    {"name":"Writers","order":1,"path":"folders/Scripts/Network Scripts/Communicators/TCP/Writers.yy",},
+    {"name":"Readers","order":2,"path":"folders/Scripts/Network Scripts/Communicators/TCP/Readers.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"__input_config_external_data","order":2,"path":"scripts/__input_config_external_data/__input_config_external_data.yy",},
