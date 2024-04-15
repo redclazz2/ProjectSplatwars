@@ -6,6 +6,7 @@
 	grid_cells_width = 50;
 	grid_cells_height = 30;
 	
+	// Create grid for charging up special
 	paint_grid = ds_grid_create(grid_cells_width, grid_cells_height);
 	
 	paint_surface_fidelity = 0;
@@ -66,14 +67,14 @@
 		return [_x / (room_width/grid_cells_width), _y / (room_height/grid_cells_height)];
 	}
 	
-	function set_grid_value(data) {
-		var _x = data[0];
-		var _y = data[1];
-		var _val = data[2];
+	function set_grid_value(_data) {
+		var _x = _data[0];
+		var _y = _data[1];
+		var _val = _data[2];
 		var _charge = 0,  // Added charge to special meter
 		
-		arr = get_grid_coordinates(_x, _y),
-		current_val = get_grid_value(floor(arr[0]), floor(arr[1]));
+		_arr = get_grid_coordinates(_x, _y),
+		current_val = get_grid_value(floor(_arr[0]), floor(_arr[1]));
 		
 		if current_val == 0 {
 			_charge = 0.5;
