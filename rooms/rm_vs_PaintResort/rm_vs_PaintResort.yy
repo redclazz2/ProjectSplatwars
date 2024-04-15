@@ -2,7 +2,7 @@
   "resourceType": "GMRoom",
   "resourceVersion": "1.0",
   "name": "rm_vs_PaintResort",
-  "creationCodeFile": "",
+  "creationCodeFile": "rooms/rm_vs_PaintResort/RoomCreationCode.gml",
   "inheritCode": false,
   "inheritCreationOrder": false,
   "inheritLayers": false,
