@@ -128,6 +128,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"PlayerSprites","folderPath":"folders/Sprites/PlayerSprites.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Proyectile","folderPath":"folders/Sprites/Proyectile.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"SpecialSprites","folderPath":"folders/Sprites/SpecialSprites.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"BubbleCharge","folderPath":"folders/Sprites/SpecialSprites/BubbleCharge.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"ProtectiveBubble","folderPath":"folders/Sprites/SpecialSprites/ProtectiveBubble.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"UserInterfaceSprites","folderPath":"folders/Sprites/UserInterfaceSprites.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Loading Screen","folderPath":"folders/Sprites/UserInterfaceSprites/Loading Screen.yy",},
@@ -138,7 +139,6 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"placeholders_16x16","folderPath":"folders/Tile Sets/Placeholders/placeholders_16x16.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"placeholders_8x8","folderPath":"folders/Tile Sets/Placeholders/placeholders_8x8.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"BubbleCharge","folderPath":"folders/Sprites/SpecialSprites/BubbleCharge.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"controllerblacklist.csv","CopyToMask":-1,"filePath":"datafiles",},

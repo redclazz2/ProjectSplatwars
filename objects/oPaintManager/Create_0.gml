@@ -82,7 +82,7 @@
 			_charge = 0.55;
 		}
 		
-		ds_grid_set(paint_grid, floor(arr[0]), floor(arr[1]), _val);
+		ds_grid_set(paint_grid, floor(_arr[0]), floor(_arr[1]), _val);
 		
 		show_debug_message(_charge);
 		
