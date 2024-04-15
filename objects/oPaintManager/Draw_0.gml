@@ -24,3 +24,10 @@ if(!surface_exists(paint_surface)){
 	
 	shader_reset();
 }
+
+for (var i = 0; i < room_width; i += room_width/grid_cells_width)
+    draw_line_color(i,0,i,room_height,c_red,c_red);
+
+
+for (var i = 0; i < room_height; i += room_height/grid_cells_height)
+    draw_line_color(0,i,room_width,i,c_red,c_red);

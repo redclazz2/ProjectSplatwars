@@ -3,6 +3,11 @@
 	x = room_width / 2;
 	y = room_height / 2;
 	
+	grid_cells_width = 50;
+	grid_cells_height = 30;
+	
+	paint_grid = ds_grid_create(grid_cells_width, grid_cells_height);
+	
 	paint_surface_fidelity = 0;
 	
 	paint_surface_width = 0;
@@ -48,6 +53,41 @@
 			debug_draw_mouse_team = paint_team_two_color_abstract;
 		else debug_draw_mouse_team = paint_team_one_color_abstract;
 	}	
+#endregion
+
+#region paint_grid behavior
+	// TODO: Change grid_cells values per room
+
+	function get_grid_value(_x, _y) {
+		return ds_grid_get(paint_grid, _x, _y);
+	}
+	
+	function get_grid_coordinates(_x, _y) {
+		return [_x / (room_width/grid_cells_width), _y / (room_height/grid_cells_height)];
+	}
+	
+	function set_grid_value(data) {
+		var _x = data[0];
+		var _y = data[1];
+		var _val = data[2];
+		var _charge = 0,  // Added charge to special meter
+		
+		arr = get_grid_coordinates(_x, _y),
+		current_val = get_grid_value(floor(arr[0]), floor(arr[1]));
+		
+		if current_val == 0 {
+			_charge = 0.5;
+		} else if current_val != configuration_get_gameplay_property("current_team") {
+			_charge = 0.55;
+		}
+		
+		ds_grid_set(paint_grid, floor(arr[0]), floor(arr[1]), _val);
+		
+		show_debug_message(_charge);
+		
+		return _charge;
+	}
+	
 #endregion
 
 function update_local_player_sampler(manager){
