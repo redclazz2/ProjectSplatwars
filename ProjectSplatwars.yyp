@@ -140,6 +140,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"PaintResort","folderPath":"folders/Tile Sets/Stages/PaintResort.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Utility","folderPath":"folders/Objects/Utility.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Tutorial","folderPath":"folders/Objects/Tutorial.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"controllerblacklist.csv","CopyToMask":-1,"filePath":"datafiles",},
@@ -595,6 +596,7 @@
     {"id":{"name":"input_keyboard_check_pressed","path":"scripts/input_keyboard_check_pressed/input_keyboard_check_pressed.yy",},},
     {"id":{"name":"input_binding_mouse_wheel_down","path":"scripts/input_binding_mouse_wheel_down/input_binding_mouse_wheel_down.yy",},},
     {"id":{"name":"plchldr_wall_7","path":"sprites/plchldr_wall_7/plchldr_wall_7.yy",},},
+    {"id":{"name":"oCheckpointActive","path":"objects/oCheckpointActive/oCheckpointActive.yy",},},
     {"id":{"name":"plchldr_wall_1","path":"sprites/plchldr_wall_1/plchldr_wall_1.yy",},},
     {"id":{"name":"input_player_export","path":"scripts/input_player_export/input_player_export.yy",},},
     {"id":{"name":"__input_class_verb_state","path":"scripts/__input_class_verb_state/__input_class_verb_state.yy",},},
@@ -620,6 +622,7 @@
     {"id":{"name":"rm_scene1","path":"rooms/rm_scene1/rm_scene1.yy",},},
     {"id":{"name":"__input_global","path":"scripts/__input_global/__input_global.yy",},},
     {"id":{"name":"input_binding_scan_start","path":"scripts/input_binding_scan_start/input_binding_scan_start.yy",},},
+    {"id":{"name":"oCheckpointInactive","path":"objects/oCheckpointInactive/oCheckpointInactive.yy",},},
     {"id":{"name":"__input_config_combos","path":"scripts/__input_config_combos/__input_config_combos.yy",},},
     {"id":{"name":"plchldr_circle_8_8","path":"sprites/plchldr_circle_8_8/plchldr_circle_8_8.yy",},},
     {"id":{"name":"plchldr_block_3_8","path":"sprites/plchldr_block_3_8/plchldr_block_3_8.yy",},},
