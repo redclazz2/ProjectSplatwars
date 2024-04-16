@@ -139,6 +139,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Stages","folderPath":"folders/Tile Sets/Stages.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"PaintResort","folderPath":"folders/Tile Sets/Stages/PaintResort.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Utility","folderPath":"folders/Objects/Utility.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"controllerblacklist.csv","CopyToMask":-1,"filePath":"datafiles",},
@@ -879,6 +880,8 @@
     {"id":{"name":"plchldr_square_8","path":"sprites/plchldr_square_8/plchldr_square_8.yy",},},
     {"id":{"name":"direction_flags","path":"sprites/direction_flags/direction_flags.yy",},},
     {"id":{"name":"input_cursor_set","path":"scripts/input_cursor_set/input_cursor_set.yy",},},
+    {"id":{"name":"fSubtitleFont","path":"fonts/fSubtitleFont/fSubtitleFont.yy",},},
+    {"id":{"name":"oSpawnPosition","path":"objects/oSpawnPosition/oSpawnPosition.yy",},},
     {"id":{"name":"input_profile_reset_bindings","path":"scripts/input_profile_reset_bindings/input_profile_reset_bindings.yy",},},
     {"id":{"name":"plchldr_go_9","path":"sprites/plchldr_go_9/plchldr_go_9.yy",},},
     {"id":{"name":"sStudioLogo","path":"sprites/sStudioLogo/sStudioLogo.yy",},},

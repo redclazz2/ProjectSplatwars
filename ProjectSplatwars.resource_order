@@ -119,6 +119,7 @@
     {"name":"Stages","order":4,"path":"folders/Tile Sets/Stages.yy",},
     {"name":"PaintResort","order":1,"path":"folders/Tile Sets/Stages/PaintResort.yy",},
     {"name":"Timelines","order":8,"path":"folders/Timelines.yy",},
+    {"name":"Utility","order":8,"path":"folders/Objects/Utility.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"__input_config_external_data","order":2,"path":"scripts/__input_config_external_data/__input_config_external_data.yy",},
@@ -755,6 +756,7 @@
     {"name":"plchldr_yellow_x_8","order":23,"path":"sprites/plchldr_yellow_x_8/plchldr_yellow_x_8.yy",},
     {"name":"plchldr_square_8","order":38,"path":"sprites/plchldr_square_8/plchldr_square_8.yy",},
     {"name":"input_cursor_set","order":8,"path":"scripts/input_cursor_set/input_cursor_set.yy",},
+    {"name":"fSubtitleFont","order":1,"path":"fonts/fSubtitleFont/fSubtitleFont.yy",},
     {"name":"input_profile_reset_bindings","order":6,"path":"scripts/input_profile_reset_bindings/input_profile_reset_bindings.yy",},
     {"name":"plchldr_go_9","order":29,"path":"sprites/plchldr_go_9/plchldr_go_9.yy",},
     {"name":"sStudioLogo","order":1,"path":"sprites/sStudioLogo/sStudioLogo.yy",},

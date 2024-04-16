@@ -70,3 +70,54 @@ function UserInterfaceSetUsername() : UserInterfaceSquidDecored() constructor{
 		instruction_text.draw(title_x,title_y);
 	}
 }
+
+function UserInterfaceTutorial() : IUserInterface() constructor{
+	//Definición del tamaño de la pantalla
+	x_screen = 320;
+	y_screen = 180;
+	
+	//Llamado al jugador para verificar su instancia en el mapa
+	player_instance = configuration_get_gameplay_property("current_local_player_instance");
+	
+	//Variables que manejan el stage del tutorial
+	transition_stage = true;
+	current_stage = 0;
+	
+	//Variables para manejar el dibujado de la UI
+	title_text = noone;
+	subtitle_text = noone;
+	
+	//Variables STAGE 1
+	checkpoints_count = noone;
+	
+	DrawGUI = function(){
+		//Switch-case para manejar los estados del tutorial
+		switch (current_stage){
+		//GUI: TUTORIAL DE MOVIMIENTO
+		case 0:
+		//Iniciar el setup de la GUI
+		if(transition_stage){
+			title_text =  scribble("[fGeneralFont][fa_center]Welcome to the Tutorial!");
+			checkpoints_count = instance_number(oSpawnPosition)
+			subtitle_text =  scribble("[fSubtitleFont][fa_center][rainbow]Stage 1:[/rainbow] use the joystick to [c_green]activate [c_white]the [c_orange](" + string(checkpoints_count) + ") [c_white]checkpoints");
+			transition_stage = false;
+		}
+		//Dibujado de la GUI
+		draw_sprite_ext(sWhitePixel,0,0,15,320,22,0,c_black,0.7);
+		draw_sprite_ext(sWhitePixel,0,0,37,320,12,0,c_black,0.7);
+		title_text.draw(160,15);
+		subtitle_text.draw(160,37);
+		break;
+		}
+	}
+	
+	Step = function(){
+		//Switch-case para manejar los estados del tutorial
+		switch(current_stage){
+		//LÓGICA: TUTORIAL DE MOVIMIENTO
+		case 0:
+		
+		break;
+		}
+	}
+}
