@@ -98,16 +98,32 @@ function UserInterfaceTutorial() : IUserInterface() constructor{
 		//Iniciar el setup de la GUI
 		if(transition_stage){
 			title_text =  scribble("[fGeneralFont][fa_center]Welcome to the Tutorial!");
-			checkpoints_count = instance_number(oSpawnPosition)
-			subtitle_text =  scribble("[fSubtitleFont][fa_center][rainbow]Stage 1:[/rainbow] use the joystick to [c_green]activate [c_white]the [c_orange](" + string(checkpoints_count) + ") [c_white]checkpoints");
+			checkpoints_count = instance_number(oCheckpointInactive)
 			transition_stage = false;
 		}
+		//Dynamic GUI
+		subtitle_text =  scribble("[fSubtitleFont][fa_center][rainbow]Stage 1:[/rainbow] use the left joystick to [c_green]activate [c_white]the [c_orange](" + string(checkpoints_count) + ") [c_white]checkpoints");
+		
 		//Dibujado de la GUI
 		draw_sprite_ext(sWhitePixel,0,0,15,320,22,0,c_black,0.7);
 		draw_sprite_ext(sWhitePixel,0,0,37,320,12,0,c_black,0.7);
 		title_text.draw(160,15);
 		subtitle_text.draw(160,37);
 		break;
+		//GUI: TUTORIAL DE DISPARO
+		case 1:
+		//Iniciar el setup de la GUI
+		if(transition_stage){
+			title_text =  scribble("[fGeneralFont][fa_center]That's what I'm talking about!");
+		}
+		//Dynamic GUI
+		subtitle_text =  scribble("[fSubtitleFont][fa_center][rainbow]Stage 2:[/rainbow] use the right joystick to aim and [c_red]shoot [c_white]the [c_orange](" + string(checkpoints_count) + ") [c_white]dummies");
+		
+		//Dibujado de la GUI
+		draw_sprite_ext(sWhitePixel,0,0,15,320,22,0,c_black,0.7);
+		draw_sprite_ext(sWhitePixel,0,0,37,320,12,0,c_black,0.7);
+		title_text.draw(160,15);
+		subtitle_text.draw(160,37);
 		}
 	}
 	
@@ -116,7 +132,14 @@ function UserInterfaceTutorial() : IUserInterface() constructor{
 		switch(current_stage){
 		//LÓGICA: TUTORIAL DE MOVIMIENTO
 		case 0:
-		
+		 //Workflow
+		 checkpoints_count = instance_number(oCheckpointInactive)
+		 
+		 //Condicional next stage
+		 if(checkpoints_count == 0){
+			transition_stage = true;
+			current_stage++;
+		 }
 		break;
 		}
 	}

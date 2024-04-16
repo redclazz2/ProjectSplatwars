@@ -25,7 +25,10 @@
   "physicsStartAwake": true,
   "properties": [],
   "solid": false,
-  "spriteId": null,
+  "spriteId": {
+    "name": "sCheckpointActive",
+    "path": "sprites/sCheckpointActive/sCheckpointActive.yy",
+  },
   "spriteMaskId": null,
   "visible": true,
 }
