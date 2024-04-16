@@ -39,8 +39,7 @@ function UserInterfaceMainMenu() : UserInterfaceSquidDecored() constructor{
 		self.SquidInstances();
 		
 		if device_mouse_check_button_pressed(0,mb_any){
-			scene_system_set_target(2);
-			scene_system_goto_next();
+			change_manager_user_interface(new UserInterfaceConnecting());		
 		}
 	}
 	
@@ -48,7 +47,6 @@ function UserInterfaceMainMenu() : UserInterfaceSquidDecored() constructor{
 		draw_sprite_ext(sWhitePixel,0,0,instruction_y,320,22,0,c_black,0.6);
 		draw_sprite_ext(sStudioLogo,0,15,170,0.2,0.2,0,c_white,1);
 		draw_sprite(sMainLogo,0,title_x,title_y);
-		
 		
 		instruction_text.draw(title_x, instruction_y);
 		announcer_text.draw(title_x,announcer_y);
