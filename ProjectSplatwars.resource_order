@@ -111,6 +111,7 @@
     {"name":"Proyectile","order":6,"path":"folders/Sprites/Proyectile.yy",},
     {"name":"Stages","order":7,"path":"folders/Sprites/Stages.yy",},
     {"name":"PaintResort","order":1,"path":"folders/Sprites/Stages/PaintResort.yy",},
+    {"name":"TutorialSprites","order":9,"path":"folders/Sprites/TutorialSprites.yy",},
     {"name":"UserInterfaceSprites","order":1,"path":"folders/Sprites/UserInterfaceSprites.yy",},
     {"name":"Loading Screen","order":5,"path":"folders/Sprites/UserInterfaceSprites/Loading Screen.yy",},
     {"name":"Title Screen","order":6,"path":"folders/Sprites/UserInterfaceSprites/Title Screen.yy",},
@@ -121,7 +122,6 @@
     {"name":"Stages","order":4,"path":"folders/Tile Sets/Stages.yy",},
     {"name":"PaintResort","order":1,"path":"folders/Tile Sets/Stages/PaintResort.yy",},
     {"name":"Timelines","order":8,"path":"folders/Timelines.yy",},
-    {"name":"TutorialSprites","order":9,"path":"folders/Sprites/TutorialSprites.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"__input_config_external_data","order":2,"path":"scripts/__input_config_external_data/__input_config_external_data.yy",},

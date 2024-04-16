@@ -130,6 +130,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Proyectile","folderPath":"folders/Sprites/Proyectile.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Stages","folderPath":"folders/Sprites/Stages.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"PaintResort","folderPath":"folders/Sprites/Stages/PaintResort.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"TutorialSprites","folderPath":"folders/Sprites/TutorialSprites.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"UserInterfaceSprites","folderPath":"folders/Sprites/UserInterfaceSprites.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Loading Screen","folderPath":"folders/Sprites/UserInterfaceSprites/Loading Screen.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Title Screen","folderPath":"folders/Sprites/UserInterfaceSprites/Title Screen.yy",},
@@ -141,7 +142,6 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Stages","folderPath":"folders/Tile Sets/Stages.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"PaintResort","folderPath":"folders/Tile Sets/Stages/PaintResort.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"TutorialSprites","folderPath":"folders/Sprites/TutorialSprites.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"controllerblacklist.csv","CopyToMask":-1,"filePath":"datafiles",},
