@@ -92,6 +92,7 @@
     {"name":"UDP","order":3,"path":"folders/Scripts/Network Scripts/Communicators/UDP.yy",},
     {"name":"Readers","order":2,"path":"folders/Scripts/Network Scripts/Communicators/UDP/Readers.yy",},
     {"name":"Writers","order":1,"path":"folders/Scripts/Network Scripts/Communicators/UDP/Writers.yy",},
+    {"name":"Enums","order":3,"path":"folders/Scripts/Network Scripts/Enums.yy",},
     {"name":"Network Global Functions","order":2,"path":"folders/Scripts/Network Scripts/Network Global Functions.yy",},
     {"name":"Paint Manager Scripts","order":3,"path":"folders/Scripts/Paint Manager Scripts.yy",},
     {"name":"Projectile Scripts","order":4,"path":"folders/Scripts/Projectile Scripts.yy",},
@@ -130,7 +131,6 @@
     {"name":"Stages","order":4,"path":"folders/Tile Sets/Stages.yy",},
     {"name":"PaintResort","order":1,"path":"folders/Tile Sets/Stages/PaintResort.yy",},
     {"name":"Timelines","order":8,"path":"folders/Timelines.yy",},
-    {"name":"Enums","order":3,"path":"folders/Scripts/Network Scripts/Enums.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"__input_config_external_data","order":2,"path":"scripts/__input_config_external_data/__input_config_external_data.yy",},
