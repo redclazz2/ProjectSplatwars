@@ -71,6 +71,13 @@ event_inherited();
 			latest_action[$ "shoot"]		  = _ActionData[$ "ShootPressed"];
 			latest_action[$ "shoot_released"] = _ActionData[$ "ShootOnReleased"];
 			
+			if (_ActionData[$ "SpecialButton"]) {
+				instance_create_depth(x, y, -5, oBubbleSpecial, new AgentDescription(
+					get_base_agent_property("Team"), get_base_agent_property("TeamChannel")
+					)
+				);
+			}
+			
 			state_action.Step(_ActionData,_MovementData);
 		}
 		

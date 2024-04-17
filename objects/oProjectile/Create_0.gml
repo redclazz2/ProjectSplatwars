@@ -25,6 +25,8 @@ function createPaint(bullet) {
 	pubsub_publish("PaintSurfaceApply", 
 		new PaintItemStructure(_x, _y, _width, 
 		_height, sSplat01, _channel));
+		
+	pubsub_publish("PaintSpecialCharge", [_x, _y, bullet.get_base_agent_property("Team")]);
 }
 
 paintTimer = time_source_create(

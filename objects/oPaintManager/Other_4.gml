@@ -13,3 +13,4 @@ pubsub_subscribe("PaintSurfaceReset",paint_surface_destroy);
 pubsub_subscribe("DebugPaintEnable", debug_draw_mouse_toggle);
 pubsub_subscribe("DebugPaintTeam", debug_draw_change_team);
 pubsub_subscribe("PaintSurfaceApply", paint_queue_insert);
+pubsub_subscribe("PaintSpecialCharge", set_grid_value);
