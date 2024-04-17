@@ -1,26 +1,11 @@
 /// @description Network Configuration Definition
-enum ConfigurationFrameworkTickrate{
-	QuickTickrate	=	2,
-	RegularTickrate =	4,
-	LateTickrate	=	6
-}
-
-enum ConfigurationIPVersions{
-	IPv4,
-	IPv6
-}
-
-enum NetworkManagerNotificationKey{
-	CommunicatorUDP,
-	CommunicatorTCP,
-}
-
 network_configuration = {
 	ConfigurationTickRate: ConfigurationFrameworkTickrate.RegularTickrate,
 	ConfigurationIPVersion: ConfigurationIPVersions.IPv4,
 	ConfigurationFrameworkVersion: "1.0.0",
 	ConfigurationNativeConnectionTimeout: 4000,
-	ConfigurationNativeBlockingSocket: 1
+	ConfigurationNativeBlockingSocket: 1,
+	ConfigurationNetworkMatchAction: NetworkMatchAction.StartMatchMaking
 }
 
 communicator_udp = undefined;
@@ -69,6 +54,10 @@ function network_manager_notify(source,command,data = undefined){
 		
 		case NetworkManagerNotificationKey.CommunicatorTCP:
 			handle_communicator_tcp_notification(command,data);
+		break;
+		
+		case NetworkManagerNotificationKey.External:
+			handle_external_notification(command,data);
 		break;
 	}
 }
@@ -119,5 +108,14 @@ function handle_communicator_tcp_notification(command,data){
 			destroy_network_framework();
 			change_manager_user_interface(new UserInterfaceCommunicationError());
 		break;
+	}
+}
+	
+function handle_external_notification(command,data){
+	switch(command){
+		case ExternalCommands.StartMatchMaking:
+		break;
+		
+		
 	}
 }
