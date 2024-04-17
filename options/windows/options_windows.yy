@@ -3,7 +3,7 @@
   "resourceVersion": "1.1",
   "name": "Windows",
   "ConfigValues": {
-    "DesktopDebug": {"option_windows_interpolate_pixels":"false",},
+    "DesktopDebug": {"option_windows_interpolate_pixels":"false","option_windows_borderless":"false","option_windows_start_fullscreen":"true",},
   },
   "option_windows_allow_fullscreen_switching": false,
   "option_windows_borderless": false,

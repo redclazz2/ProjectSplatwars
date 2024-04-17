@@ -479,6 +479,8 @@ debug_views = [];
 		array_push(self.debug_views,dbg_watch(refSmplr,"Current Sampler:"));
 	#endregion
 	
+	
+	
 	if(IS_DEBUG) show_debug_overlay(true,true);
 	else show_debug_overlay(false);
 #endregion
