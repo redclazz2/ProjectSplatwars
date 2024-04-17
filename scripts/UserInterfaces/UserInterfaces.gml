@@ -6,24 +6,10 @@ function UserInterfaceDebug(_test_message) : IUserInterface() constructor{
 	}
 }
 
-function UserInterfaceMainMenu() : IUserInterface() constructor{
-	title_x = room_width / 2;
-	title_y = (room_height / 2) - 15;
-	
-	instruction_text = scribble("[fGeneralFont][fa_center][blink]Tap to Start!");
-	instruction_y = (room_height / 2) + 45;
-	
+function UserInterfaceSquidDecored() : IUserInterface() constructor{
 	squid_max_instances = 6;
 	
-	announcer_software_version = configuration_get_property("software_version_release");
-	announcer_software_year = configuration_get_property("software_year_release");
-	
-	announcer_text = 
-		scribble($"[fa_center][scale,0.25]v.{announcer_software_version},{announcer_software_year}");
-	announcer_y = room_height - 5;
-	
-	
-	Step = function(){
+	SquidInstances = function(){
 		var _instance_squid_number = instance_number(obj_SquidDecor),
 			_squid_creation_x = random_range(0,320),
 			_squid_creation_y = 175;
@@ -32,10 +18,28 @@ function UserInterfaceMainMenu() : IUserInterface() constructor{
 			instance_create_depth(_squid_creation_x,
 				_squid_creation_y, 0, obj_SquidDecor);
 		}
+	}
+}
+
+function UserInterfaceMainMenu() : UserInterfaceSquidDecored() constructor{
+	title_x = room_width / 2;
+	title_y = (room_height / 2) - 15;
+	
+	instruction_text = scribble("[fGeneralFont][fa_center][blink]Tap to Start!");
+	instruction_y = (room_height / 2) + 45;
+	
+	announcer_software_version = configuration_get_property("software_version_release");
+	announcer_software_year = configuration_get_property("software_year_release");
+	
+	announcer_text = 
+		scribble($"[fa_center][scale,0.25]v.{announcer_software_version},{announcer_software_year}");
+	announcer_y = room_height - 5;
+	
+	Step = function(){
+		self.SquidInstances();
 		
 		if device_mouse_check_button_pressed(0,mb_any){
-			scene_system_set_target(2);
-			scene_system_goto_next();
+			change_manager_user_interface(new UserInterfaceConnecting());		
 		}
 	}
 	
@@ -43,7 +47,6 @@ function UserInterfaceMainMenu() : IUserInterface() constructor{
 		draw_sprite_ext(sWhitePixel,0,0,instruction_y,320,22,0,c_black,0.6);
 		draw_sprite_ext(sStudioLogo,0,15,170,0.2,0.2,0,c_white,1);
 		draw_sprite(sMainLogo,0,title_x,title_y);
-		
 		
 		instruction_text.draw(title_x, instruction_y);
 		announcer_text.draw(title_x,announcer_y);
@@ -82,11 +85,11 @@ function UserInterfaceTeamStatus() : IUserInterface() constructor{
 	
 		if keyboard_check_pressed(vk_enter)
 		{
-			UpdateIconStatus (1,0,sPlayerDead)
+			UpdateIconStatus (1,0,sPlayerDead);
 		}
 		if keyboard_check_pressed(vk_enter)
 		{
-			UpdateIconStatus (1,1,sPlayerOffline)
+			UpdateIconStatus (1,1,sPlayerOffline);
 		}
 		
 	}
@@ -123,8 +126,8 @@ function UserInterfaceTimer() : IUserInterface() constructor{
 	t_sec = 0 // Seconds
 
 	function DestroyTimerMatch(){
-		time_source_stop(TimerMatch)
-		time_source_destroy(TimerMatch)
+		time_source_stop(TimerMatch);
+		time_source_destroy(TimerMatch);
 	}
 
 	function LogicTimer(_Parent){
@@ -144,26 +147,42 @@ function UserInterfaceTimer() : IUserInterface() constructor{
 	time_source_start(TimerMatch);
 	
 	Step = function(){
-		t = ""
-		t += string(t_min)
-		t += ":"
+		t = "";
+		t += string(t_min);
+		t += ":";
 		if t_sec > 9 {t += ""+string(t_sec)}
 		if t_sec < 10 {t += "0"+string(t_sec)}
 	}
 	
 	DrawGUI = function(){
-	draw_set_font(fGeneralFont)
+    draw_set_font(fGeneralFont);
+
+    draw_set_colour(c_dkgray);
+    draw_set_halign(fa_center);
+    draw_text(timer_x, timer_y+1, t);
+    draw_set_halign(fa_left);
+
+    draw_set_color(c_white);
+
+    draw_set_colour(c_black);
+    draw_set_halign(fa_center);
+    draw_text(timer_x, timer_y, t);
+    draw_set_halign(fa_left);
+  }
+}
+
+function UserInterfaceSetUsername() : UserInterfaceSquidDecored() constructor{
+	title_x = room_width / 2;
+	title_y = (room_height / 2) + 40;
 	
-	draw_set_colour(c_dkgray)
-	draw_set_halign(fa_center)
-	draw_text(timer_x, timer_y+1, t)
-	draw_set_halign(fa_left)
+	instruction_text = scribble("[fGeneralFont][fa_center]How'd you like to be called?");
 	
-	draw_set_color(c_white)
+	Step = function(){
+		self.SquidInstances();
+	}
 	
-	draw_set_colour(c_black)
-	draw_set_halign(fa_center)
-	draw_text(timer_x, timer_y, t)
-	draw_set_halign(fa_left)
+	DrawGUI = function(){
+		draw_sprite_ext(sWhitePixel,0,0,title_y,320,22,0,c_black,0.6);
+		instruction_text.draw(title_x,title_y);
 	}
 }
