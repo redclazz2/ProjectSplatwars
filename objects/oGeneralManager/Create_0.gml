@@ -282,7 +282,7 @@ debug_views = [];
 
 #region Game Configuration
 	configuration_general = {
-		software_version_release : "A 1.0.0",
+		software_version_release : "1.0.0",
 		software_year_release : 2024,	
 	}
 	
@@ -304,6 +304,7 @@ debug_views = [];
 	configuration_gameplay = {
 		current_local_player_instance: noone,
 		current_local_player_sampler: 1,
+		current_local_player_username: "Player",
 		current_team: AgentTeamTypes.ALPHA,
 		current_team_channel: AgentTeamChannelTypes.ALPHA,
 		current_weapon_index: WeaponTypes.RegularShooter01,
@@ -364,7 +365,7 @@ debug_views = [];
 		array_push(self.debug_views,dbg_section("Scene Pointers"));
 		
 		array_push(self.debug_views,dbg_drop_down(nxtScn,
-			"Undefined:-1,Scene1:2,Scene2:3,Main menu:5","Next Scene:"));
+			"Undefined:-1,Scene1:2,Scene2:3,Main menu:5,Username:6,VS_PaintResort:7,Lobby:8","Next Scene:"));
 		
 		array_push(self.debug_views,dbg_section("Scene Actions"));
 		
@@ -461,7 +462,7 @@ debug_views = [];
 			refLclTmChn = ref_create(refConfStruct,"current_team_channel"),
 			refSmplr = ref_create(refConfStruct,"current_local_player_sampler"),
 			refCrrPl = ref_create(refConfStruct,"current_local_player_instance"),
-			refPlySts= ref_create(refCrrPl,"active_stats");
+			refUsername = ref_create(refConfStruct,"current_local_player_username");
 		
 		array_push(self.debug_views,dbg_view("Local Input System",false));
 		
@@ -477,7 +478,10 @@ debug_views = [];
 		array_push(self.debug_views,dbg_section("Local Player Position Sampler"));
 		array_push(self.debug_views,dbg_watch(refCrrPl,"Current Player:"));
 		array_push(self.debug_views,dbg_watch(refSmplr,"Current Sampler:"));
+		array_push(self.debug_views,dbg_watch(refUsername,"Current Username:"));
 	#endregion
+	
+	
 	
 	if(IS_DEBUG) show_debug_overlay(true,true);
 	else show_debug_overlay(false);

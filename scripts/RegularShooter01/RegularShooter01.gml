@@ -4,7 +4,7 @@ function RegularShooter01() constructor{
 	SpreadMin = -18;
 	SpreadMax = 18;
 	Range = 50;
-	ProjectileSpeed = 4;
+	ProjectileSpeed = 6;
 	PaintWidth = 0.62;
 	PaintHeight = 0.62;
 	Consumption = 200;

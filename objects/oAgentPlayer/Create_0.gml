@@ -11,11 +11,11 @@ event_inherited();
 
 #region Stats
 	stats = {
-		speed_walking						: 1.4,
-		speed_unsubmerged					: 1,
-		speed_submerged						: 2.1,
+		speed_walking						: 1.6,
+		speed_unsubmerged					: 1.6,
+		speed_submerged						: 2.3,
 		speed_shooting						: 0,
-		speed_enemy_ink						: 0.5,
+		speed_enemy_ink						: 0.6,
 		health_regen_unsubmerged			: 10,
 		health_regen_submerged				: 40,
 		health_regen_cooldown_unsubmerged	: 120,
@@ -188,3 +188,5 @@ if(strategy_position == undefined ||
 	state_action == undefined || 
 	input_manager == undefined) 
 		DestroyControllableCharacter();
+		
+CameraFocusOnTarget(self);
