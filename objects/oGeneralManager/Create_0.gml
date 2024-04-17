@@ -481,6 +481,8 @@ debug_views = [];
 		array_push(self.debug_views,dbg_watch(refUsername,"Current Username:"));
 	#endregion
 	
+	
+	
 	if(IS_DEBUG) show_debug_overlay(true,true);
 	else show_debug_overlay(false);
 #endregion
