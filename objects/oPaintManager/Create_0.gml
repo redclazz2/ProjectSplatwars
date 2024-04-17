@@ -86,6 +86,9 @@
 		
 		show_debug_message(_charge);
 		
+		// Sends the value in _charge to its subscribers
+		pubsub_publish("GetChargeData", _charge);
+		
 		return _charge;
 	}
 	
