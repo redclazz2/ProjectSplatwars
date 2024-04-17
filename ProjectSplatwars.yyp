@@ -80,6 +80,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Agents Controllable","folderPath":"folders/Objects/Agents/Agents Controllable.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Agents Projectile","folderPath":"folders/Objects/Agents/Agents Projectile.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Agents Special","folderPath":"folders/Objects/Agents/Agents Special.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Agents Training Dummies","folderPath":"folders/Objects/Agents/Agents Training Dummies.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Agents Weapon","folderPath":"folders/Objects/Agents/Agents Weapon.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Agents Shooter","folderPath":"folders/Objects/Agents/Agents Weapon/Agents Shooter.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Managers","folderPath":"folders/Objects/Managers.yy",},
@@ -161,7 +162,6 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Stages","folderPath":"folders/Tile Sets/Stages.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"PaintResort","folderPath":"folders/Tile Sets/Stages/PaintResort.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Agents Training Dummies","folderPath":"folders/Objects/Agents/Agents Training Dummies.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"controllerblacklist.csv","CopyToMask":-1,"filePath":"datafiles",},
