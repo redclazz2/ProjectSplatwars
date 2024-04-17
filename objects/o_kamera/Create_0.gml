@@ -97,15 +97,15 @@
 
 				if (!is_undefined(BeforeBeginStep()))				{BeforeBeginStep();}
 				if (!is_undefined(kBank[kCurrent][1].BeginStep))	{kBank[kCurrent][1].BeginStep();}
-				if (!instance_exists(other.id))						{return false;}
+				if (!instance_exists(other))						{return false;}
 
 				if (!is_undefined(BeforeStep()))					{BeforeStep();}
 				if (!is_undefined(kBank[kCurrent][1].Step))			{kBank[kCurrent][1].Step();}
-				if (!instance_exists(other.id))						{return false;}
+				if (!instance_exists(other))						{return false;}
 
 				if (!is_undefined(BeforeEndStep()))					{BeforeEndStep();}
 				if (!is_undefined(kBank[kCurrent][1].EndStep))		{kBank[kCurrent][1].EndStep();}
-				if (!instance_exists(other.id))						{return false;}
+				if (!instance_exists(other))						{return false;}
 
 				return true;
 			}
@@ -166,7 +166,7 @@
 		/// @param	 {real}		[__StateTransition] Which transition type will it be || Default is kTransition._kInstant
 		/// @returns {bool}
 		static SetCurrent	  = function(__StateName, __StateTransition = kTransition._kInstant) {
-			if (!instance_exists(other.id)) {return false;} // If the summoner object dont exist then exit
+			if (!instance_exists(other)) {return false;} // If the summoner object dont exist then exit
 
 			// (Local) Function to change states accordingly
 			var __changeState	= function(__EnterStateNameAgain) {
@@ -258,7 +258,7 @@
 		/// @param {any} [__varChangedTo] Write the built-in variable that will be changed to
 		/// @returns {bool}
 		static SetVariable    = function(__varChanged, __varChangedTo = undefined) {
-			if (!instance_exists(other.id)) {return false;} // If the summoner object dont exist then exit
+			if (!instance_exists(other)) {return false;} // If the summoner object dont exist then exit
 
 			if (!is_undefined(__varChangedTo)) {
 				switch(__varChanged) {
@@ -282,7 +282,7 @@
 		/// @param	 {string} __varChanged Write the built-in variable name you want to get in string form
 		/// @returns {any}
 		static GetVariable    = function(__varChanged) {
-			if (!instance_exists(other.id)) {return false;} // If the summoner object dont exist then exit
+			if (!instance_exists(other)) {return false;} // If the summoner object dont exist then exit
 
 			switch(__varChanged) {
 				case "kImageIndex"  : case "kimageindex"  : case "image_index"  : return kImageIndex;	break;
@@ -322,7 +322,7 @@
 		/// @param	 {string} [__StateName] There is two ways of this one is string like GetPrevious("idle") and one is true/false for GetPrevious() == "idle" situations
 		/// @returns {any}
 		static GetPrevious	  = function(__StateName = undefined) {
-			if (!instance_exists(other.id)) {return false;} // If the summoner object dont exist then exit
+			if (!instance_exists(other)) {return false;} // If the summoner object dont exist then exit
 
 			if (!is_undefined(__StateName)) {if (kPrevious == GetIndex(__StateName)) {return true;} else {return false}} // (Alternative) Outcome
 
@@ -336,7 +336,7 @@
 		/// @param	 {string} [__StateName] There is two ways of this one is string like GetCurrent("idle") and one is true/false for GetCurrent() == "idle" situations
 		/// @returns {any}
 		static GetCurrent	  = function(__StateName = undefined) {
-			if (!instance_exists(other.id)) {return false;} // If the summoner object dont exist then exit
+			if (!instance_exists(other)) {return false;} // If the summoner object dont exist then exit
 
 			if (!is_undefined(__StateName)) {if (kCurrent == GetIndex(__StateName)) {return true;} else {return false}} // (Alternative) Outcome
 
@@ -350,7 +350,7 @@
 		/// @param	 {real} [__type] If you want state name's as a string then it should be (0) || (1) Returns state function itself
 		/// @returns {array}
 		static GetStateBank	  = function(__type = 1) {
-			if (!instance_exists(other.id)) {return false;} // If the summoner object dont exist then exit
+			if (!instance_exists(other)) {return false;} // If the summoner object dont exist then exit
 
 			var __values = [];
 			for (var i = 0; i < array_length(kBank); ++i) {__values[array_length(__values)] = kBank[i][__type];}
@@ -360,7 +360,7 @@
 
 		/// @desc This event is for debug purpose || Shows all from the object's kStateMachine(); Data to output log
 		static GetDebug		  = function(_show_events = false)  {
-			if (!instance_exists(other.id)) {return false;} // If the summoner object dont exist then exit
+			if (!instance_exists(other)) {return false;} // If the summoner object dont exist then exit
 
 			show_debug_message($"|-----------({object_get_name(kObjectIndex)})-----------|");
 				//show_debug_message("-How Many Machines Created : "	  + string(kAmountOfMachinesCreated));

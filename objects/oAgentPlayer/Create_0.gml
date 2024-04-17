@@ -189,4 +189,3 @@ if(strategy_position == undefined ||
 	input_manager == undefined) 
 		DestroyControllableCharacter();
 		
-CameraFocusOnTarget(self);

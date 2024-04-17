@@ -117,7 +117,6 @@ function UserInterfaceTeamStatus() : IUserInterface() constructor{
 	}
 }
 
-
 function UserInterfaceTimer() : IUserInterface() constructor{
 	timer_x = 160;
 	timer_y = 5; 
@@ -193,7 +192,9 @@ function UserInterfaceTutorial() : IUserInterface() constructor{
 	y_screen = 180;
 	
 	//Llamado al jugador para verificar su instancia en el mapa
+	pubsub_publish("CreateLocalControllableCharacter",[AgentTeamTypes.ALPHA,AgentTeamChannelTypes.ALPHA]);
 	player_instance = configuration_get_gameplay_property("current_local_player_instance");
+	pubsub_publish("EnableLocalInputListening");
 	
 	//Variables para saltarse el tutorial
 	time_in_screen = room_speed * 15;
@@ -304,7 +305,7 @@ function UserInterfaceTutorial() : IUserInterface() constructor{
 		
 		if(elapsed_time_to_skip>=time_to_skip){
 			time_in_screen = 0;
-			scene_system_set_target(5);
+			scene_system_set_target(9);
 			scene_system_goto_next();
 		}
 		}
@@ -379,7 +380,7 @@ function UserInterfaceTutorial() : IUserInterface() constructor{
 		//LÓGICA: TUTORIAL FINALIZADO
 		case 4:
 			if device_mouse_check_button_pressed(0,mb_any){
-			scene_system_set_target(5);
+			scene_system_set_target(9);
 			scene_system_goto_next();
 		}
 		break;
