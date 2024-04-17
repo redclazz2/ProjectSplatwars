@@ -145,7 +145,7 @@ function UserInterfaceTutorial() : IUserInterface() constructor{
 			
 		}
 		//Dynamic GUI
-		subtitle_text =  scribble("[fSubtitleFont][fa_center][rainbow]Stage 3:[/rainbow] shoot the enemy paint to gain [c_yellow]Domain [c_white]within [c_orange](" + string(ceil(time_remains / room_speed)) + ") [c_white]seconds");
+		subtitle_text =  scribble("[fSubtitleFont][fa_center][rainbow]Stage 3:[/rainbow] shoot the enemy paint to gain [c_yellow]Control [c_white]within [c_orange](" + string(ceil(time_remains / room_speed)) + ") [c_white]seconds");
 		break;
 		
 		//GUI: TUTORIAL DE ESCONDERSE
