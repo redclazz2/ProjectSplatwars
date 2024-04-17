@@ -99,7 +99,7 @@ function handle_communicator_tcp_notification(command,data){
 		break;
 		
 		case CommunicatorTCPNotificationCommands.ServerAuthorizationOk:
-			scene_system_set_target(2);
+			scene_system_set_target(8);
 			scene_system_goto_next();
 		break;
 		
