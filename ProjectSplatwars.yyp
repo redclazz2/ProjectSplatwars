@@ -142,6 +142,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Stages","folderPath":"folders/Tile Sets/Stages.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"PaintResort","folderPath":"folders/Tile Sets/Stages/PaintResort.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Agents Training Dummies","folderPath":"folders/Objects/Agents/Agents Training Dummies.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"controllerblacklist.csv","CopyToMask":-1,"filePath":"datafiles",},
@@ -352,6 +353,7 @@
     {"id":{"name":"__input_csv_to_array","path":"scripts/__input_csv_to_array/__input_csv_to_array.yy",},},
     {"id":{"name":"plchldr_surface_3","path":"sprites/plchldr_surface_3/plchldr_surface_3.yy",},},
     {"id":{"name":"__scribble_font_add_from_project","path":"scripts/__scribble_font_add_from_project/__scribble_font_add_from_project.yy",},},
+    {"id":{"name":"oAgentTrainingDummie","path":"objects/oAgentTrainingDummie/oAgentTrainingDummie.yy",},},
     {"id":{"name":"scribble_fallback_bulletpoint","path":"sprites/scribble_fallback_bulletpoint/scribble_fallback_bulletpoint.yy",},},
     {"id":{"name":"sLoadingAnimation","path":"sprites/sLoadingAnimation/sLoadingAnimation.yy",},},
     {"id":{"name":"__input_class_trigger_effect_vibration","path":"scripts/__input_class_trigger_effect_vibration/__input_class_trigger_effect_vibration.yy",},},

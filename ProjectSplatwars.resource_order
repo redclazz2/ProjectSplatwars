@@ -122,6 +122,7 @@
     {"name":"Stages","order":4,"path":"folders/Tile Sets/Stages.yy",},
     {"name":"PaintResort","order":1,"path":"folders/Tile Sets/Stages/PaintResort.yy",},
     {"name":"Timelines","order":8,"path":"folders/Timelines.yy",},
+    {"name":"Agents Training Dummies","order":4,"path":"folders/Objects/Agents/Agents Training Dummies.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"__input_config_external_data","order":2,"path":"scripts/__input_config_external_data/__input_config_external_data.yy",},

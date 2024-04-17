@@ -79,6 +79,11 @@ function UserInterfaceTutorial() : IUserInterface() constructor{
 	//Llamado al jugador para verificar su instancia en el mapa
 	player_instance = configuration_get_gameplay_property("current_local_player_instance");
 	
+	//Variables para saltarse el tutorial
+	time_in_screen = room_speed * 15;
+	time_to_skip = 3 * room_speed;
+	elapsed_time_to_skip = 0;
+	
 	//Variables que manejan el stage del tutorial
 	transition_stage = true;
 	current_stage = 0;
@@ -90,7 +95,20 @@ function UserInterfaceTutorial() : IUserInterface() constructor{
 	//Variables STAGE 1
 	checkpoints_count = noone;
 	
+	//Variables STAGE 2
+	training_dummies_count = noone;
+	
+	//Variables STAGE 3 && 4
+	time_remains = room_speed * 10;
+	
 	DrawGUI = function(){
+		//Funcionalidad para saltar el tutorial
+		if(time_in_screen>0){
+			draw_sprite_ext(sWhitePixel,0,(x_screen/2)-75,y_screen-12,150,12,0,c_black,0.7);
+			skip_text = scribble("[fSubtitleFont][fa_center][blink][c_yellow]Hold anywhere " + string(ceil((time_to_skip/room_speed) - (elapsed_time_to_skip/room_speed))) + " secs to skip");
+			skip_text.draw(x_screen/2,y_screen-10);
+		}
+		
 		//Switch-case para manejar los estados del tutorial
 		switch (current_stage){
 		//GUI: TUTORIAL DE MOVIMIENTO
@@ -103,43 +121,151 @@ function UserInterfaceTutorial() : IUserInterface() constructor{
 		}
 		//Dynamic GUI
 		subtitle_text =  scribble("[fSubtitleFont][fa_center][rainbow]Stage 1:[/rainbow] use the left joystick to [c_green]activate [c_white]the [c_orange](" + string(checkpoints_count) + ") [c_white]checkpoints");
-		
-		//Dibujado de la GUI
-		draw_sprite_ext(sWhitePixel,0,0,15,320,22,0,c_black,0.7);
-		draw_sprite_ext(sWhitePixel,0,0,37,320,12,0,c_black,0.7);
-		title_text.draw(160,15);
-		subtitle_text.draw(160,37);
 		break;
+		
 		//GUI: TUTORIAL DE DISPARO
 		case 1:
 		//Iniciar el setup de la GUI
 		if(transition_stage){
 			title_text =  scribble("[fGeneralFont][fa_center]That's what I'm talking about!");
+			training_dummies_count = instance_number(oAgentTrainingDummie);
+			transition_stage = false;
 		}
 		//Dynamic GUI
-		subtitle_text =  scribble("[fSubtitleFont][fa_center][rainbow]Stage 2:[/rainbow] use the right joystick to aim and [c_red]shoot [c_white]the [c_orange](" + string(checkpoints_count) + ") [c_white]dummies");
+		subtitle_text =  scribble("[fSubtitleFont][fa_center][rainbow]Stage 2:[/rainbow] use the right joystick to [c_red]shoot [c_white]the [c_orange](" + string(training_dummies_count) + ") [c_white]dummies");
+		break;
 		
-		//Dibujado de la GUI
-		draw_sprite_ext(sWhitePixel,0,0,15,320,22,0,c_black,0.7);
-		draw_sprite_ext(sWhitePixel,0,0,37,320,12,0,c_black,0.7);
-		title_text.draw(160,15);
-		subtitle_text.draw(160,37);
+		//GUI: TUTORIAL DE PINTURA
+		case 2:
+		//Iniciar el setup de la GUI
+		if(transition_stage){
+			title_text =  scribble("[fGeneralFont][fa_center]Now YOU are the artist!");
+			transition_stage = false;
+			pubsub_publish("PaintSurfaceApply",new PaintItemStructure(275,500,10,10,sSplat01,make_color_rgb(20,0,0)));
+			
 		}
+		//Dynamic GUI
+		subtitle_text =  scribble("[fSubtitleFont][fa_center][rainbow]Stage 3:[/rainbow] shoot the enemy paint to gain [c_yellow]Domain [c_white]within [c_orange](" + string(ceil(time_remains / room_speed)) + ") [c_white]seconds");
+		break;
+		
+		//GUI: TUTORIAL DE ESCONDERSE
+		case 3:
+		//Iniciar el setup de la GUI
+		if(transition_stage){
+			title_text =  scribble("[fGeneralFont][fa_center]It's time to hide and seek!");
+			transition_stage = false;
+			pubsub_publish("PaintSurfaceApply",new PaintItemStructure(700,500,10,10,sSplat01,make_color_rgb(0,0,0)));
+		}
+		//Dynamic GUI
+		subtitle_text =  scribble("[fSubtitleFont][fa_center][rainbow]Stage 4:[/rainbow] press and hold the [c_teal]Submerge button [c_white]for [c_orange](" + string(ceil(time_remains / room_speed)) + ") [c_white]secs");
+		break;
+		
+		//GUI: TUTORIAL FINALIZADO
+		case 4:
+		if(transition_stage){
+			title_text =  scribble("[fGeneralFont][fa_center]SplatWars Time!");
+			subtitle_text =  scribble("[fSubtitleFont][fa_center][rainbow]Press any button to continue...[/rainbow]");
+			transition_stage = false;
+		}
+		}
+		
+		//Dibujado de la GUI - ALWAYS
+		draw_sprite_ext(sWhitePixel,0,0,y_screen-165,x_screen,22,0,c_black,0.7);
+		draw_sprite_ext(sWhitePixel,0,0,y_screen-143,x_screen,12,0,c_black,0.7);
+		title_text.draw(x_screen/2,y_screen-165);
+		subtitle_text.draw(x_screen/2,y_screen-143);
 	}
 	
 	Step = function(){
+		//Funcionalidad para saltar el tutorial
+		if(time_in_screen>0){
+		time_in_screen--;
+		if device_mouse_check_button(0,mb_any){
+			elapsed_time_to_skip++;
+		}else{
+			elapsed_time_to_skip = 0;
+		}
+		
+		if(elapsed_time_to_skip>=time_to_skip){
+			time_in_screen = 0;
+			scene_system_set_target(5);
+			scene_system_goto_next();
+		}
+		}
+		
 		//Switch-case para manejar los estados del tutorial
 		switch(current_stage){
+			
 		//LÓGICA: TUTORIAL DE MOVIMIENTO
 		case 0:
 		 //Workflow
 		 checkpoints_count = instance_number(oCheckpointInactive)
 		 
-		 //Condicional next stage
+		 //Conditional next stage
 		 if(checkpoints_count == 0){
 			transition_stage = true;
 			current_stage++;
+			//Delete line sefcheck
+			player_instance = configuration_get_gameplay_property("current_local_player_instance");
+			//Teleport player next stage
+			player_instance.x = 480;
+			player_instance.y = 800;
 		 }
+		break;
+		
+		//LÓGICA: TUTORIAL DE DISPARO
+		case 1:
+		//Workflow
+		training_dummies_count = instance_number(oAgentTrainingDummie);
+		
+		//Conditional next stage
+		if(training_dummies_count = 0){
+			transition_stage = true;
+			current_stage++;
+			//Teleport player next stage
+			player_instance.x = 200;
+			player_instance.y = 500;
+		}
+		break;
+		
+		//LÓGICA: TUTORIAL DE PINTURA
+		case 2:
+		//Workflow
+		if input_check("shoot") {
+		time_remains--;
+		}
+		
+		//Conditional next stage
+		if(time_remains <= 0){
+			transition_stage = true;
+			current_stage++;
+			time_remains = room_speed * 10;
+			//Teleport player next stage
+			player_instance.x = 700;
+			player_instance.y = 500;
+		}
+		break;
+		
+		//LÓGICA: TUTORIAL DE ESCONDERSE
+		case 3:
+		//Workflow
+		if input_check("transform") {
+		time_remains--;
+		}
+		
+		//Conditional next stage
+		if(time_remains <= 0){
+			transition_stage = true;
+			current_stage++;
+		}
+		break;
+		
+		//LÓGICA: TUTORIAL FINALIZADO
+		case 4:
+			if device_mouse_check_button_pressed(0,mb_any){
+			scene_system_set_target(5);
+			scene_system_goto_next();
+		}
 		break;
 		}
 	}
