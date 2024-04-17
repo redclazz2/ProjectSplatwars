@@ -282,7 +282,7 @@ debug_views = [];
 
 #region Game Configuration
 	configuration_general = {
-		software_version_release : "A 1.0.0",
+		software_version_release : "1.0.0",
 		software_year_release : 2024,	
 	}
 	
@@ -365,7 +365,9 @@ debug_views = [];
 		array_push(self.debug_views,dbg_section("Scene Pointers"));
 		
 		array_push(self.debug_views,dbg_drop_down(nxtScn,
-			"Undefined:-1,Scene1:2,Scene2:3,Main menu:5,Username:6,VS_PaintResort:7,VS_Tutorial:8","Next Scene:"));
+      "Undefined:-1,Scene1:2,Scene2:3,Main menu:5,Username:6,VS_PaintResort:7,VS_Tutorial:8","Lobby:9","Next Scene:"));
+    
+    //FIX LOBBY POINTER
 		
 		array_push(self.debug_views,dbg_section("Scene Actions"));
 		
@@ -480,6 +482,8 @@ debug_views = [];
 		array_push(self.debug_views,dbg_watch(refSmplr,"Current Sampler:"));
 		array_push(self.debug_views,dbg_watch(refUsername,"Current Username:"));
 	#endregion
+	
+	
 	
 	if(IS_DEBUG) show_debug_overlay(true,true);
 	else show_debug_overlay(false);

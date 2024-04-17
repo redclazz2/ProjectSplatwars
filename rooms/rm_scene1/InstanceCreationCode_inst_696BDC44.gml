@@ -1,1 +1,1 @@
-_drawManager = new UserInterfaceDebug(test_message);
+_drawManager = new SpecialChargeState();

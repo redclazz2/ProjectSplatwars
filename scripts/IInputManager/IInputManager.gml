@@ -50,6 +50,7 @@ function IInputManagerStrategy(_player_manager) constructor{
 		_return[$ "ShootPressed"] = InputCheckShootButtonPressed();
 		_return[$ "ShootOnReleased"] = InputCheckShootButtonOnReleased();
 		_return[$ "SubmergeButton"] = InputCheckSubmergeButton();
+		_return[$ "SpecialButton"] = InputCheckSpecialButton();
 		_return[$ "state"] = 1;
 		
 		var	movementInputPressed = _MovementData[$ "Left"] || _MovementData[$ "Right"] || _MovementData[$ "Up"] || _MovementData[$ "Down"],
