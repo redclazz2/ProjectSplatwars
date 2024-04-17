@@ -2,7 +2,7 @@ function UserInterfaceCommunicationError():UserInterfaceSquidDecored() construct
 	title_x = room_width / 2;
 	title_y = (room_height / 2) - 10;
 	
-	instruction_text = scribble("[fGeneralFont][fa_center]Unable to connect to the internet.");
+	instruction_text = scribble("[fGeneralFont][fa_center]A communication error has ocurred.");
 	
 	Step = function(){
 		if device_mouse_check_button_pressed(0,mb_any){
