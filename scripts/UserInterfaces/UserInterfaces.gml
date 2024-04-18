@@ -170,6 +170,7 @@ function UserInterfaceTimer() : IUserInterface() constructor{
   }
 }
 
+
 function UserInterfaceSetUsername() : UserInterfaceSquidDecored() constructor{
 	title_x = room_width / 2;
 	title_y = (room_height / 2) + 40;

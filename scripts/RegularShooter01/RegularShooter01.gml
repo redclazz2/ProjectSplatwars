@@ -7,7 +7,9 @@ function RegularShooter01() constructor{
 	ProjectileSpeed = 6;
 	PaintWidth = 0.62;
 	PaintHeight = 0.62;
-	Consumption = 200;
+	Consumption = 40;
+	MaxAmmo = 1000;
+	AmmoRegenRate = 40;
 	Special = 0;
 	ShootingCooldown = 10;
 	WeaponOffSetX = 10;
