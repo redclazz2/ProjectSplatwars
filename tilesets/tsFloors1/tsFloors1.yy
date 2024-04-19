@@ -1,11 +1,8 @@
 {
   "resourceType": "GMTileSet",
   "resourceVersion": "1.0",
-  "name": "TileSetFloors1",
+  "name": "tsFloors1",
   "autoTileSets": [],
-  "ConfigValues": {
-    "DesktopDebug": {"textureGroupId":"{\"name\":\"Default\",\"path\":\"texturegroups/Default\"}",},
-  },
   "macroPageTiles": {
     "SerialiseHeight": 0,
     "SerialiseWidth": 0,
@@ -19,15 +16,15 @@
     "path": "folders/Tile Sets/Stages/PaintResort.yy",
   },
   "spriteId": {
-    "name": "sFloors1",
-    "path": "sprites/sFloors1/sFloors1.yy",
+    "name": "sFloor1",
+    "path": "sprites/sFloor1/sFloor1.yy",
   },
   "spriteNoExport": false,
   "textureGroupId": {
     "name": "Default",
     "path": "texturegroups/Default",
   },
-  "tile_count": 9,
+  "tile_count": 7,
   "tileAnimation": {
     "FrameData": [
       0,
@@ -37,8 +34,6 @@
       4,
       5,
       6,
-      7,
-      8,
     ],
     "SerialiseFrameCount": 1,
   },

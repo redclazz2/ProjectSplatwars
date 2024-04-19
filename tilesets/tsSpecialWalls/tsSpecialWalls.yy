@@ -1,7 +1,7 @@
 {
   "resourceType": "GMTileSet",
   "resourceVersion": "1.0",
-  "name": "TileSetFloors2",
+  "name": "tsSpecialWalls",
   "autoTileSets": [],
   "ConfigValues": {
     "DesktopDebug": {"textureGroupId":"{\"name\":\"Default\",\"path\":\"texturegroups/Default\"}",},
@@ -11,7 +11,7 @@
     "SerialiseWidth": 0,
     "TileSerialiseData": [],
   },
-  "out_columns": 3,
+  "out_columns": 4,
   "out_tilehborder": 2,
   "out_tilevborder": 2,
   "parent": {
@@ -19,15 +19,15 @@
     "path": "folders/Tile Sets/Stages/PaintResort.yy",
   },
   "spriteId": {
-    "name": "sFloors2",
-    "path": "sprites/sFloors2/sFloors2.yy",
+    "name": "sSpecialWalls",
+    "path": "sprites/sSpecialWalls/sSpecialWalls.yy",
   },
   "spriteNoExport": false,
   "textureGroupId": {
     "name": "Default",
     "path": "texturegroups/Default",
   },
-  "tile_count": 12,
+  "tile_count": 16,
   "tileAnimation": {
     "FrameData": [
       0,
@@ -42,6 +42,10 @@
       9,
       10,
       11,
+      12,
+      13,
+      14,
+      15,
     ],
     "SerialiseFrameCount": 1,
   },

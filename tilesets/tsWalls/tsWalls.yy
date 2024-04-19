@@ -1,7 +1,7 @@
 {
   "resourceType": "GMTileSet",
   "resourceVersion": "1.0",
-  "name": "TileSetWalls",
+  "name": "tsWalls",
   "autoTileSets": [],
   "ConfigValues": {
     "DesktopDebug": {"textureGroupId":"{\"name\":\"Default\",\"path\":\"texturegroups/Default\"}",},
