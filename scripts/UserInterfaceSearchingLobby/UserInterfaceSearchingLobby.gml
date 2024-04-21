@@ -13,13 +13,18 @@ function UserInterfaceSearchingLobby():UserInterfaceSquidDecored() constructor{
 		[new UserInterfaceCommunicationError()]
 	)
 	
+	request = time_source_create(
+		time_source_global,
+		4,
+		time_source_units_seconds,
+		InitializeMatchmaking,
+	)
+	
 	time_source_start(timeout);
+	time_source_start(request);
 	
 	Step = function(){
 		self.SquidInstances();
-		if device_mouse_check_button_pressed(0,mb_any){	
-			change_manager_user_interface(new UserInterfaceLobby());
-		}
 	}
 	
 	DrawGUI = function(){
@@ -31,6 +36,11 @@ function UserInterfaceSearchingLobby():UserInterfaceSquidDecored() constructor{
 		if(time_source_exists(timeout)){
 			time_source_stop(timeout);
 			time_source_destroy(timeout);
+		}
+		
+		if(time_source_exists(request)){
+			time_source_stop(request);
+			time_source_destroy(request);
 		}
 	}
 }

@@ -6,7 +6,7 @@ function InitiliazeNetworking(){
 
 function InitializeMatchmaking(){
 	with(oNetworkManager){
-		
+		handle_external_notification(NetworkMatchAction.StartMatchMaking);
 	}
 }
 

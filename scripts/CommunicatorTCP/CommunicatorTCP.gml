@@ -2,7 +2,11 @@ enum CommunicatorTCPNotificationCommands{
 	ServerConnectionOk,
 	ServerConnectionFailed,
 	ServerAuthorizationOk,
-	ServerAuthorizationFailed
+	ServerAuthorizationFailed,
+	ServerNoLobbyFound,
+	ServerLobbyFound,
+	ServerLobbyCreationOk,
+	ServerLobbyCreationFailed,
 }
 
 function CommunicatorTCP(_manager):ICommunicator(_manager) constructor{
@@ -40,6 +44,14 @@ function CommunicatorTCP(_manager):ICommunicator(_manager) constructor{
 			case 0: //Server Authorization
 				change_reader(new ServerAuthorizationRecieved(self));
 			break;
+			
+			case 1: //Matchmaking Resolve
+				change_reader(new ServerMatchmakeRecieved(self));
+			break;
+			
+			case 2: //Lobby Creation Resolve
+				change_reader(new ServerCreationRecieved(self));
+			break;
 		}
 		
 		reader.read(_ip,_port,_buffer);
@@ -52,6 +64,16 @@ function CommunicatorTCP(_manager):ICommunicator(_manager) constructor{
 	
 	execute_server_authorization = function(){
 		change_writer(new ServerAuthorization(self));
+		writer.write();
+	}
+	
+	execute_matchmake_request = function(){
+		change_writer(new MatchmakeRequest(self));
+		writer.write();
+	}
+	
+	execute_lobby_creation = function(){
+		change_writer(new LobbyCreation(self));
 		writer.write();
 	}
 }

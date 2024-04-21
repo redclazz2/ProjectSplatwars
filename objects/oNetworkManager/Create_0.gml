@@ -108,12 +108,29 @@ function handle_communicator_tcp_notification(command,data){
 			destroy_network_framework();
 			change_manager_user_interface(new UserInterfaceCommunicationError());
 		break;
+		
+		case CommunicatorTCPNotificationCommands.ServerNoLobbyFound:
+			logger(LOGLEVEL.INFO,"Unable to find a match.","TCP");
+			communicator_tcp.execute_lobby_creation();
+		break;
+		
+		case CommunicatorTCPNotificationCommands.ServerLobbyCreationFailed:
+			logger(LOGLEVEL.WARN,"Failed to create a lobby.","TCP");
+			destroy_network_framework();
+			change_manager_user_interface(new UserInterfaceCommunicationError());
+		break;
+		
+		case CommunicatorTCPNotificationCommands.ServerLobbyCreationOk:
+			logger(LOGLEVEL.INFO,$"Created Lobby:{data}","TCP");
+			change_manager_user_interface(new UserInterfaceLobby());
+		break;
 	}
 }
 	
 function handle_external_notification(command,data){
 	switch(command){
-		case ExternalCommands.StartMatchMaking:
+		case NetworkMatchAction.StartMatchMaking:
+			communicator_tcp.execute_matchmake_request();
 		break;
 		
 		
