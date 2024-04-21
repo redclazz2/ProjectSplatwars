@@ -1,5 +1,8 @@
 {
-  "FolderOrderSettings": [],
+  "FolderOrderSettings": [
+    {"name":"Communities","order":1,"path":"folders/Scripts/Network Scripts/Communities.yy",},
+    {"name":"Stations","order":2,"path":"folders/Scripts/Network Scripts/Stations.yy",},
+  ],
   "ResourceOrderSettings": [
     {"name":"__input_config_external_data","order":2,"path":"scripts/__input_config_external_data/__input_config_external_data.yy",},
     {"name":"scribble_super_glyph_copy_all","order":3,"path":"scripts/scribble_super_glyph_copy_all/scribble_super_glyph_copy_all.yy",},
@@ -172,6 +175,7 @@
     {"name":"scribble_typists_add_event","order":7,"path":"scripts/scribble_typists_add_event/scribble_typists_add_event.yy",},
     {"name":"input_source_using","order":8,"path":"scripts/input_source_using/input_source_using.yy",},
     {"name":"logger_set_level","order":4,"path":"scripts/logger_set_level/logger_set_level.yy",},
+    {"name":"Community","order":1,"path":"scripts/Community/Community.yy",},
     {"name":"input_binding_is_valid","order":6,"path":"scripts/input_binding_is_valid/input_binding_is_valid.yy",},
     {"name":"plchldr_surface_3","order":43,"path":"sprites/plchldr_surface_3/plchldr_surface_3.yy",},
     {"name":"__scribble_font_add_from_project","order":7,"path":"scripts/__scribble_font_add_from_project/__scribble_font_add_from_project.yy",},
@@ -378,6 +382,7 @@
     {"name":"input_combo_get_charge","order":1,"path":"scripts/input_combo_get_charge/input_combo_get_charge.yy",},
     {"name":"__input_gamepad_set_type","order":6,"path":"scripts/__input_gamepad_set_type/__input_gamepad_set_type.yy",},
     {"name":"input_join_is_finished","order":2,"path":"scripts/input_join_is_finished/input_join_is_finished.yy",},
+    {"name":"Station","order":1,"path":"scripts/Station/Station.yy",},
     {"name":"__input_class_player","order":10,"path":"scripts/__input_class_player/__input_class_player.yy",},
     {"name":"input_vibrate_set_strength","order":7,"path":"scripts/input_vibrate_set_strength/input_vibrate_set_strength.yy",},
     {"name":"input_virtual_create","order":1,"path":"scripts/input_virtual_create/input_virtual_create.yy",},

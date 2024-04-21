@@ -10,12 +10,17 @@ network_configuration = {
 
 communicator_udp = undefined;
 communicator_tcp = undefined;
+station_manager = undefined;
+community_manager = undefined;
 
 function get_network_configuration(property){
 	return network_configuration[$ property];
 }
 
 function initialize_network_framework(){
+	station_manager = new StationManager(self);
+	community_manager = new CommunityManager(self);
+	
 	communicator_udp = new CommunicatorUDP(self);
 	communicator_udp.create();
 }
@@ -132,7 +137,5 @@ function handle_external_notification(command,data){
 		case NetworkMatchAction.StartMatchMaking:
 			communicator_tcp.execute_matchmake_request();
 		break;
-		
-		
 	}
 }
