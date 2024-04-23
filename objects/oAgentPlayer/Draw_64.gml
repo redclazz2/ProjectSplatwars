@@ -9,12 +9,6 @@ if(IS_DEBUG){
 if(input_manager.controllable_type == InputTypes.LOCAL){
     opacity = clamp(1 - (active_stats[$ "health_active"] / 1000), 0, 1);
     draw_sprite_ext(sLowHealth, 0, 0, 0, 1, 1, 0, c_white, opacity);
-	//Debug
-	if (keyboard_check_pressed(vk_enter)) {
-    active_stats[$ "health_active"] -= 100
-    active_stats[$ "health_active"] = max(active_stats[$ "health_active"], 0);
-	}
-	
 }
 
 
