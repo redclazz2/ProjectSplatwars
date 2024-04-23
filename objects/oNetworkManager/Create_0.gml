@@ -26,6 +26,18 @@ function initialize_network_framework(){
 }
 
 function destroy_network_framework(){
+	if(community_manager != undefined){
+		community_manager.destroy();
+		delete community_manager;
+		community_manager = undefined;
+	}
+	
+	if(station_manager != undefined){
+		station_manager.destroy();
+		delete station_manager;
+		station_manager = undefined;
+	}
+	
 	if(communicator_udp != undefined){
 		communicator_udp.destroy();
 		delete communicator_udp;
@@ -63,6 +75,10 @@ function network_manager_notify(source,command,data = undefined){
 		
 		case NetworkManagerNotificationKey.External:
 			handle_external_notification(command,data);
+		break;
+		
+		case NetworkManagerNotificationKey.CommunityManager:
+			handle_community_manager_notification(command,data);
 		break;
 	}
 }
@@ -157,6 +173,14 @@ function handle_external_notification(command,data){
 	switch(command){
 		case NetworkMatchAction.StartMatchMaking:
 			communicator_tcp.execute_matchmake_request();
+		break;
+	}
+}
+	
+function handle_community_manager_notification(command,data){
+	switch(command){
+		case CommunityManagerCommands.DestroyCommunity:
+			communicator_tcp.execute_lobby_destruction(data);
 		break;
 	}
 }

@@ -1,3 +1,7 @@
+enum CommunityManagerCommands{
+	DestroyCommunity
+}
+
 function CommunityManager(_manager) constructor{
 	manager = _manager;
 	community_map = ds_map_create();
@@ -10,7 +14,7 @@ function CommunityManager(_manager) constructor{
 			for(var i = 0; i < array_length(keys); i++){
 				destroy_community(keys[i]);
 			}
-			
+
 			ds_map_destroy(community_map);
 		}
 	}
@@ -40,11 +44,27 @@ function CommunityManager(_manager) constructor{
 		}
 	}
 	
+	notify_manager = function(_command, _data = undefined){
+		manager.network_manager_notify(
+			NetworkManagerNotificationKey.CommunityManager,
+			_command,
+			_data
+		);
+	}
+	
 	destroy_community = function(_id){
 		var to_destroy = ds_map_find_value(community_map,_id);
 		
 		if(!is_undefined(to_destroy))
 		{	
+			if(to_destroy.community_leader == 
+				manager.station_manager.local_station)
+			
+			notify_manager(
+				CommunityManagerCommands.DestroyCommunity,
+				to_destroy.id
+			);
+			
 			to_destroy.destroy();
 			delete to_destroy;
 		}

@@ -76,4 +76,9 @@ function CommunicatorTCP(_manager):ICommunicator(_manager) constructor{
 		change_writer(new LobbyCreation(self));
 		writer.write();
 	}
+	
+	execute_lobby_destruction = function(_id){
+		change_writer(new LobbyDestroy(self,_id));
+		writer.write();
+	}
 }

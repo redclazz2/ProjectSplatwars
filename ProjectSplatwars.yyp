@@ -847,6 +847,7 @@
     {"id":{"name":"input_check","path":"scripts/input_check/input_check.yy",},},
     {"id":{"name":"scribble_anim_wheel","path":"scripts/scribble_anim_wheel/scribble_anim_wheel.yy",},},
     {"id":{"name":"p_demo","path":"paths/p_demo/p_demo.yy",},},
+    {"id":{"name":"LobbyDestroy","path":"scripts/LobbyDestroy/LobbyDestroy.yy",},},
     {"id":{"name":"__input_transform_coordinate","path":"scripts/__input_transform_coordinate/__input_transform_coordinate.yy",},},
     {"id":{"name":"__scribble_gen_8_position_glyphs","path":"scripts/__scribble_gen_8_position_glyphs/__scribble_gen_8_position_glyphs.yy",},},
     {"id":{"name":"shPaintSurface","path":"shaders/shPaintSurface/shPaintSurface.yy",},},

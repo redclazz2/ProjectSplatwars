@@ -13,6 +13,7 @@ enum NetworkManagerNotificationKey{
 	CommunicatorUDP,
 	CommunicatorTCP,
 	External,
+	CommunityManager,
 }
 
 enum NetworkMatchAction{

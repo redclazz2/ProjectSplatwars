@@ -585,6 +585,7 @@
     {"name":"plchldr_block_2","order":2,"path":"sprites/plchldr_block_2/plchldr_block_2.yy",},
     {"name":"__input_steam_type_set","order":12,"path":"scripts/__input_steam_type_set/__input_steam_type_set.yy",},
     {"name":"scribble_anim_wheel","order":8,"path":"scripts/scribble_anim_wheel/scribble_anim_wheel.yy",},
+    {"name":"LobbyDestroy","order":3,"path":"scripts/LobbyDestroy/LobbyDestroy.yy",},
     {"name":"__input_transform_coordinate","order":26,"path":"scripts/__input_transform_coordinate/__input_transform_coordinate.yy",},
     {"name":"__scribble_gen_8_position_glyphs","order":8,"path":"scripts/__scribble_gen_8_position_glyphs/__scribble_gen_8_position_glyphs.yy",},
     {"name":"plchldr_square_4_8","order":34,"path":"sprites/plchldr_square_4_8/plchldr_square_4_8.yy",},
