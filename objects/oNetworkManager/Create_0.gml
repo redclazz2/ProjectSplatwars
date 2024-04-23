@@ -104,6 +104,16 @@ function handle_communicator_tcp_notification(command,data){
 		break;
 		
 		case CommunicatorTCPNotificationCommands.ServerAuthorizationOk:
+			var client_id = data[0],
+				client_ip = data[1];
+			
+			station_manager.register_station(
+										client_id,
+										client_ip,
+										communicator_udp.port,
+										configuration_get_gameplay_property("current_local_player_username"),
+										true);
+		
 			scene_system_set_target(8);
 			scene_system_goto_next();
 		break;
@@ -126,7 +136,18 @@ function handle_communicator_tcp_notification(command,data){
 		break;
 		
 		case CommunicatorTCPNotificationCommands.ServerLobbyCreationOk:
-			logger(LOGLEVEL.INFO,$"Created Lobby:{data}","TCP");
+			logger(LOGLEVEL.INFO,$"Created Lobby:{data[0]}","TCP");
+			
+			community_manager.register_community(
+				data[0],
+				data[1],
+				station_manager.local_station,
+				8,
+				1,
+				[station_manager.local_station],
+				true
+			);
+			
 			change_manager_user_interface(new UserInterfaceLobby());
 		break;
 	}

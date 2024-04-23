@@ -11,12 +11,15 @@ function UserInterfaceLobby():UserInterfaceSquidDecored() constructor{
 	Step = function(){
 		self.SquidInstances();
 		
-		if(keyboard_check_pressed(ord("E")) && array_length(player_list) < 8){
-			array_insert(player_list,array_length(player_list),"Player");
-		}
+		var community = GetActiveCommunity(),
+			stations_id = ds_map_keys_to_array(community.current_stations);
 		
-		if(keyboard_check_pressed(ord("R")) && array_length(player_list) > 0){
-			array_delete(player_list,array_length(player_list) - 1,1);
+		player_list = [];
+		
+		for(var i = 0;  i < array_length(stations_id); i++){
+			array_insert(player_list,array_length(player_list),GetStationData(
+				stations_id[i]
+			).get_station_data("username"));	
 		}
 	}
 	

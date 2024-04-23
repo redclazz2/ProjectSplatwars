@@ -15,3 +15,16 @@ function SendRoomCreation(){
 		
 	}
 }
+	
+function GetActiveCommunity(){
+	with(oNetworkManager){
+		return community_manager.get_community(
+			community_manager.active_community);
+	}
+}
+
+function GetStationData(_id){
+	with(oNetworkManager){
+		return station_manager.get_station(_id);
+	}
+}
