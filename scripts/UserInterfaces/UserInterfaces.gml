@@ -82,15 +82,6 @@ function UserInterfaceTeamStatus() : IUserInterface() constructor{
 	];
 	
 	Step = function(){
-	
-		if keyboard_check_pressed(vk_enter)
-		{
-			UpdateIconStatus (1,0,sPlayerDead);
-		}
-		if keyboard_check_pressed(vk_enter)
-		{
-			UpdateIconStatus (1,1,sPlayerOffline);
-		}
 		
 	}
 	
@@ -155,15 +146,6 @@ function UserInterfaceTimer() : IUserInterface() constructor{
 	
 	DrawGUI = function(){
     draw_set_font(fGeneralFont);
-
-    draw_set_colour(c_dkgray);
-    draw_set_halign(fa_center);
-    draw_text(timer_x, timer_y+1, t);
-    draw_set_halign(fa_left);
-
-    draw_set_color(c_white);
-
-    draw_set_colour(c_black);
     draw_set_halign(fa_center);
     draw_text(timer_x, timer_y, t);
     draw_set_halign(fa_left);

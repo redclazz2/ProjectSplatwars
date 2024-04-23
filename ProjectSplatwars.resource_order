@@ -619,6 +619,7 @@
     {"name":"plchldr_main_8","order":13,"path":"sprites/plchldr_main_8/plchldr_main_8.yy",},
     {"name":"scribble_fallback_font","order":13,"path":"fonts/scribble_fallback_font/scribble_fallback_font.yy",},
     {"name":"plchldr_tile_flags_8","order":1,"path":"sprites/plchldr_tile_flags_8/plchldr_tile_flags_8.yy",},
+    {"name":"sLowHealth","order":9,"path":"sprites/sLowHealth/sLowHealth.yy",},
     {"name":"plchldr_saveload_8","order":19,"path":"sprites/plchldr_saveload_8/plchldr_saveload_8.yy",},
     {"name":"input_hotswap_params_set","order":1,"path":"scripts/input_hotswap_params_set/input_hotswap_params_set.yy",},
     {"name":"__scribble_gen_3_devanagari","order":3,"path":"scripts/__scribble_gen_3_devanagari/__scribble_gen_3_devanagari.yy",},

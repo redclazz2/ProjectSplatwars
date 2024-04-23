@@ -40,7 +40,7 @@ function AgentWeaponShooter(
 
 	
 	Shoot_pressed = function(){
-		if(ShootingEnabled && CurrentAmmo > Consumption){
+		if(ShootingEnabled && CurrentAmmo >= Consumption){
             ShootingEnabled = false;
             CurrentAmmo -= Consumption; 
 
@@ -77,7 +77,7 @@ function AgentWeaponShooter(
 				// Munition Logic
 			if (!ParentAgent.latest_action[$ "shoot_released"] && CurrentAmmo < MaxAmmo) {
                 if (!weapon_interaction) {
-                    CurrentAmmo = min(MaxAmmo, CurrentAmmo + (4 * AmmoRegenRate) / room_speed);
+                    CurrentAmmo = min(MaxAmmo, CurrentAmmo + (10 * AmmoRegenRate) / room_speed);
                 } else {
                     CurrentAmmo = min(MaxAmmo, CurrentAmmo + AmmoRegenRate / room_speed);
                 }
@@ -88,13 +88,23 @@ function AgentWeaponShooter(
 	Draw = function(){
 		draw_sprite_ext(WeaponSprite,0,x,y,1,image_yscale,image_angle,c_white,
 			ParentAgent.latest_action[$ "able_to_weapon"] ? 1 : 0.5);
+		
+		if(ParentAgent.input_manager.controllable_type == InputTypes.LOCAL) {
+	
+			bar_width = 15;
+			bar_height = 2;
+			var bar_x = x-9;
+			var bar_y = y+15;
+		    var ammo_percentage = clamp(CurrentAmmo / MaxAmmo, 0, 1);
+			draw_set_color(c_maroon)
+			draw_rectangle(bar_x, bar_y, bar_x + bar_width, bar_y + bar_height, false);
+			draw_set_colour(c_white);
+			draw_set_colour(c_red);
+		    draw_rectangle(bar_x, bar_y, bar_x + bar_width * ammo_percentage, bar_y + bar_height, false);
+		}
+
 	}
 	
-	DrawGUI = function(){
-		draw_set_color(c_white);
-		draw_set_font(fGeneralFont);
-		draw_text(160,50,CurrentAmmo);
-	}
 	
 	CleanUp = function(){
 		time_source_stop(ShootingTimer);
