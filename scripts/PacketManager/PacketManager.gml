@@ -17,7 +17,7 @@ function PacketManager(_manager) constructor{
 		*/
 		var _intended = irandom($FFFFFFFE);
 		
-		while(ds_map_exists(self._SentPacketRegistryId,_intended) || ds_map_exists(self._ReceivedPacketRegistry,_intended)){
+		while(get_sent_packet(_id) || get_send_packet(_id) != undefined){
 			_intended = irandom($FFFFFFFE);
 		}
 		
@@ -25,12 +25,8 @@ function PacketManager(_manager) constructor{
 	}
 	
 	create_packet = function(_target_number,_target_data,_buffer,_reliable = false){
-		var _id = -1,
+		var _id = generate_packet_id(),
 			_packet = undefined;
-		
-		do{
-			_id = generate_packet_id();
-		}until(!get_sent_packet(_id) && get_send_packet(_id) == undefined);
 		
 		if(_reliable)
 			_packet = new ReliablePacket(_id,_target_number,_target_data,_buffer);

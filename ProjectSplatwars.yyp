@@ -117,6 +117,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Communities","folderPath":"folders/Scripts/Network Scripts/Communities.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Enums","folderPath":"folders/Scripts/Network Scripts/Enums.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Network Global Functions","folderPath":"folders/Scripts/Network Scripts/Network Global Functions.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Packets","folderPath":"folders/Scripts/Network Scripts/Packets.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Stations","folderPath":"folders/Scripts/Network Scripts/Stations.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Paint Manager Scripts","folderPath":"folders/Scripts/Paint Manager Scripts.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Projectile Scripts","folderPath":"folders/Scripts/Projectile Scripts.yy",},
@@ -164,7 +165,6 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Stages","folderPath":"folders/Tile Sets/Stages.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"PaintResort","folderPath":"folders/Tile Sets/Stages/PaintResort.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Packets","folderPath":"folders/Scripts/Network Scripts/Packets.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"controllerblacklist.csv","CopyToMask":-1,"filePath":"datafiles",},
