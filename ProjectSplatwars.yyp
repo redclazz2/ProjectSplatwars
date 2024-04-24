@@ -164,6 +164,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Stages","folderPath":"folders/Tile Sets/Stages.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"PaintResort","folderPath":"folders/Tile Sets/Stages/PaintResort.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Packets","folderPath":"folders/Scripts/Network Scripts/Packets.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"controllerblacklist.csv","CopyToMask":-1,"filePath":"datafiles",},
@@ -243,6 +244,7 @@
     {"id":{"name":"input_player_import","path":"scripts/input_player_import/input_player_import.yy",},},
     {"id":{"name":"__input_steam_handles_changed","path":"scripts/__input_steam_handles_changed/__input_steam_handles_changed.yy",},},
     {"id":{"name":"input_debug_all_input","path":"scripts/input_debug_all_input/input_debug_all_input.yy",},},
+    {"id":{"name":"ReliablePacket","path":"scripts/ReliablePacket/ReliablePacket.yy",},},
     {"id":{"name":"AgentPlayerShoot","path":"scripts/AgentPlayerShoot/AgentPlayerShoot.yy",},},
     {"id":{"name":"input_source_share","path":"scripts/input_source_share/input_source_share.yy",},},
     {"id":{"name":"__scribble_class_font","path":"scripts/__scribble_class_font/__scribble_class_font.yy",},},
@@ -548,6 +550,7 @@
     {"id":{"name":"__input_gamepad_set_blacklist","path":"scripts/__input_gamepad_set_blacklist/__input_gamepad_set_blacklist.yy",},},
     {"id":{"name":"BubbleActiveState","path":"scripts/BubbleActiveState/BubbleActiveState.yy",},},
     {"id":{"name":"AgentPlayerSubmerged","path":"scripts/AgentPlayerSubmerged/AgentPlayerSubmerged.yy",},},
+    {"id":{"name":"Packet","path":"scripts/Packet/Packet.yy",},},
     {"id":{"name":"plchldr_square_9","path":"sprites/plchldr_square_9/plchldr_square_9.yy",},},
     {"id":{"name":"plchldr_wall_5","path":"sprites/plchldr_wall_5/plchldr_wall_5.yy",},},
     {"id":{"name":"__shd_scribble_msdf","path":"shaders/__shd_scribble_msdf/__shd_scribble_msdf.yy",},},
