@@ -8,6 +8,7 @@
   "inheritLayers": false,
   "instanceCreationOrder": [
     {"name":"inst_13057E98","path":"rooms/rm_vs_PaintResort/rm_vs_PaintResort.yy",},
+    {"name":"inst_CAA8910","path":"rooms/rm_vs_PaintResort/rm_vs_PaintResort.yy",},
   ],
   "isDnd": false,
   "layers": [
@@ -45,6 +46,11 @@
     {"resourceType":"GMRInstanceLayer","resourceVersion":"1.0","name":"Projectile","depth":300,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[],"layers":[],"properties":[],"userdefinedDepth":false,"visible":true,},
     {"resourceType":"GMRInstanceLayer","resourceVersion":"1.0","name":"Instances","depth":400,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_13057E98","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"oPaintManager","path":"objects/oPaintManager/oPaintManager.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":-64.0,"y":0.0,},
+        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_CAA8910","colour":4294967295,"frozen":false,"hasCreationCode":true,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"oAgentSniperDummie","path":"objects/oAgentSniperDummie/oAgentSniperDummie.yy",},"properties":[
+            {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"oAgentSniperDummie","path":"objects/oAgentSniperDummie/oAgentSniperDummie.yy",},"propertyId":{"name":"trigger_size","path":"objects/oAgentSniperDummie/oAgentSniperDummie.yy",},"value":"128",},
+            {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"oAgentSniperDummie","path":"objects/oAgentSniperDummie/oAgentSniperDummie.yy",},"propertyId":{"name":"attack_speed","path":"objects/oAgentSniperDummie/oAgentSniperDummie.yy",},"value":"1",},
+            {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"oAgentSniperDummie","path":"objects/oAgentSniperDummie/oAgentSniperDummie.yy",},"propertyId":{"name":"is_debugging","path":"objects/oAgentSniperDummie/oAgentSniperDummie.yy",},"value":"True",},
+          ],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":96.0,"y":256.0,},
       ],"layers":[],"properties":[],"userdefinedDepth":false,"visible":true,},
     {"resourceType":"GMRTileLayer","resourceVersion":"1.1","name":"Floors1","depth":500,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"properties":[],"tiles":{"SerialiseHeight":60,"SerialiseWidth":59,"TileCompressedData":[
 -17,8,1,536870914,-26,8,1,268435461,-31,8,2,3,5,-57,8,1,3,-15,8,1,5,-31,8,2,4,6,-6,1,4,6,8,8,2,-3,8,1,3,-3,8,1,536870914,-27,8,1,5,-11,8,1,3,-18,8,1,3,-39,8,1,3,-18,8,

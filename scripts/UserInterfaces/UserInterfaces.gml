@@ -177,7 +177,7 @@ function UserInterfaceTutorial() : IUserInterface() constructor{
 	//Llamado al jugador para verificar su instancia en el mapa
 	pubsub_publish("CreateLocalControllableCharacter",[AgentTeamTypes.ALPHA,AgentTeamChannelTypes.ALPHA]);
 	player_instance = configuration_get_gameplay_property("current_local_player_instance");
-	pubsub_publish("EnableLocalInputListening");
+	pubsub_publish("EnableLocalInputListening",undefined);
 	
 	//Variables para saltarse el tutorial
 	time_in_screen = room_speed * 15;
@@ -205,7 +205,7 @@ function UserInterfaceTutorial() : IUserInterface() constructor{
 		//Funcionalidad para saltar el tutorial
 		if(time_in_screen>0){
 			draw_sprite_ext(sWhitePixel,0,(x_screen/2)-75,y_screen-12,150,12,0,c_black,0.7);
-			skip_text = scribble("[fSubtitleFont][fa_center][blink][c_yellow]Hold anywhere " + string(ceil((time_to_skip/room_speed) - (elapsed_time_to_skip/room_speed))) + " secs to skip");
+			skip_text = scribble("[fSubtitleFont][fa_center][blink][c_yellow]Hold within " + string(ceil((time_to_skip/room_speed) - (elapsed_time_to_skip/room_speed))) + " secs to skip");
 			skip_text.draw(x_screen/2,y_screen-10);
 		}
 		
@@ -280,7 +280,16 @@ function UserInterfaceTutorial() : IUserInterface() constructor{
 		//Funcionalidad para saltar el tutorial
 		if(time_in_screen>0){
 		time_in_screen--;
-		if device_mouse_check_button(0,mb_any){
+		//Variables de detección de area
+		var touch_x = device_mouse_x_to_gui(0);
+		var touch_y = device_mouse_y_to_gui(0);
+		
+		var rect_x1 = 87; // Coordenada X del borde izquierdo del rectángulo
+		var rect_y1 = 168; // Coordenada Y del borde superior del rectángulo
+		var rect_x2 = 237; // Coordenada X del borde derecho del rectángulo
+		var rect_y2 = 180; // Coordenada Y del borde inferior del rectángulo
+		
+		if (device_mouse_check_button(0,mb_any) && touch_x >= rect_x1 && touch_x <= rect_x2 && touch_y >= rect_y1 && touch_y <= rect_y2){
 			elapsed_time_to_skip++;
 		}else{
 			elapsed_time_to_skip = 0;

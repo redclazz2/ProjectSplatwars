@@ -429,6 +429,7 @@
     {"id":{"name":"plchldr_red_r_8","path":"sprites/plchldr_red_r_8/plchldr_red_r_8.yy",},},
     {"id":{"name":"plchldr_surface_4_8","path":"sprites/plchldr_surface_4_8/plchldr_surface_4_8.yy",},},
     {"id":{"name":"plchldr_go_9_8","path":"sprites/plchldr_go_9_8/plchldr_go_9_8.yy",},},
+    {"id":{"name":"oAgentSniperDummie","path":"objects/oAgentSniperDummie/oAgentSniperDummie.yy",},},
     {"id":{"name":"input_color_set","path":"scripts/input_color_set/input_color_set.yy",},},
     {"id":{"name":"input_trigger_effect_get_state","path":"scripts/input_trigger_effect_get_state/input_trigger_effect_get_state.yy",},},
     {"id":{"name":"input_accessibility_verb_cooldown_get","path":"scripts/input_accessibility_verb_cooldown_get/input_accessibility_verb_cooldown_get.yy",},},
