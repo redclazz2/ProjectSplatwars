@@ -2,6 +2,7 @@ function ReliablePacket(_id,_target_number,_target_data,_buffer)
 	:Packet(_id,_target_number,_target_data,_buffer) constructor{
 	
 	confirmation_map = ds_map_create();
+	timeout = 0;
 	
 	for(var i = 0; i < _target_number; i ++){
 		ds_map_add(confirmation_map,_target_data[i], false);
@@ -19,6 +20,8 @@ function ReliablePacket(_id,_target_number,_target_data,_buffer)
 		for(var i = 0; i < array_length(keys); i ++){
 			if(!ds_map_find_value(confirmation_map,keys[i])) _return = false;
 		}
+		
+		timeout++;
 		
 		return _return;
 	}

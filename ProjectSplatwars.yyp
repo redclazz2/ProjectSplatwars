@@ -661,6 +661,7 @@
     {"id":{"name":"__input_class_verb_state","path":"scripts/__input_class_verb_state/__input_class_verb_state.yy",},},
     {"id":{"name":"plchldr_letter_i_8","path":"sprites/plchldr_letter_i_8/plchldr_letter_i_8.yy",},},
     {"id":{"name":"__scribble_class_null_element","path":"scripts/__scribble_class_null_element/__scribble_class_null_element.yy",},},
+    {"id":{"name":"PacketManager","path":"scripts/PacketManager/PacketManager.yy",},},
     {"id":{"name":"TileSetWalls","path":"tilesets/TileSetWalls/TileSetWalls.yy",},},
     {"id":{"name":"plchldr_green_x_8","path":"sprites/plchldr_green_x_8/plchldr_green_x_8.yy",},},
     {"id":{"name":"__input_load_sdl2_from_string_internal","path":"scripts/__input_load_sdl2_from_string_internal/__input_load_sdl2_from_string_internal.yy",},},

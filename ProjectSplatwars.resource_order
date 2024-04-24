@@ -422,6 +422,7 @@
     {"name":"__input_class_verb_state","order":16,"path":"scripts/__input_class_verb_state/__input_class_verb_state.yy",},
     {"name":"plchldr_letter_i_8","order":11,"path":"sprites/plchldr_letter_i_8/plchldr_letter_i_8.yy",},
     {"name":"__scribble_class_null_element","order":4,"path":"scripts/__scribble_class_null_element/__scribble_class_null_element.yy",},
+    {"name":"PacketManager","order":2,"path":"scripts/PacketManager/PacketManager.yy",},
     {"name":"TileSetWalls","order":3,"path":"tilesets/TileSetWalls/TileSetWalls.yy",},
     {"name":"plchldr_green_x_8","order":11,"path":"sprites/plchldr_green_x_8/plchldr_green_x_8.yy",},
     {"name":"__input_load_sdl2_from_string_internal","order":9,"path":"scripts/__input_load_sdl2_from_string_internal/__input_load_sdl2_from_string_internal.yy",},
