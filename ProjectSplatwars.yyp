@@ -892,6 +892,7 @@
     {"id":{"name":"plchldr_main_8","path":"sprites/plchldr_main_8/plchldr_main_8.yy",},},
     {"id":{"name":"scribble_fallback_font","path":"fonts/scribble_fallback_font/scribble_fallback_font.yy",},},
     {"id":{"name":"plchldr_tile_flags_8","path":"sprites/plchldr_tile_flags_8/plchldr_tile_flags_8.yy",},},
+    {"id":{"name":"sLowHealth","path":"sprites/sLowHealth/sLowHealth.yy",},},
     {"id":{"name":"plchldr_saveload_8","path":"sprites/plchldr_saveload_8/plchldr_saveload_8.yy",},},
     {"id":{"name":"input_hotswap_params_set","path":"scripts/input_hotswap_params_set/input_hotswap_params_set.yy",},},
     {"id":{"name":"__scribble_gen_3_devanagari","path":"scripts/__scribble_gen_3_devanagari/__scribble_gen_3_devanagari.yy",},},

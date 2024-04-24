@@ -19,6 +19,8 @@ function AgentMainWeapon(
 	PaintWidth = _WeaponStats.PaintWidth;
 	PaintHeight = _WeaponStats.PaintHeight;
 	Consumption = _WeaponStats.Consumption;
+	MaxAmmo = _WeaponStats.MaxAmmo;
+	AmmoRegenRate = _WeaponStats.AmmoRegenRate;
 	Special = _WeaponStats.Special;
 	ProjectileDirection = 0;
 	
@@ -55,6 +57,8 @@ function AgentMainWeapon(
 	}
 	
 	Draw = function(){}
+	
+	DrawGUI = function(){}
 
 	CleanUp = function(){
 		delete WeaponProyectile;
