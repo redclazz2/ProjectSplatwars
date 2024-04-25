@@ -27,6 +27,7 @@ event_inherited();
 		health_active			: 1000,
 		health_regen			: self.stats.health_regen_unsubmerged,
 		health_regen_cooldown	: self.stats.health_regen_cooldown_unsubmerged,
+		charge					: 0
 	};
 	
 	latest_action = {
@@ -37,6 +38,20 @@ event_inherited();
 		able_to_weapon			: true,
 		able_to_heal			: true,
 	};
+
+
+#endregion
+
+#region Special Charge
+
+	receive_charge = function(_charge) {
+		
+		active_stats[$ "charge"] += _charge;
+		show_debug_message(active_stats[$ "charge"]);
+	};
+	
+	pubsub_subscribe("GetChargeData", receive_charge);
+
 #endregion
 
 #region Step Functions

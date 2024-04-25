@@ -1,7 +1,7 @@
 function Projectile(_team,_teamChannel,_damage, 
 	_spreadmin, _spreadmax, _range, _speed,
 	_paintWidth, _paintHeight,
-	_direction)
+	_direction, _is_local = false)
 	:AgentDescription(_team,_teamChannel) constructor {
 		
 	Damage = _damage;
@@ -12,4 +12,5 @@ function Projectile(_team,_teamChannel,_damage,
 	PaintWidth = _paintWidth;
 	PaintHeight = _paintHeight;
 	Direction = _direction;
+	isLocal = _is_local;
 }

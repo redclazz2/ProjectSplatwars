@@ -10,6 +10,7 @@ spreadmax = self[$ "Spreadmax"] ?? 20;
 paintWidth = self[$ "PaintWidth"] ?? 0.25;
 paintHeight = self[$ "PaintHeight"] ?? 0.25;
 aimDir = self[$ "Direction"] ?? 0;
+isLocal = self[$ "isLocal"] ?? false;
 
 spread = random_range(spreadmin,spreadmax);
 image_angle = aimDir + spread;
@@ -20,13 +21,14 @@ function createPaint(bullet) {
 		_y = bullet.y, 
 		_channel = bullet.get_base_agent_property("TeamChannel"),
 		_height = bullet.paintHeight,
-		_width = bullet.paintWidth;
+		_width = bullet.paintWidth,
+		_is_local = bullet.isLocal;
 		
 	pubsub_publish("PaintSurfaceApply", 
 		new PaintItemStructure(_x, _y, _width, 
 		_height, sSplat01, _channel));
 		
-	pubsub_publish("PaintSpecialCharge", [_x, _y, bullet.get_base_agent_property("Team")]);
+	pubsub_publish("PaintSpecialCharge", [_x, _y, bullet.get_base_agent_property("Team"), _is_local]);
 }
 
 paintTimer = time_source_create(

@@ -5,7 +5,6 @@
 	
 	grid_cells_width = 50;
 	grid_cells_height = 30;
-	current_charge = 0;
 	
 	// Create grid for charging up special
 	paint_grid = ds_grid_create(grid_cells_width, grid_cells_height);
@@ -72,6 +71,7 @@
 		var _x = _data[0];
 		var _y = _data[1];
 		var _val = _data[2];
+		var _is_local = _data[3];
 		
 		var _charge = 0,  // Added charge to special meter
 		_arr = get_grid_coordinates(_x, _y),
@@ -85,12 +85,11 @@
 		
 		ds_grid_set(paint_grid, floor(_arr[0]), floor(_arr[1]), _val);
 		
-		show_debug_message(_charge);
-		
 		// Sends the value in _charge to its subscribers
-		pubsub_publish("GetChargeData", _charge);
+		if (_is_local == 0) {  
+			pubsub_publish("GetChargeData", _charge);
+		}
 		
-		current_charge = _charge;
 		return _charge;
 	}
 	
