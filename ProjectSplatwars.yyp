@@ -165,6 +165,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Stages","folderPath":"folders/Tile Sets/Stages.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"PaintResort","folderPath":"folders/Tile Sets/Stages/PaintResort.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Protocols","folderPath":"folders/Scripts/Network Scripts/Protocols.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"controllerblacklist.csv","CopyToMask":-1,"filePath":"datafiles",},
@@ -193,6 +194,8 @@
     {"id":{"name":"tl_tile_flags_8","path":"tilesets/tl_tile_flags_8/tl_tile_flags_8.yy",},},
     {"id":{"name":"__input_class_gamepad_mapping","path":"scripts/__input_class_gamepad_mapping/__input_class_gamepad_mapping.yy",},},
     {"id":{"name":"plchldr_wall_4_8","path":"sprites/plchldr_wall_4_8/plchldr_wall_4_8.yy",},},
+    {"id":{"name":"Protocol","path":"scripts/Protocol/Protocol.yy",},},
+    {"id":{"name":"ProtocolManager","path":"scripts/ProtocolManager/ProtocolManager.yy",},},
     {"id":{"name":"input_check_released","path":"scripts/input_check_released/input_check_released.yy",},},
     {"id":{"name":"input_player_get_invalid_gamepad_bindings","path":"scripts/input_player_get_invalid_gamepad_bindings/input_player_get_invalid_gamepad_bindings.yy",},},
     {"id":{"name":"input_source_get_array","path":"scripts/input_source_get_array/input_source_get_array.yy",},},

@@ -12,14 +12,12 @@ communicator_udp = undefined;
 communicator_tcp = undefined;
 station_manager = undefined;
 community_manager = undefined;
-packet_manager = undefined;
 
 function get_network_configuration(property){
 	return network_configuration[$ property];
 }
 
 function initialize_network_framework(){
-	packet_manager = new PacketManager(self);
 	station_manager = new StationManager(self);
 	community_manager = new CommunityManager(self);	
 	
@@ -50,12 +48,6 @@ function destroy_network_framework(){
 		communicator_tcp.destroy();
 		delete communicator_tcp;
 		communicator_tcp = undefined;
-	}
-	
-	if(packet_manager != undefined){
-		packet_manager.destroy();
-		delete packet_manager;
-		packet_manager = undefined;
 	}
 }
 

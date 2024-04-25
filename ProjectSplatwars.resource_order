@@ -3,6 +3,7 @@
     {"name":"Communities","order":1,"path":"folders/Scripts/Network Scripts/Communities.yy",},
     {"name":"Packets","order":3,"path":"folders/Scripts/Network Scripts/Packets.yy",},
     {"name":"Stations","order":2,"path":"folders/Scripts/Network Scripts/Stations.yy",},
+    {"name":"Protocols","order":4,"path":"folders/Scripts/Network Scripts/Protocols.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"__input_config_external_data","order":2,"path":"scripts/__input_config_external_data/__input_config_external_data.yy",},
@@ -20,6 +21,7 @@
     {"name":"tl_tile_flags_8","order":1,"path":"tilesets/tl_tile_flags_8/tl_tile_flags_8.yy",},
     {"name":"__input_class_gamepad_mapping","order":7,"path":"scripts/__input_class_gamepad_mapping/__input_class_gamepad_mapping.yy",},
     {"name":"plchldr_wall_4_8","order":54,"path":"sprites/plchldr_wall_4_8/plchldr_wall_4_8.yy",},
+    {"name":"Protocol","order":1,"path":"scripts/Protocol/Protocol.yy",},
     {"name":"input_check_released","order":2,"path":"scripts/input_check_released/input_check_released.yy",},
     {"name":"input_player_get_invalid_gamepad_bindings","order":8,"path":"scripts/input_player_get_invalid_gamepad_bindings/input_player_get_invalid_gamepad_bindings.yy",},
     {"name":"input_source_get_array","order":4,"path":"scripts/input_source_get_array/input_source_get_array.yy",},
