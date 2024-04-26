@@ -2,8 +2,8 @@
   "FolderOrderSettings": [
     {"name":"Communities","order":1,"path":"folders/Scripts/Network Scripts/Communities.yy",},
     {"name":"Packets","order":3,"path":"folders/Scripts/Network Scripts/Packets.yy",},
-    {"name":"Stations","order":2,"path":"folders/Scripts/Network Scripts/Stations.yy",},
     {"name":"Protocols","order":4,"path":"folders/Scripts/Network Scripts/Protocols.yy",},
+    {"name":"Stations","order":2,"path":"folders/Scripts/Network Scripts/Stations.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"__input_config_external_data","order":2,"path":"scripts/__input_config_external_data/__input_config_external_data.yy",},

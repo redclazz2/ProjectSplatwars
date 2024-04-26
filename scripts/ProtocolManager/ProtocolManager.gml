@@ -3,16 +3,34 @@ function ProtocolManager(_manager) constructor{
 	protocol_registry = ds_map_create();
 	packet_manager = new PacketManager(self);
 	
-	create_protocol = function(type){
+	generate_protocol_id = function(){
+		var _intended = irandom($FFFFFFFE);
+		
+		while(ds_map_exists(protocol_registry,_intended)){
+			_intended = irandom($FFFFFFFE);
+		}
+		
+		return _intended;
+	}
+	
+	create_protocol = function(type,groupable){
+		var _id = generate_protocol_id(),
+			_protocol = undefined;
+		
 		switch(type){
 			//Unreliable
 			case 0:
+				_protocol = new Protocol(_id,self,false,groupable);
 			break;
 			
 			//Reliable
 			case 1:
+				_protocol = new Protocol(_id,self,true,groupable);
 			break;
 		}
+		
+		if(ds_exists(protocol_registry,ds_type_map)) 
+			ds_map_add(protocol_registry,_id,_protocol);
 	}	
 	
 	destroy_protocol = function(_id){
@@ -23,9 +41,16 @@ function ProtocolManager(_manager) constructor{
 	
 	protocol_tick = function(){
 		logger(LOGLEVEL.INFO,"Protocol Tick","OEPF - PROTOCOL MANAGER");
+		
+		//Protocol send data for individuals and groupables
 	}
 	
 	destroy = function(){
+		if(time_source_exists(protocol_clock)){
+			time_source_stop(protocol_clock);
+			time_source_destroy(protocol_clock);
+		}
+		
 		if(packet_manager != undefined){
 			packet_manager.destroy();
 			delete packet_manager;
@@ -42,7 +67,5 @@ function ProtocolManager(_manager) constructor{
 		-1
 	);
 	
-	
-	
-	
+	time_source_start(protocol_clock);
 }
