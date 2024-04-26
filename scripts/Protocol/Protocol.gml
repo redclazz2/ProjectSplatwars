@@ -52,21 +52,28 @@ function Protocol(
 		return ds_priority_size(packet_queue);
 	}
 	
+	pop_latest_packet = function(){
+		return ds_priority_delete_min(packet_queue);
+	}
+	
+	peak_latest_packet = function(){
+		return ds_priority_find_min(packet_queue);
+	}
+	
 	protocol_tick = function(){
 		var _return = undefined;
 		
 		if(!reliable){
-			_return = ds_priority_delete_min(packet_queue)
+			_return = pop_latest_packet();
 		}else{
-			var _latest = ds_priority_find_min(packet_queue);
-			
-			_return = _latest;
-			
-			if(_latest.check_recieved_by_all() || _latest.timeout > 20){
-				ds_priority_delete_min(packet_queue);
-			}
+			_return = peak_latest_packet();
 		}
 			
 		return _return;
+	}
+
+	destroy = function(){
+		if(ds_exists(packet_queue,ds_type_priority))
+			ds_priority_destroy(packet_queue);
 	}
 }

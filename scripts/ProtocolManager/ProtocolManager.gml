@@ -31,11 +31,16 @@ function ProtocolManager(_manager) constructor{
 		
 		if(ds_exists(protocol_registry,ds_type_map)) 
 			ds_map_add(protocol_registry,_id,_protocol);
+		
+		return _id;
 	}	
 	
 	destroy_protocol = function(_id){
 		if(ds_map_exists(protocol_registry,_id)){
-			//Destroy Protocol
+			var current_protocol = ds_map_find_value(protocol_registry,_id);
+			current_protocol.destroy();
+			
+			ds_map_delete(protocol_registry,_id);
 		}
 	}
 	
@@ -46,6 +51,15 @@ function ProtocolManager(_manager) constructor{
 	}
 	
 	destroy = function(){
+		var protocols = ds_map_values_to_array(protocol_registry);
+		
+		for(var i = 0; i < array_length(protocols); i ++){
+			destroy_protocol(protocols[i]);
+		}
+		
+		if(ds_exists(protocol_registry,ds_type_map))
+			ds_map_destroy(protocol_registry);
+		
 		if(time_source_exists(protocol_clock)){
 			time_source_stop(protocol_clock);
 			time_source_destroy(protocol_clock);

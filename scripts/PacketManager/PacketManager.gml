@@ -60,13 +60,24 @@ function PacketManager(_manager) constructor{
 	}
 	
 	delete_packet_from_send_registry = function(packet_id){
-		if(get_send_packet(packet_id) != undefined){ //Packet exists
+		var current_packet = get_send_packet(packet_id);
+		
+		if(current_packet != undefined){ //Packet exists
 			ds_map_delete(send_packet_registry,packet_id); //Delete from send
 			register_sent_packet(packet_id); //Move to sent
+			
+			current_packet.destroy();
 		}	
 	}
 	
 	clear_send_registry = function(){
+		var packets = ds_map_values_to_array(send_packet_registry);
+		
+		for(var i = 0; i < array_length(packets); i++){
+			var packet = ds_map_find_value(send_packet_registry,packets[i]);
+			packet.destroy();
+		}
+		
 		ds_map_clear(send_packet_registry);
 	}
 	
