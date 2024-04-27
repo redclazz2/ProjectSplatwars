@@ -80,6 +80,10 @@ function network_manager_notify(source,command,data = undefined){
 		case NetworkManagerNotificationKey.CommunityManager:
 			handle_community_manager_notification(command,data);
 		break;
+		
+		case NetworkManagerNotificationKey.ProtocolManager:
+			handle_protocol_manager_notification(command,data);
+		break;
 	}
 }
 
@@ -169,6 +173,15 @@ function handle_communicator_tcp_notification(command,data){
 	}
 }
 	
+function handle_protocol_manager_notification(command,data){
+	switch(command){
+		case ProtocolManagerCommands.NonGroupableMessage:
+			//Set UDP Writer
+			//Write!
+		break;
+	}
+}
+
 function handle_external_notification(command,data){
 	switch(command){
 		case NetworkMatchAction.StartMatchMaking:

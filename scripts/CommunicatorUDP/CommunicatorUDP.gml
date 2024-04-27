@@ -8,9 +8,7 @@ enum CommunicatorUDPNotificationCommands{
 function CommunicatorUDP(_manager):ICommunicator(_manager) constructor{
 	ammount_of_connections	= 10;
 	range_inferior_port		= 1024;
-	range_superior_port		= 65535;
-	//TODO white_list
-	
+	range_superior_port		= 65535;	
 	authentication_timer	= -1;
 	authentication_attemps	= 0;
 	authentication_max_attemps = 5;

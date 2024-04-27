@@ -863,6 +863,7 @@
     {"id":{"name":"input_verb_group_is_active","path":"scripts/input_verb_group_is_active/input_verb_group_is_active.yy",},},
     {"id":{"name":"scribble_font_set_default","path":"scripts/scribble_font_set_default/scribble_font_set_default.yy",},},
     {"id":{"name":"plchldr_red_d","path":"sprites/plchldr_red_d/plchldr_red_d.yy",},},
+    {"id":{"name":"ProtocolPacketSend","path":"scripts/ProtocolPacketSend/ProtocolPacketSend.yy",},},
     {"id":{"name":"input_gamepad_check","path":"scripts/input_gamepad_check/input_gamepad_check.yy",},},
     {"id":{"name":"__scribble_get_krutidev_matra_lookup_map","path":"scripts/__scribble_get_krutidev_matra_lookup_map/__scribble_get_krutidev_matra_lookup_map.yy",},},
     {"id":{"name":"__input_class_trigger_effect_off","path":"scripts/__input_class_trigger_effect_off/__input_class_trigger_effect_off.yy",},},

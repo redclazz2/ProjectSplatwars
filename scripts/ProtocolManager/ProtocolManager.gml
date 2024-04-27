@@ -1,3 +1,7 @@
+enum ProtocolManagerCommands{
+	NonGroupableMessage,
+}
+
 function ProtocolManager(_manager) constructor{
 	manager = _manager;
 	protocol_registry = ds_map_create();
@@ -44,14 +48,38 @@ function ProtocolManager(_manager) constructor{
 		}
 	}
 	
+	notify_manager = function(command,data = undefined){
+		manager.network_manager_notify(
+			NetworkManagerNotificationKey.ProtocolManager,
+			command,
+			data
+		);
+	}
+	
 	protocol_tick = function(){
 		logger(LOGLEVEL.INFO,"Protocol Tick","OEPF - PROTOCOL MANAGER");
 		
-		//Protocol send data for individuals and groupables
+		var protocols = ds_map_keys_to_array(protocol_registry),
+			protocol_count = array_length(protocols);
+			//groupable_buffer = buffer_create(256,buffer_grow,1);
+		
+		for(var i = 0; i < protocol_count; i++){
+			var current_protocol = ds_map_find_value(protocol_registry,protocols[i]);
+			if(current_protocol.groupable){
+				//TODO: Groupable Logic
+			}else{
+				var packet_structure = current_protocol.protocol_tick();
+				
+				notify_manager(
+					ProtocolManagerCommands.NonGroupableMessage,
+					packet_structure
+				);
+			}	
+		}
 	}
 	
 	destroy = function(){
-		var protocols = ds_map_values_to_array(protocol_registry);
+		var protocols = ds_map_keys_to_array(protocol_registry);
 		
 		for(var i = 0; i < array_length(protocols); i ++){
 			destroy_protocol(protocols[i]);

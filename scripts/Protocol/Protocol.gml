@@ -61,12 +61,42 @@ function Protocol(
 	}
 	
 	protocol_tick = function(){
-		var _return = undefined;
+		var _return = [],
+			_packet_id = -1,
+			_packet_manager = manager.packet_manager,
+			_packet_number = 0,
+			_packet = undefined;
 		
 		if(!reliable){
-			_return = pop_latest_packet();
-		}else{
-			_return = peak_latest_packet();
+			_packet_number = queue_lenght();
+			array_insert(_return,array_length(_return),false);
+			
+			for(var i = 0; i < _packet_number; i ++){
+				_packet_id = peak_latest_packet();
+				_packet = _packet_manager.get_send_packet(_packet_id);
+				
+				if(_packet.sent){
+					_packet_manager.delete_packet_from_send_registry(_packet_id);
+					pop_latest_packet();
+				}else{
+					array_insert(_return,array_length(_return),_packet);
+				}
+			}
+		}else{			
+			_packet_number = queue_lenght();
+			array_insert(_return,array_length(_return),true);
+			
+			for(var i = 0; i < _packet_number; i ++){
+				_packet_id = peak_latest_packet();
+				_packet = _packet_manager.get_send_packet(_packet_id);
+				
+				if(_packet.check_recieved_by_all() || _packet.timeout >= 20){
+					_packet_manager.delete_packet_from_send_registry(_packet_id);
+					pop_latest_packet();
+				}else{
+					array_insert(_return,array_length(_return),_packet);
+				}
+			}
 		}
 			
 		return _return;

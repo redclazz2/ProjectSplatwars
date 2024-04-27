@@ -44,6 +44,11 @@ function PacketManager(_manager) constructor{
 		ds_map_add(sent_packet_registry,packet_id,0);
 	}
 	
+	register_reliable_confirmation = function(station_id,packet_id){
+		var packet = get_send_packet(packet_id);
+		packet.set_confirmation(station_id);
+	}
+	
 	//Returns true or false
 	get_sent_packet = function(packet_id){
 		return ds_map_exists(sent_packet_registry,packet_id);
@@ -71,7 +76,7 @@ function PacketManager(_manager) constructor{
 	}
 	
 	clear_send_registry = function(){
-		var packets = ds_map_values_to_array(send_packet_registry);
+		var packets = ds_map_keys_to_array(send_packet_registry);
 		
 		for(var i = 0; i < array_length(packets); i++){
 			var packet = ds_map_find_value(send_packet_registry,packets[i]);
@@ -96,6 +101,7 @@ function PacketManager(_manager) constructor{
 	}
 	
 	destroy = function(){
+		clear_all_registry();
 		if(ds_exists(send_packet_registry,ds_type_map)) ds_map_destroy(send_packet_registry);
 		if(ds_exists(sent_packet_registry,ds_type_map)) ds_map_destroy(sent_packet_registry);
 		if(ds_exists(recieved_packet_registry,ds_type_map)) ds_map_destroy(recieved_packet_registry);

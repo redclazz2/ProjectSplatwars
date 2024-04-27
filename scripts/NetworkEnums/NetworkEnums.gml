@@ -14,6 +14,7 @@ enum NetworkManagerNotificationKey{
 	CommunicatorTCP,
 	External,
 	CommunityManager,
+	ProtocolManager,
 }
 
 enum NetworkMatchAction{
