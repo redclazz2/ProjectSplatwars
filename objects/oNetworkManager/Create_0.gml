@@ -178,6 +178,8 @@ function handle_protocol_manager_notification(command,data){
 		case ProtocolManagerCommands.NonGroupableMessage:
 			//Set UDP Writer
 			//Write!
+			var is_reliable = array_shift(data);
+			communicator_udp.execute_send_protocol_message();
 		break;
 	}
 }

@@ -69,11 +69,11 @@ function ProtocolManager(_manager) constructor{
 				//TODO: Groupable Logic
 			}else{
 				var packet_structure = current_protocol.protocol_tick();
-				
-				notify_manager(
-					ProtocolManagerCommands.NonGroupableMessage,
-					packet_structure
-				);
+				if(array_length(packet_structure) > 0)
+					notify_manager(
+						ProtocolManagerCommands.NonGroupableMessage,
+						packet_structure
+					);
 			}	
 		}
 	}

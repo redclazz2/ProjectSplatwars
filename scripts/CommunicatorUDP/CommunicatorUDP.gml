@@ -56,6 +56,10 @@ function CommunicatorUDP(_manager):ICommunicator(_manager) constructor{
 			case 0: //Port Authentication
 				change_reader(new PortAuthorizationRecieved(self));
 			break;
+			
+			case 1: //Recieved Protocol Data
+				change_reader();
+			break;
 		}
 		
 		reader.read(_ip,_port,_buffer);
@@ -80,5 +84,11 @@ function CommunicatorUDP(_manager):ICommunicator(_manager) constructor{
 	
 	finalize_port_authentication = function(){
 		time_source_stop(authentication_timer);
+	}
+	
+	execute_send_protocol_message = function(_packets,_is_reliable){
+		change_writer(new ProtocolPacketSend(self,_packets,_is_reliable,
+			manager.packet_manager,manager.station_manager));
+		writer.write();
 	}
 }
