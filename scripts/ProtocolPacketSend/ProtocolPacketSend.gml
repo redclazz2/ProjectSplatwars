@@ -1,4 +1,4 @@
-function ProtocolPacketSend(_communicator):IWriter(_communicator) constructor{
+function ProtocolPacketSend(_communicator,_packets):IWriter(_communicator) constructor{
 	write = function(){
 		var buffer = communicator.buffer;
 		

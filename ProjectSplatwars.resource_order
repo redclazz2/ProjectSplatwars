@@ -1,9 +1,13 @@
 {
   "FolderOrderSettings": [
+    {"name":"Input","order":1,"path":"folders/Extensions/Input.yy",},
+    {"name":"Logger","order":2,"path":"folders/Extensions/Logger.yy",},
+    {"name":"Scribble","order":3,"path":"folders/Extensions/Scribble.yy",},
     {"name":"Communities","order":1,"path":"folders/Scripts/Network Scripts/Communities.yy",},
     {"name":"Packets","order":3,"path":"folders/Scripts/Network Scripts/Packets.yy",},
     {"name":"Protocols","order":4,"path":"folders/Scripts/Network Scripts/Protocols.yy",},
     {"name":"Stations","order":2,"path":"folders/Scripts/Network Scripts/Stations.yy",},
+    {"name":"MultiClient","order":4,"path":"folders/Extensions/MultiClient.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"__input_config_external_data","order":2,"path":"scripts/__input_config_external_data/__input_config_external_data.yy",},
@@ -627,6 +631,7 @@
     {"name":"scribble_anim_shake","order":6,"path":"scripts/scribble_anim_shake/scribble_anim_shake.yy",},
     {"name":"plchldr_block_1_8","order":1,"path":"sprites/plchldr_block_1_8/plchldr_block_1_8.yy",},
     {"name":"input_window_has_focus","order":9,"path":"scripts/input_window_has_focus/input_window_has_focus.yy",},
+    {"name":"MultiClientGetClientID","order":1,"path":"scripts/MultiClientGetClientID/MultiClientGetClientID.yy",},
     {"name":"__input_get_time","order":17,"path":"scripts/__input_get_time/__input_get_time.yy",},
     {"name":"scribble_font_exists","order":7,"path":"scripts/scribble_font_exists/scribble_font_exists.yy",},
     {"name":"plchldr_yellow_u_8","order":22,"path":"sprites/plchldr_yellow_u_8/plchldr_yellow_u_8.yy",},
