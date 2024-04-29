@@ -12,6 +12,7 @@ communicator_udp = undefined;
 communicator_tcp = undefined;
 station_manager = undefined;
 community_manager = undefined;
+protocol_manager = undefined;
 
 function get_network_configuration(property){
 	return network_configuration[$ property];
@@ -20,6 +21,7 @@ function get_network_configuration(property){
 function initialize_network_framework(){
 	station_manager = new StationManager(self);
 	community_manager = new CommunityManager(self);	
+	protocol_manager = new ProtocolManager(self);
 	
 	communicator_udp = new CommunicatorUDP(self);
 	communicator_udp.create();
@@ -30,6 +32,12 @@ function destroy_network_framework(){
 		community_manager.destroy();
 		delete community_manager;
 		community_manager = undefined;
+	}
+	
+	if(protocol_manager != undefined){
+		protocol_manager.destroy();
+		delete protocol_manager;
+		protocol_manager = undefined;
 	}
 	
 	if(station_manager != undefined){
@@ -176,10 +184,8 @@ function handle_communicator_tcp_notification(command,data){
 function handle_protocol_manager_notification(command,data){
 	switch(command){
 		case ProtocolManagerCommands.NonGroupableMessage:
-			//Set UDP Writer
-			//Write!
 			var is_reliable = array_shift(data);
-			communicator_udp.execute_send_protocol_message();
+			communicator_udp.execute_send_protocol_message(data,is_reliable);
 		break;
 	}
 }

@@ -88,7 +88,7 @@ function CommunicatorUDP(_manager):ICommunicator(_manager) constructor{
 	
 	execute_send_protocol_message = function(_packets,_is_reliable){
 		change_writer(new ProtocolPacketSend(self,_packets,_is_reliable,
-			manager.packet_manager,manager.station_manager));
+			manager.protocol_manager.packet_manager,manager.station_manager));
 		writer.write();
 	}
 }
