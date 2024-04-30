@@ -2,12 +2,12 @@
   "FolderOrderSettings": [
     {"name":"Input","order":1,"path":"folders/Extensions/Input.yy",},
     {"name":"Logger","order":2,"path":"folders/Extensions/Logger.yy",},
+    {"name":"MultiClient","order":4,"path":"folders/Extensions/MultiClient.yy",},
     {"name":"Scribble","order":3,"path":"folders/Extensions/Scribble.yy",},
     {"name":"Communities","order":1,"path":"folders/Scripts/Network Scripts/Communities.yy",},
     {"name":"Packets","order":3,"path":"folders/Scripts/Network Scripts/Packets.yy",},
     {"name":"Protocols","order":4,"path":"folders/Scripts/Network Scripts/Protocols.yy",},
     {"name":"Stations","order":2,"path":"folders/Scripts/Network Scripts/Stations.yy",},
-    {"name":"MultiClient","order":4,"path":"folders/Extensions/MultiClient.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"__input_config_external_data","order":2,"path":"scripts/__input_config_external_data/__input_config_external_data.yy",},

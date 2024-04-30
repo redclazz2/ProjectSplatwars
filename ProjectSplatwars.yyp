@@ -58,6 +58,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"26  Keyboard (Direct)","folderPath":"folders/Extensions/Input/26  Keyboard (Direct).yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"27  Combos","folderPath":"folders/Extensions/Input/27  Combos.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Logger","folderPath":"folders/Extensions/Logger.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"MultiClient","folderPath":"folders/Extensions/MultiClient.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Scribble","folderPath":"folders/Extensions/Scribble.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"(System - don't call these functions)","folderPath":"folders/Extensions/Scribble/(System - don't call these functions).yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Classes","folderPath":"folders/Extensions/Scribble/(System - don't call these functions)/Classes.yy",},
@@ -166,7 +167,6 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Stages","folderPath":"folders/Tile Sets/Stages.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"PaintResort","folderPath":"folders/Tile Sets/Stages/PaintResort.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy",},
-    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"MultiClient","folderPath":"folders/Extensions/MultiClient.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"controllerblacklist.csv","CopyToMask":-1,"filePath":"datafiles",},

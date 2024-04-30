@@ -1,9 +1,10 @@
-function Station(_id,_ip,_port,_username) constructor{
+function Station(_id,_ip,_port,_username,_connected = false) constructor{
 	station_data = {
 		id : _id,
 		ip : _ip,
 		port : _port,
-		username : _username	
+		username : _username,
+		connected: _connected
 	};
 	
 	get_station_data = function(_value){
