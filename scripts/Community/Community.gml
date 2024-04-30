@@ -11,6 +11,10 @@ function Community(
 	community_leader = _community_leader;
 	max_stations = _max_stations;
 	current_stations = ds_map_create();
+	
+	community_has_station = function(_id){
+		return ds_map_find_value(current_stations,_id);
+	}
 		
 	community_update_add_station = function(_id){
 		ds_map_add(current_stations,_id,0);

@@ -167,6 +167,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Stages","folderPath":"folders/Tile Sets/Stages.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"PaintResort","folderPath":"folders/Tile Sets/Stages/PaintResort.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Traversal","folderPath":"folders/Scripts/Network Scripts/Traversal.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"controllerblacklist.csv","CopyToMask":-1,"filePath":"datafiles",},
@@ -441,6 +442,7 @@
     {"id":{"name":"input_trigger_effect_get_pause","path":"scripts/input_trigger_effect_get_pause/input_trigger_effect_get_pause.yy",},},
     {"id":{"name":"plchldr_red_r_8","path":"sprites/plchldr_red_r_8/plchldr_red_r_8.yy",},},
     {"id":{"name":"plchldr_surface_4_8","path":"sprites/plchldr_surface_4_8/plchldr_surface_4_8.yy",},},
+    {"id":{"name":"TraversalManager","path":"scripts/TraversalManager/TraversalManager.yy",},},
     {"id":{"name":"plchldr_go_9_8","path":"sprites/plchldr_go_9_8/plchldr_go_9_8.yy",},},
     {"id":{"name":"oAgentSniperDummie","path":"objects/oAgentSniperDummie/oAgentSniperDummie.yy",},},
     {"id":{"name":"input_color_set","path":"scripts/input_color_set/input_color_set.yy",},},
