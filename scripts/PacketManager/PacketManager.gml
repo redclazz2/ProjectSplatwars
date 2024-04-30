@@ -17,7 +17,7 @@ function PacketManager(_manager) constructor{
 		*/
 		var _intended = irandom($FFFFFFFE);
 		
-		while(get_sent_packet(_id) || get_send_packet(_id) != undefined){
+		while(get_sent_packet(_intended) || get_send_packet(_intended) != undefined){
 			_intended = irandom($FFFFFFFE);
 		}
 		

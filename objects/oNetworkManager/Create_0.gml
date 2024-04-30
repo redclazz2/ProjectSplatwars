@@ -8,11 +8,12 @@ network_configuration = {
 	ConfigurationNetworkMatchAction: NetworkMatchAction.StartMatchMaking
 }
 
-communicator_udp = undefined;
-communicator_tcp = undefined;
-station_manager = undefined;
-community_manager = undefined;
-protocol_manager = undefined;
+communicator_udp	= undefined;
+communicator_tcp	= undefined;
+station_manager		= undefined;
+community_manager	= undefined;
+protocol_manager	= undefined;
+traversal_manager	= undefined;
 
 function get_network_configuration(property){
 	return network_configuration[$ property];
@@ -22,12 +23,19 @@ function initialize_network_framework(){
 	station_manager = new StationManager(self);
 	community_manager = new CommunityManager(self);	
 	protocol_manager = new ProtocolManager(self);
+	traversal_manager = new TraversalManager(self);
 	
 	communicator_udp = new CommunicatorUDP(self);
 	communicator_udp.create();
 }
 
 function destroy_network_framework(){
+	if(traversal_manager != undefined){
+		traversal_manager.destroy();
+		delete traversal_manager;
+		traversal_manager = undefined;
+	}
+	
 	if(community_manager != undefined){
 		community_manager.destroy();
 		delete community_manager;
@@ -180,6 +188,11 @@ function handle_communicator_tcp_notification(command,data){
 										1,
 										[-1000],
 										true);
+										
+		traversal_manager.probe_peer(
+			0,
+			-1000
+		);
 		break;
 		
 		case CommunicatorTCPNotificationCommands.ServerLobbyCreationFailed:

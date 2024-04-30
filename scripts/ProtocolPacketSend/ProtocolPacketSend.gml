@@ -18,8 +18,8 @@ function ProtocolPacketSend(
 		if(buffer_exists(buffer)){			
 			for(var i = 0; i < packet_number; i ++){
 				buffer_seek(buffer,buffer_seek_start,1);
-				buffer_write(buffer,buffer_u16,0);
-				buffer_write(buffer,buffer_u16,1);
+				buffer_write(buffer,buffer_u16,0);	//UDP Identificator
+				buffer_write(buffer,buffer_u16,1);	//
 				buffer_write(buffer,buffer_bool,is_realiable);
 				buffer_write(buffer,buffer_u16,packet_number);
 				

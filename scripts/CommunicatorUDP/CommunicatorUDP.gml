@@ -58,7 +58,8 @@ function CommunicatorUDP(_manager):ICommunicator(_manager) constructor{
 			break;
 			
 			case 1: //Recieved Protocol Data
-				change_reader();
+				logger(LOGLEVEL.INFO,"GOT PROTOCOL DATA","protocolidk");
+				//change_reader();
 			break;
 		}
 		

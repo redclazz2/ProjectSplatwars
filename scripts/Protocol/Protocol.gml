@@ -36,7 +36,7 @@ function Protocol(
 		return new_buffer;
 	}
 	
-	queue_data = function(_data,_targets,_stamp){		
+	queue_data = function(_data,_targets,_stamp = 0){		
 		var _buffer = data_to_buffer(_data),
 			_packet = manager.packet_manager.create_packet(
 				array_length(_targets),

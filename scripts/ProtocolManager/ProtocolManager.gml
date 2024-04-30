@@ -64,7 +64,7 @@ function ProtocolManager(_manager) constructor{
 	}
 	
 	protocol_tick = function(_protocol_manager){
-		logger(LOGLEVEL.INFO,"Protocol Tick","OEPF - PROTOCOL MANAGER");
+		//logger(LOGLEVEL.INFO,"Protocol Tick","OEPF - PROTOCOL MANAGER");
 		
 		var protocols = ds_map_keys_to_array(_protocol_manager.protocol_registry),
 			protocol_count = array_length(protocols);
