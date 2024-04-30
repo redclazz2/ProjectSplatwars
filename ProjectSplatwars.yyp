@@ -516,7 +516,6 @@
     {"id":{"name":"input_mouse_in_bounds","path":"scripts/input_mouse_in_bounds/input_mouse_in_bounds.yy",},},
     {"id":{"name":"input_held_time_released","path":"scripts/input_held_time_released/input_held_time_released.yy",},},
     {"id":{"name":"__input_gamepad_type_swap_ab","path":"scripts/__input_gamepad_type_swap_ab/__input_gamepad_type_swap_ab.yy",},},
-    {"id":{"name":"SpecialReadyState","path":"scripts/SpecialReadyState/SpecialReadyState.yy",},},
     {"id":{"name":"input_player_ghost_get","path":"scripts/input_player_ghost_get/input_player_ghost_get.yy",},},
     {"id":{"name":"plchldr_question_8","path":"sprites/plchldr_question_8/plchldr_question_8.yy",},},
     {"id":{"name":"draw_text_scribble_ext","path":"scripts/draw_text_scribble_ext/draw_text_scribble_ext.yy",},},

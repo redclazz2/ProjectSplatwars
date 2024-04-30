@@ -32,7 +32,8 @@ function AgentMainWeapon(
 		ProjectileSpeed,
 		PaintWidth,
 		PaintHeight,
-		ProjectileDirection
+		ProjectileDirection,
+		ControlType
 	);
 	
 	Shoot_on_pressed = function(){}
