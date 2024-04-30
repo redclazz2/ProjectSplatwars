@@ -27,6 +27,7 @@ event_inherited();
 		health_active			: 1000,
 		health_regen			: self.stats.health_regen_unsubmerged,
 		health_regen_cooldown	: self.stats.health_regen_cooldown_unsubmerged,
+		charge					: 0
 	};
 	
 	latest_action = {
@@ -37,6 +38,22 @@ event_inherited();
 		able_to_weapon			: true,
 		able_to_heal			: true,
 	};
+
+
+#endregion
+
+#region Special Charge
+	receive_charge = function(_charge) {
+		if (active_stats[$ "charge"] < 100) {
+			active_stats[$ "charge"] += _charge;
+		}
+		
+		if (active_stats[$ "charge"] > 100) {
+			active_stats[$ "charge"] = 100;
+		}
+	};
+	
+	pubsub_subscribe("GetChargeData", receive_charge);
 #endregion
 
 #region Step Functions
@@ -71,11 +88,12 @@ event_inherited();
 			latest_action[$ "shoot"]		  = _ActionData[$ "ShootPressed"];
 			latest_action[$ "shoot_released"] = _ActionData[$ "ShootOnReleased"];
 			
-			if (_ActionData[$ "SpecialButton"]) {
+			if (_ActionData[$ "SpecialButton"] and active_stats[$ "charge"] >= 100) {
 				instance_create_depth(x, y, -5, oBubbleSpecial, new AgentDescription(
 					get_base_agent_property("Team"), get_base_agent_property("TeamChannel")
 					)
 				);
+				active_stats[$ "charge"] = 0;
 			}
 			
 			state_action.Step(_ActionData,_MovementData);

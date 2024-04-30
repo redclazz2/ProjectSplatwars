@@ -280,7 +280,6 @@
     {"name":"input_mouse_in_bounds","order":7,"path":"scripts/input_mouse_in_bounds/input_mouse_in_bounds.yy",},
     {"name":"input_held_time_released","order":14,"path":"scripts/input_held_time_released/input_held_time_released.yy",},
     {"name":"__input_gamepad_type_swap_ab","order":9,"path":"scripts/__input_gamepad_type_swap_ab/__input_gamepad_type_swap_ab.yy",},
-    {"name":"SpecialReadyState","order":3,"path":"scripts/SpecialReadyState/SpecialReadyState.yy",},
     {"name":"input_player_ghost_get","order":9,"path":"scripts/input_player_ghost_get/input_player_ghost_get.yy",},
     {"name":"plchldr_question_8","order":18,"path":"sprites/plchldr_question_8/plchldr_question_8.yy",},
     {"name":"draw_text_scribble_ext","order":1,"path":"scripts/draw_text_scribble_ext/draw_text_scribble_ext.yy",},
