@@ -3,8 +3,9 @@
 	x = room_width / 2;
 	y = room_height / 2;
 	
-	grid_cells_width = 50;
-	grid_cells_height = 30;
+	// Sets the grid size values per room
+	grid_cells_width = room_width / 12.8;
+	grid_cells_height = room_height / 12;
 	
 	// Create grid for charging up special
 	paint_grid = ds_grid_create(grid_cells_width, grid_cells_height);
@@ -57,8 +58,6 @@
 #endregion
 
 #region paint_grid behavior
-	// TODO: Change grid_cells values per room
-
 	function get_grid_value(_x, _y) {
 		return ds_grid_get(paint_grid, _x, _y);
 	}
@@ -92,7 +91,6 @@
 		
 		return _charge;
 	}
-	
 #endregion
 
 function update_local_player_sampler(manager){
