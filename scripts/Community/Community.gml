@@ -24,6 +24,12 @@ function Community(
 		ds_map_delete(current_stations,_id)
 	}
 	
+	community_update_host = function(_new){	
+		ds_map_delete(current_stations,community_leader);
+		community_leader = _new;
+		community_update_add_station(_new);
+	}
+	
 	destroy = function(){
 		if(ds_exists(current_stations,ds_type_map)){
 			ds_map_destroy(current_stations);

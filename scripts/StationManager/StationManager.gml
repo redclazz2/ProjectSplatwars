@@ -19,14 +19,16 @@ function StationManager(_manager) constructor{
 		_ip,
 		_port,
 		_username,
-		_local = false)
+		_local = false,
+		_connected = false)
 	{
 		if(ds_exists(station_map,ds_type_map)){
 			var add_station = new Station(
 				_id,
 				_ip,
 				_port,
-				_username
+				_username,
+				_connected
 			);	
 		
 			ds_map_add(station_map,_id,add_station);
@@ -45,6 +47,14 @@ function StationManager(_manager) constructor{
 		}
 		
 		ds_map_delete(station_map,_id);
+	}
+	
+	update_station_id = function(_old,_new){
+		var station = get_station(_old);
+		ds_map_delete(station_map,_old);
+		
+		station.set_station_data("id") = _new;
+		ds_map_add(station_map,_new,station);	
 	}
 	
 	get_station = function(_id){

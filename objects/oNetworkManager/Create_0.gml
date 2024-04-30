@@ -140,6 +140,7 @@ function handle_communicator_tcp_notification(command,data){
 										client_ip,
 										communicator_udp.port,
 										configuration_get_gameplay_property("current_local_player_username"),
+										true,
 										true);
 		
 			scene_system_set_target(8);
@@ -155,6 +156,30 @@ function handle_communicator_tcp_notification(command,data){
 		case CommunicatorTCPNotificationCommands.ServerNoLobbyFound:
 			logger(LOGLEVEL.INFO,"Unable to find a match.","TCP");
 			communicator_tcp.execute_lobby_creation();
+		break;
+		
+		case CommunicatorTCPNotificationCommands.ServerLobbyFound:
+			logger(LOGLEVEL.INFO,"Lobby Found. Registering host station and community","TCP");
+			
+			var community_id	= data[0],
+				community_key	= data[1],
+				host_ip			= data[2],
+				host_port		= data[3];
+			
+			station_manager.register_station(
+										-1000,
+										host_ip,
+										host_port,
+										"");
+			
+			community_manager.register_community(
+										community_id,
+										community_key,
+										-1000,
+										8,
+										1,
+										[-1000],
+										true);
 		break;
 		
 		case CommunicatorTCPNotificationCommands.ServerLobbyCreationFailed:

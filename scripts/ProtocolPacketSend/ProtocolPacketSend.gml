@@ -15,14 +15,14 @@ function ProtocolPacketSend(
 			packet_number = array_length(packets),
 			destinations = {};
 			
-		if(buffer_exists(buffer)){
-			buffer_seek(buffer,buffer_seek_start,1);
-			buffer_write(buffer,buffer_u16,0);
-			buffer_write(buffer,buffer_u16,1);
-			buffer_write(buffer,buffer_bool,is_realiable);
-			buffer_write(buffer,buffer_u16,packet_number);
-			
+		if(buffer_exists(buffer)){			
 			for(var i = 0; i < packet_number; i ++){
+				buffer_seek(buffer,buffer_seek_start,1);
+				buffer_write(buffer,buffer_u16,0);
+				buffer_write(buffer,buffer_u16,1);
+				buffer_write(buffer,buffer_bool,is_realiable);
+				buffer_write(buffer,buffer_u16,packet_number);
+				
 				var current_packet = packet_manager.get_send_packet(packets[i]),
 					src_buffer = current_packet.buffer,
 					src_id = current_packet.id,
@@ -46,19 +46,20 @@ function ProtocolPacketSend(
 						buffer,buffer_seek_relative,0
 					)
 				);
-			}
-			
-			var socket = self.communicator.socket,
+				
+				var socket = self.communicator.socket,
 				destination_ids = variable_struct_get_names(destinations),
 				destination_number = array_length(destination_ids);
 			
-			for(var i = 0; i < destination_number; i ++){
-				var current_destination = destinations[$ destination_ids[i]],
-					current_destination_ip = current_destination.get_station_data("ip"),
-					current_destination_port = current_destination.get_station_data("port");
+				for(var i = 0; i < destination_number; i ++){
+					var current_destination = destinations[$ destination_ids[i]],
+						current_destination_ip = current_destination.get_station_data("ip"),
+						current_destination_port = current_destination.get_station_data("port");
 					
-				network_send_udp(
-					socket,current_destination_ip,current_destination_port,buffer,buffer_tell(buffer));
+					network_send_udp(
+						socket,current_destination_ip,current_destination_port,buffer,buffer_tell(buffer));
+				
+				}	
 			}
 		}
 	}

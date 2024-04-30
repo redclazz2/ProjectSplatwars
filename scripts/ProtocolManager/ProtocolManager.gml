@@ -17,7 +17,7 @@ function ProtocolManager(_manager) constructor{
 		return _intended;
 	}
 	
-	create_protocol = function(type,groupable){
+	create_protocol = function(type,groupable = false){
 		var _id = generate_protocol_id(),
 			_protocol = undefined;
 		
@@ -48,6 +48,13 @@ function ProtocolManager(_manager) constructor{
 		}
 	}
 	
+	add_data_protocol = function(_id,_targets = [],_data = [],_stamp = 0){
+		var protocol = ds_map_find_value(protocol_registry,_id);
+		if(protocol != undefined){
+			protocol.queue_data(_data,_targets,_stamp);
+		}
+	}
+	
 	notify_manager = function(command,data = undefined){
 		manager.network_manager_notify(
 			NetworkManagerNotificationKey.ProtocolManager,
@@ -56,21 +63,21 @@ function ProtocolManager(_manager) constructor{
 		);
 	}
 	
-	protocol_tick = function(){
+	protocol_tick = function(_protocol_manager){
 		logger(LOGLEVEL.INFO,"Protocol Tick","OEPF - PROTOCOL MANAGER");
 		
-		var protocols = ds_map_keys_to_array(protocol_registry),
+		var protocols = ds_map_keys_to_array(_protocol_manager.protocol_registry),
 			protocol_count = array_length(protocols);
 			//groupable_buffer = buffer_create(256,buffer_grow,1);
 		
 		for(var i = 0; i < protocol_count; i++){
-			var current_protocol = ds_map_find_value(protocol_registry,protocols[i]);
+			var current_protocol = ds_map_find_value(_protocol_manager.protocol_registry,protocols[i]);
 			if(current_protocol.groupable){
 				//TODO: Groupable Logic
 			}else{
 				var packet_structure = current_protocol.protocol_tick();
 				if(array_length(packet_structure) > 0)
-					notify_manager(
+					_protocol_manager.notify_manager(
 						ProtocolManagerCommands.NonGroupableMessage,
 						packet_structure
 					);
@@ -102,10 +109,10 @@ function ProtocolManager(_manager) constructor{
 	
 	protocol_clock = time_source_create(
 		time_source_global,
-		get_network_configuration("ConfigurationTickRate"),
+		manager.get_network_configuration("ConfigurationTickRate"),
 		time_source_units_frames,
 		protocol_tick,
-		[],
+		[self],
 		-1
 	);
 	
