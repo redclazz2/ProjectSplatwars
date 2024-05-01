@@ -13,10 +13,12 @@ function Protocol(
 	data_to_buffer = function(_data){
 		var new_buffer = buffer_create(256,buffer_grow,1);
 		
+		buffer_seek(new_buffer,buffer_seek_start,0);
+		
 		for(var i = 0; i < array_length(_data); i ++){
 			switch(typeof(_data[i])){
 				case "number":
-					buffer_write(new_buffer,buffer_f64,_data[i]);
+					buffer_write(new_buffer,buffer_f32,_data[i]);
 				break;
 				
 				case "string":
@@ -37,11 +39,11 @@ function Protocol(
 	}
 	
 	queue_data = function(_data,_targets,_stamp = 0){		
-		var _buffer = data_to_buffer(_data),
+		var /*_buffer = data_to_buffer(_data),*/				//Can't use since buffer copy is busted.
 			_packet = manager.packet_manager.create_packet(
 				array_length(_targets),
 				_targets,
-				_buffer,
+				_data,
 				reliable
 			);
 		
@@ -80,6 +82,7 @@ function Protocol(
 					pop_latest_packet();
 				}else{
 					array_insert(_return,array_length(_return),_packet);
+					_packet.sent = true;
 				}
 			}
 		}else{			

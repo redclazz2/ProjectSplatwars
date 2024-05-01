@@ -32,7 +32,9 @@ function PacketManager(_manager) constructor{
 			_packet = new ReliablePacket(_id,_target_number,_target_data,_buffer);
 		else
 			_packet = new Packet(_id,_target_number,_target_data,_buffer);
-			
+		
+		ds_map_add(send_packet_registry,_id,_packet);
+		
 		return _id;
 	}
 	

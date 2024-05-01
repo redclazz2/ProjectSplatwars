@@ -50,7 +50,7 @@ function CommunicatorUDP(_manager):ICommunicator(_manager) constructor{
 	}
 	
 	assing_reader = function(_ip,_port,_buffer){
-		var _message = buffer_read(buffer,buffer_u16);
+		var _message = buffer_read(_buffer,buffer_u16);
 		
 		switch(_message){
 			case 0: //Port Authentication
@@ -59,7 +59,7 @@ function CommunicatorUDP(_manager):ICommunicator(_manager) constructor{
 			
 			case 1: //Recieved Protocol Data
 				logger(LOGLEVEL.INFO,"GOT PROTOCOL DATA","protocolidk");
-				//change_reader();
+				change_reader(new ProtocolDataRecieved(self));
 			break;
 		}
 		
@@ -88,8 +88,7 @@ function CommunicatorUDP(_manager):ICommunicator(_manager) constructor{
 	}
 	
 	execute_send_protocol_message = function(_packets,_is_reliable){
-		change_writer(new ProtocolPacketSend(self,_packets,_is_reliable,
-			manager.protocol_manager.packet_manager,manager.station_manager));
+		change_writer(new ProtocolPacketSend(self,_packets,_is_reliable,manager.station_manager));
 		writer.write();
 	}
 }
