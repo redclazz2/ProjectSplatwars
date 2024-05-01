@@ -13,6 +13,7 @@ function CommunicatorUDP(_manager):ICommunicator(_manager) constructor{
 	authentication_attemps	= 0;
 	authentication_max_attemps = 5;
 	debug_logger_name = "OEPF - UDP COMMUNICATOR";
+	protocol_reader = undefined;
 	
 	create = function(){
 		var port = self.range_inferior_port;
@@ -58,12 +59,22 @@ function CommunicatorUDP(_manager):ICommunicator(_manager) constructor{
 			break;
 			
 			case 1: //Recieved Protocol Data
-				logger(LOGLEVEL.INFO,"GOT PROTOCOL DATA","protocolidk");
 				change_reader(new ProtocolDataRecieved(self));
 			break;
 		}
 		
 		reader.read(_ip,_port,_buffer);
+	}
+	
+	assign_protocol_reader = function(_ip,_port,_buffer){
+		var command = buffer_read(_buffer,buffer_f32);
+		switch(command){
+			case ProtocolUDPCases.OEPFNatTraversal:			
+				protocol_reader = new NATTraversalRecieved(self);			
+			break;
+		}
+		
+		protocol_reader.read(_ip,_port,_buffer);
 	}
 	
 	initialize_port_authentication = function(){

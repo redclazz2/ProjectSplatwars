@@ -9,6 +9,7 @@
     {"name":"Protocols","order":4,"path":"folders/Scripts/Network Scripts/Protocols.yy",},
     {"name":"Stations","order":2,"path":"folders/Scripts/Network Scripts/Stations.yy",},
     {"name":"Traversal","order":5,"path":"folders/Scripts/Network Scripts/Traversal.yy",},
+    {"name":"Protocol Readers","order":2,"path":"folders/Scripts/Network Scripts/Communicators/UDP/Protocol Readers.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"__input_config_external_data","order":2,"path":"scripts/__input_config_external_data/__input_config_external_data.yy",},

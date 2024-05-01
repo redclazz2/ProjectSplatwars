@@ -15,15 +15,10 @@ function ProtocolDataRecieved(_communicator):IReader(_communicator) constructor{
 			targets[$ string(station_manager.local_station)] != undefined ||
 			targets[$ "-1000"] != undefined	
 		){
+			communicator.assign_protocol_reader(_ip,_port,_buffer);
 			
-			var command = buffer_read(_buffer,buffer_f32);
-			switch(command){
-				case ProtocolUDPCases.OEPFNatTraversal:
-					logger(LOGLEVEL.INFO,"Recieved NAT traversal message","UDP READER");
-					//var nat_probe_type = buffer_read()
-						
-				break;
-			}
+			
+			//TODO: RELIABLE LOGIC
 		}	
 	}
 }

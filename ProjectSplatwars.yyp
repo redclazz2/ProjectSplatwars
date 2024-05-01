@@ -168,6 +168,7 @@
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Stages","folderPath":"folders/Tile Sets/Stages.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"PaintResort","folderPath":"folders/Tile Sets/Stages/PaintResort.yy",},
     {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Timelines","folderPath":"folders/Timelines.yy",},
+    {"resourceType":"GMFolder","resourceVersion":"1.0","name":"Protocol Readers","folderPath":"folders/Scripts/Network Scripts/Communicators/UDP/Protocol Readers.yy",},
   ],
   "IncludedFiles": [
     {"resourceType":"GMIncludedFile","resourceVersion":"1.0","name":"controllerblacklist.csv","CopyToMask":-1,"filePath":"datafiles",},
@@ -630,6 +631,7 @@
     {"id":{"name":"input_virtual_create","path":"scripts/input_virtual_create/input_virtual_create.yy",},},
     {"id":{"name":"IWriter","path":"scripts/IWriter/IWriter.yy",},},
     {"id":{"name":"plchldr_circle_2","path":"sprites/plchldr_circle_2/plchldr_circle_2.yy",},},
+    {"id":{"name":"NATTraversalRecieved","path":"scripts/NATTraversalRecieved/NATTraversalRecieved.yy",},},
     {"id":{"name":"plchldr_green_l_8","path":"sprites/plchldr_green_l_8/plchldr_green_l_8.yy",},},
     {"id":{"name":"scribble_refresh_everything","path":"scripts/scribble_refresh_everything/scribble_refresh_everything.yy",},},
     {"id":{"name":"rm_vs_PaintResort","path":"rooms/rm_vs_PaintResort/rm_vs_PaintResort.yy",},},
