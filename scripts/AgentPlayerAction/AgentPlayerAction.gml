@@ -45,5 +45,5 @@ function AgentPlayerAction(_character) constructor{
 		}
 	}
 	
-	DrawUI = function(){}
+	DrawGUI = function(){}
 }

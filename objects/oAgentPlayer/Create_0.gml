@@ -109,6 +109,10 @@ event_inherited();
 	Draw = function(){
 		state_action.Draw();
 	}
+	
+	DrawGUI = function(){
+		state_action.DrawGUI();
+	}
 
 	ApplyDamage = function(_damage){
 		var _currentHealth = active_stats[$ "health_active"],
@@ -117,7 +121,9 @@ event_inherited();
 		latest_action[$ "able_to_heal"] = false;
 		
 		if(_appliedHealth <= 0){
-			//TODO: Death State
+			self.listen_to_input = false;
+			active_stats[$ "health_active"] = 0;
+			ChangeStateAction(new AgentPlayerDeath(self));
 		}else{
 			active_stats[$ "health_active"] = _appliedHealth;
 			time_source_start(allow_health_regen_timer);

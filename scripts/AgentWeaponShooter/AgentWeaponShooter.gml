@@ -76,8 +76,10 @@ function AgentWeaponShooter(
 	}
 	
 	Draw = function(){
-		draw_sprite_ext(WeaponSprite,0,x,y,1,image_yscale,image_angle,c_white,
+		if(ParentAgent.listen_to_input){
+			draw_sprite_ext(WeaponSprite,0,x,y,1,image_yscale,image_angle,c_white,
 			ParentAgent.latest_action[$ "able_to_weapon"] ? 1 : 0.5);
+		}
 	}
 	
 	CleanUp = function(){

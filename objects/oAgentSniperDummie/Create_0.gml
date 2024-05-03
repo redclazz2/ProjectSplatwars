@@ -5,7 +5,7 @@ TargetPointY = 0;
 //Lista de los objetivos
 Targets = ds_list_create();
 //Bala del dummie
-_Proyectile = new Projectile(self[$ "Team"],self[$ "TeamChannel"],300,-10,10,75,6,0.62,0.62,noone);
+_Proyectile = new Projectile(self[$ "Team"],self[$ "TeamChannel"],300,-10,10,75,6,0.62,0.62,noone,false);
 //Funcion instanciar bala
 createBullet = function(){
 create_projectile(_Proyectile,self.x,self.y,point_direction(self.x,self.y,TargetPointX,TargetPointY));
