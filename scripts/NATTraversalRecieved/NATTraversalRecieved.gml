@@ -1,6 +1,5 @@
 function NATTraversalRecieved(_communicator):IReader(_communicator) constructor{
 	read = function(_ip,_port,_buffer){
-		logger(LOGLEVEL.INFO,"Recieved NAT traversal message","UDP READER");
 		var _case = buffer_read(_buffer,buffer_f32);
 		
 		switch(_case){

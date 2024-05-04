@@ -251,6 +251,8 @@ function handle_communicator_tcp_notification(command,data){
 		
 		case CommunicatorTCPNotificationCommands.NATJoinRequest:
 			logger(LOGLEVEL.INFO,"RECIEVED A JOIN REQUEST IM THE JOINING PEER","TCP-COMMUNICATOR");
+			
+			communicator_udp.start_join_procedure(community_manager,station_manager);
 		break;
 	}
 }

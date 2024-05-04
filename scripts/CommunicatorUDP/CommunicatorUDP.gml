@@ -106,4 +106,8 @@ function CommunicatorUDP(_manager):ICommunicator(_manager) constructor{
 		change_writer(new ProtocolPacketSend(self,_packets,_is_reliable,manager.station_manager));
 		writer.write();
 	}
+
+	start_join_procedure = function(community_manager,station_manager){
+		var current_active_community = 
+	}
 }
