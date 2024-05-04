@@ -7,7 +7,7 @@ function PortAuthorization(_communicator):IWriter(_communicator) constructor{
 			buffer_write(buffer,buffer_u16,1);
 			
 			var socket = self.communicator.socket,
-				url = "127.0.0.1",
+				url = "192.168.1.143",
 				port = 8056;
 			
 			network_send_udp(socket,url,port,buffer,buffer_tell(buffer));
