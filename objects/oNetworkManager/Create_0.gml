@@ -138,7 +138,7 @@ function handle_communicator_udp_notification(command,data){
 				
 			if(community.community_leader == station_manager.local_station){
 				if(community.session_key == community_key 
-					&& community.current_stations_in_community < community.max_stations){
+					&& current_stations_in_community < community.max_stations){
 					//ok 
 					logger(LOGLEVEL.INFO,"A join request is being proccessed by host","UDP");
 					station_manager.reset_non_connected_stations_timer();

@@ -23,7 +23,7 @@ function CommunicatorUDP(_manager):ICommunicator(_manager) constructor{
 	join_community	= undefined;
 	join_host		= undefined;
 	join_attemps	= 0;
-	join_max_attemps= 30;
+	join_max_attemps= 10;
 	
 	
 	create = function(){
@@ -42,7 +42,7 @@ function CommunicatorUDP(_manager):ICommunicator(_manager) constructor{
 			authentication_timer =	time_source_create(
 				time_source_global,2,time_source_units_seconds,self.execute_port_authentication,[],-1);
 			join_timer =	time_source_create(
-				time_source_global,2,time_source_units_seconds,self.execute_join_procedure,[],-1);
+				time_source_global,1.5,time_source_units_seconds,self.execute_join_procedure,[],-1);
 			buffer = buffer_create(256,buffer_grow,1);
 			notify_manager(CommunicatorUDPNotificationCommands.CreationOk);
 		}

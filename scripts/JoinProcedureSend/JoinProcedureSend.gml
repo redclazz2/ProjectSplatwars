@@ -7,7 +7,7 @@ function JoinProcedureSend(_community_id,_community_key,_host,_communicator):IWr
 		var buffer = communicator.buffer;
 		
 		if(buffer_exists(buffer)){
-			buffer_seek(buffer,buffer_seek_start,1);
+			buffer_seek(buffer,buffer_seek_start,0);
 			buffer_write(buffer,buffer_u16,0);
 			buffer_write(buffer,buffer_u16,6);
 			buffer_write(buffer,buffer_u16,community_id);
