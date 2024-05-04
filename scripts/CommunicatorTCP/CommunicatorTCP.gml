@@ -12,7 +12,7 @@ enum CommunicatorTCPNotificationCommands{
 }
 
 function CommunicatorTCP(_manager):ICommunicator(_manager) constructor{
-	game_server_ip = "192.168.1.143";
+	game_server_ip = "127.0.0.1";
 	game_server_port = 8057;
 	debug_logger_name = "OEPF - TCP COMMUNICATOR";
 	

@@ -14,11 +14,17 @@ function CommunicatorUDP(_manager):ICommunicator(_manager) constructor{
 	range_inferior_port		= 1024;
 	range_superior_port		= 65535;	
 	authentication_timer	= -1;
-	join_timer				= -1;
 	authentication_attemps	= 0;
-	authentication_max_attemps = 5;
+	authentication_max_attemps = 20;
 	debug_logger_name = "OEPF - UDP COMMUNICATOR";
 	protocol_reader = undefined;
+	
+	join_timer		= -1;
+	join_community	= undefined;
+	join_host		= undefined;
+	join_attemps	= 0;
+	join_max_attemps= 30;
+	
 	
 	create = function(){
 		var port = self.range_inferior_port;
@@ -35,8 +41,8 @@ function CommunicatorUDP(_manager):ICommunicator(_manager) constructor{
 			logger(LOGLEVEL.INFO,$"Created UDP Socket on port: {self.port}",debug_logger_name);	
 			authentication_timer =	time_source_create(
 				time_source_global,2,time_source_units_seconds,self.execute_port_authentication,[],-1);
-			authentication_timer =	time_source_create(
-				time_source_global,10,time_source_units_frames,self.execute_port_authentication,[],-1);
+			join_timer =	time_source_create(
+				time_source_global,2,time_source_units_seconds,self.execute_join_procedure,[],-1);
 			buffer = buffer_create(256,buffer_grow,1);
 			notify_manager(CommunicatorUDPNotificationCommands.CreationOk);
 		}
@@ -46,6 +52,11 @@ function CommunicatorUDP(_manager):ICommunicator(_manager) constructor{
 		if(time_source_exists(authentication_timer)){
 			time_source_destroy(authentication_timer);
 		}
+		
+		if(time_source_exists(join_timer)){
+			time_source_destroy(join_timer);
+		}
+		
 		if(buffer_exists(buffer)) buffer_delete(buffer);
 		network_destroy(socket);
 		logger(LOGLEVEL.INFO,"Destroyed UDP Communicator",debug_logger_name);
@@ -67,6 +78,14 @@ function CommunicatorUDP(_manager):ICommunicator(_manager) constructor{
 			
 			case 1: //Recieved Protocol Data
 				change_reader(new ProtocolDataRecieved(self));
+			break;
+			
+			case 6:
+				change_reader(new JoinProcedureRecieved(self));
+			break;
+			
+			case 7:
+				logger(LOGLEVEL.INFO,"Recieved community data from host");
 			break;
 		}
 		
@@ -111,12 +130,32 @@ function CommunicatorUDP(_manager):ICommunicator(_manager) constructor{
 	}
 
 	start_join_procedure = function(community_manager,station_manager){
-		var current_active_community = community_manager.get_community(community_manager.active_community);
-		var current_host = station_manager.get_station(current_active_community.community_leader);
+		join_community	= community_manager.get_community(community_manager.active_community);
+		join_host		= station_manager.get_station(join_community.community_leader);
 		
+		if(time_source_exists(join_timer)){
+			time_source_start(join_timer);
+		}
 	}
 	
 	execute_join_procedure = function(){
-		
+		if(join_attemps <= join_max_attemps){
+			change_writer(new JoinProcedureSend(join_community.id,join_community.session_key,join_host,self));
+			writer.write();
+			join_attemps++;
+		}else{
+			finalize_join_procedure();
+			//Not the correct case but still works
+			notify_manager(CommunicatorUDPNotificationCommands.PortAuthenticationFailed); 
+		}
+	}
+	
+	finalize_join_procedure = function(){
+		time_source_stop(join_timer);
+	}
+
+	execute_host_join_response = function(_community,_station_manager,_dIp,_dP){
+		change_writer(new JoinHostResolutionSend(_community,_station_manager,self,_dIp,_dP));
+		writer.write();
 	}
 }

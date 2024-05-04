@@ -125,6 +125,31 @@ function handle_communicator_udp_notification(command,data){
 			destroy_network_framework();
 			change_manager_user_interface(new UserInterfaceCommunicationError());
 		break;
+		
+		case CommunicatorUDPNotificationCommands.NATRequestJoinRequest:
+			logger(LOGLEVEL.INFO,"NATRequestJoinRequest","TCP-COMMUNICATOR");
+			var community_id = data[0],
+				community_key = data[1],
+				ip = data[2],
+				port = data[3],
+				community = community_manager.get_community(community_id),
+				current_stations_in_community = array_length(ds_map_keys_to_array(
+					community.current_stations));
+				
+			if(community.community_leader == station_manager.local_station){
+				if(community.session_key == community_key 
+					&& community.current_stations_in_community < community.max_stations){
+					//ok 
+					logger(LOGLEVEL.INFO,"A join request is being proccessed by host","UDP");
+					station_manager.reset_non_connected_stations_timer();
+					communicator_udp.execute_host_join_response(community,station_manager,ip,port);
+				}else{
+					//Sorry. Can-t join. You either dont have the key or the session is full.
+				}
+			}else{
+				//Error, im not host. Guess not responding is ok for the time i have to code this.
+			}
+		break;
 	}
 }
 
@@ -251,7 +276,7 @@ function handle_communicator_tcp_notification(command,data){
 		
 		case CommunicatorTCPNotificationCommands.NATJoinRequest:
 			logger(LOGLEVEL.INFO,"RECIEVED A JOIN REQUEST IM THE JOINING PEER","TCP-COMMUNICATOR");
-			
+			station_manager.reset_non_connected_stations_timer();
 			communicator_udp.start_join_procedure(community_manager,station_manager);
 		break;
 	}
