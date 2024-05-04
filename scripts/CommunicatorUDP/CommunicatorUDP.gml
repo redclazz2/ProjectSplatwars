@@ -3,6 +3,10 @@ enum CommunicatorUDPNotificationCommands{
 	CreationOk,
 	PortAuthenticationOk,
 	PortAuthenticationFailed,
+	NATRequestFirewallBreaker,
+	NATRequestJoinRequest,
+	NATHostJoinConfirmation,
+	NATPeerJoinConfirmation,
 }
 
 function CommunicatorUDP(_manager):ICommunicator(_manager) constructor{

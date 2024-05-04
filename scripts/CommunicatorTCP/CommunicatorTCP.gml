@@ -7,10 +7,12 @@ enum CommunicatorTCPNotificationCommands{
 	ServerLobbyFound,
 	ServerLobbyCreationOk,
 	ServerLobbyCreationFailed,
+	NATFirewallBreaker,
+	NATJoinRequest,
 }
 
 function CommunicatorTCP(_manager):ICommunicator(_manager) constructor{
-	game_server_ip = "127.0.0.1";
+	game_server_ip = "192.168.1.143";
 	game_server_port = 8057;
 	debug_logger_name = "OEPF - TCP COMMUNICATOR";
 	
@@ -52,6 +54,10 @@ function CommunicatorTCP(_manager):ICommunicator(_manager) constructor{
 			case 2: //Lobby Creation Resolve
 				change_reader(new ServerCreationRecieved(self));
 			break;
+			
+			case 3: //NAT Request
+				change_reader(new ServerNATRequestRecieved(self));
+			break;
 		}
 		
 		reader.read(_ip,_port,_buffer);
@@ -79,6 +85,12 @@ function CommunicatorTCP(_manager):ICommunicator(_manager) constructor{
 	
 	execute_lobby_destruction = function(_id){
 		change_writer(new LobbyDestroy(self,_id));
+		writer.write();
+	}
+	
+	//When used by host community is the id of the client that it just probed
+	execute_nat_request = function(_request,_ip,_port){
+		change_writer(new NATRequest(_request,_ip,_port,self));
 		writer.write();
 	}
 }

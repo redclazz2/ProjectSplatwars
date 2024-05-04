@@ -189,10 +189,12 @@ function handle_communicator_tcp_notification(command,data){
 										[-1000],
 										true);
 										
-		traversal_manager.probe_peer(
-			0,
-			-1000
-		);
+			traversal_manager.probe_peer(
+				0,
+				-1000
+			);
+		
+			communicator_tcp.execute_nat_request(5,host_ip,host_port);
 		break;
 		
 		case CommunicatorTCPNotificationCommands.ServerLobbyCreationFailed:
@@ -215,6 +217,40 @@ function handle_communicator_tcp_notification(command,data){
 			);
 			
 			change_manager_user_interface(new UserInterfaceLobby());
+		break;
+		
+		case CommunicatorTCPNotificationCommands.NATFirewallBreaker:
+			var _peerid = data[0],
+				_probeIp = data[1],
+				_probePort = data[2];
+			
+			var _community = community_manager.get_community(community_manager.active_community);
+			if( _community != -1){
+				if(_community.community_leader == station_manager.local_station){
+					//Join request
+					logger(LOGLEVEL.INFO,"RECIEVED A JOIN REQUEST IM THE HOST","TCP-COMMUNICATOR");
+					
+					station_manager.register_station(
+										_peerid,
+										_probeIp,
+										_probePort,
+										"");
+					
+					traversal_manager.probe_peer(
+						0,
+						_peerid
+					);
+
+					communicator_tcp.execute_nat_request(6,_probeIp,_probePort);
+					logger(LOGLEVEL.INFO,$"Ip: {_probeIp}, Port: {_probePort}","TCP-COMMUNICATOR");
+				}else{
+					//I'm just a peer in the world
+				}
+			}
+		break;
+		
+		case CommunicatorTCPNotificationCommands.NATJoinRequest:
+			logger(LOGLEVEL.INFO,"RECIEVED A JOIN REQUEST IM THE JOINING PEER","TCP-COMMUNICATOR");
 		break;
 	}
 }
