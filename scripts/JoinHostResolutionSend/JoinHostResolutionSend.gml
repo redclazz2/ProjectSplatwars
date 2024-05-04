@@ -9,7 +9,7 @@ function JoinHostResolutionSend(_community,_station_manager,_communicator,_dIp,_
 			community_station_keys = ds_map_keys_to_array(community.current_stations);
 		
 		if(buffer_exists(buffer)){
-			buffer_seek(buffer,buffer_seek_start,1);
+			buffer_seek(buffer,buffer_seek_start,0);
 			buffer_write(buffer,buffer_u16,0);
 			buffer_write(buffer,buffer_u16,7);
 			buffer_write(buffer,buffer_u16,community.id);
