@@ -14,6 +14,7 @@ function CommunicatorUDP(_manager):ICommunicator(_manager) constructor{
 	range_inferior_port		= 1024;
 	range_superior_port		= 65535;	
 	authentication_timer	= -1;
+	join_timer				= -1;
 	authentication_attemps	= 0;
 	authentication_max_attemps = 5;
 	debug_logger_name = "OEPF - UDP COMMUNICATOR";
@@ -34,6 +35,8 @@ function CommunicatorUDP(_manager):ICommunicator(_manager) constructor{
 			logger(LOGLEVEL.INFO,$"Created UDP Socket on port: {self.port}",debug_logger_name);	
 			authentication_timer =	time_source_create(
 				time_source_global,2,time_source_units_seconds,self.execute_port_authentication,[],-1);
+			authentication_timer =	time_source_create(
+				time_source_global,10,time_source_units_frames,self.execute_port_authentication,[],-1);
 			buffer = buffer_create(256,buffer_grow,1);
 			notify_manager(CommunicatorUDPNotificationCommands.CreationOk);
 		}
@@ -108,6 +111,12 @@ function CommunicatorUDP(_manager):ICommunicator(_manager) constructor{
 	}
 
 	start_join_procedure = function(community_manager,station_manager){
-		var current_active_community = 
+		var current_active_community = community_manager.get_community(community_manager.active_community);
+		var current_host = station_manager.get_station(current_active_community.community_leader);
+		
+	}
+	
+	execute_join_procedure = function(){
+		
 	}
 }
