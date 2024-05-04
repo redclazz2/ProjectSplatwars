@@ -26,7 +26,7 @@ event_inherited();
 		speed_active			: self.stats.speed_walking,
 		health_active			: 1000,
 		health_regen			: self.stats.health_regen_unsubmerged,
-		health_regen_cooldown	: self.stats.health_regen_cooldown_unsubmerged,
+		health_regen_cooldown	: 140,
 		charge					: 0
 	};
 	
@@ -173,14 +173,14 @@ event_inherited();
 	);
 	
 	ReconfigureHealthRegenTimer = function(_period){
-		time_source_reconfigure(
-			time_source_global,
-			active_stats[$ "health_regen_cooldown"],
-			time_source_units_frames,
+		/*time_source_reconfigure(
+			allow_health_regen_timer,
 			_period,
+			time_source_units_frames,
+			AllowHealthRegen,
 			[],
 			1
-		);
+		);*/
 	}
 	
 	ModifyHealthRegenTimer = function(){

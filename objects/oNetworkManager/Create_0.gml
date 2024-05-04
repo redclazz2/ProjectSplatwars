@@ -150,6 +150,41 @@ function handle_communicator_udp_notification(command,data){
 				//Error, im not host. Guess not responding is ok for the time i have to code this.
 			}
 		break;
+		
+		case CommunicatorUDPNotificationCommands.NATHostJoinConfirmation:
+			//[community_id,community_max_stations,community_leader,community_current_stations,stations]
+			var community_id = data[0],
+				community_max_stations = data[1],
+				community_leader =	data[2],
+				leader_username	 =  data[3],
+				community_current_stations = data[4],
+				community_stations = data[5];
+				
+			//Update host ID and username
+			station_manager.update_station_id(-1000,community_leader);
+			var host = station_manager.get_station(community_leader);
+			host.set_station_data("username",leader_username);
+			host.set_station_data("connected",true);
+				
+			//Update Community leader
+			var current_community = community_manager.get_community(community_id);
+			if(current_community != -1){
+				current_community.community_update_host(community_leader);
+			} 
+			current_community.max_stations = community_max_stations;
+			station_manager.reset_non_connected_stations_timer();
+			for(var i = 0; i < community_current_stations; i++){
+				station_manager.register_station(
+										community_stations[i][0],
+										community_stations[i][1],
+										community_stations[i][2],
+										"");
+										
+				current_community.community_update_add_station(community_stations[i][0]);
+			}
+			
+			handle_join_other_peer_confirmation_procedure();
+		break;
 	}
 }
 
@@ -247,7 +282,7 @@ function handle_communicator_tcp_notification(command,data){
 		case CommunicatorTCPNotificationCommands.NATFirewallBreaker:
 			var _peerid = data[0],
 				_probeIp = data[1],
-				_probePort = data[2];
+				_probePort = data[2],
 			
 			var _community = community_manager.get_community(community_manager.active_community);
 			if( _community != -1){
@@ -260,6 +295,10 @@ function handle_communicator_tcp_notification(command,data){
 										_probeIp,
 										_probePort,
 										"");
+										
+					_community.community_update_add_station(_peerid);
+					
+					//TODO: AUTO DELETE STATIONS FROM COMMUNITY.
 					
 					traversal_manager.probe_peer(
 						0,
@@ -305,4 +344,12 @@ function handle_community_manager_notification(command,data){
 			communicator_tcp.execute_lobby_destruction(data);
 		break;
 	}
+}
+
+function handle_join_other_peer_confirmation_procedure(){
+	var community = community_manager.get_community(community_manager.active_community),
+		stations = ds_map_keys_to_array(community.current_stations),
+		connected = false;
+	
+	//if()
 }

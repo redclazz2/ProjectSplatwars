@@ -86,6 +86,7 @@ function CommunicatorUDP(_manager):ICommunicator(_manager) constructor{
 			
 			case 7:
 				logger(LOGLEVEL.INFO,"Recieved community data from host");
+				change_reader(new JoinHostResolutionRecieved(self));
 			break;
 		}
 		

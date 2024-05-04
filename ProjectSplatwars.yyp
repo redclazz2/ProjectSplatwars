@@ -971,6 +971,7 @@
     {"id":{"name":"__input_ensure_unique_verb_name","path":"scripts/__input_ensure_unique_verb_name/__input_ensure_unique_verb_name.yy",},},
     {"id":{"name":"plchldr_block_0_8","path":"sprites/plchldr_block_0_8/plchldr_block_0_8.yy",},},
     {"id":{"name":"plchldr_yellow_x_8","path":"sprites/plchldr_yellow_x_8/plchldr_yellow_x_8.yy",},},
+    {"id":{"name":"JoinHostResolutionRecieved","path":"scripts/JoinHostResolutionRecieved/JoinHostResolutionRecieved.yy",},},
     {"id":{"name":"plchldr_square_8","path":"sprites/plchldr_square_8/plchldr_square_8.yy",},},
     {"id":{"name":"direction_flags","path":"sprites/direction_flags/direction_flags.yy",},},
     {"id":{"name":"input_cursor_set","path":"scripts/input_cursor_set/input_cursor_set.yy",},},

@@ -14,6 +14,8 @@ function JoinHostResolutionSend(_community,_station_manager,_communicator,_dIp,_
 			buffer_write(buffer,buffer_u16,7);
 			buffer_write(buffer,buffer_u16,community.id);
 			buffer_write(buffer,buffer_u16,community.max_stations);
+			buffer_write(buffer,buffer_u16,community.community_leader);
+			buffer_write(buffer,buffer_string,configuration_get_gameplay_property("current_local_player_username"));
 			buffer_write(buffer,buffer_u16,array_length(community_station_keys));
 			
 			for(var i = 0; i < array_length(community_station_keys); i++){
