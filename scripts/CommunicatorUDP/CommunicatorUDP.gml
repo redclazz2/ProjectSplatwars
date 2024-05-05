@@ -7,6 +7,8 @@ enum CommunicatorUDPNotificationCommands{
 	NATRequestJoinRequest,
 	NATHostJoinConfirmation,
 	NATPeerJoinConfirmation,
+	SecurePacketConfirmation,
+	NATPeerFinalizeJoin
 }
 
 function CommunicatorUDP(_manager):ICommunicator(_manager) constructor{
@@ -25,6 +27,9 @@ function CommunicatorUDP(_manager):ICommunicator(_manager) constructor{
 	join_attemps	= 0;
 	join_max_attemps= 10;
 	
+	join_confirmation_timer = -1;
+	join_confirmation_attemps = 0;
+	join_confirmation_max_attemps = 20;
 	
 	create = function(){
 		var port = self.range_inferior_port;
@@ -43,6 +48,8 @@ function CommunicatorUDP(_manager):ICommunicator(_manager) constructor{
 				time_source_global,2,time_source_units_seconds,self.execute_port_authentication,[],-1);
 			join_timer =	time_source_create(
 				time_source_global,1.5,time_source_units_seconds,self.execute_join_procedure,[],-1);
+			join_confirmation_timer =	time_source_create(
+				time_source_global,0.5,time_source_units_seconds,self.execute_joining_confirmation,[],-1);
 			buffer = buffer_create(256,buffer_grow,1);
 			notify_manager(CommunicatorUDPNotificationCommands.CreationOk);
 		}
@@ -88,6 +95,16 @@ function CommunicatorUDP(_manager):ICommunicator(_manager) constructor{
 				logger(LOGLEVEL.INFO,"Recieved community data from host");
 				change_reader(new JoinHostResolutionRecieved(self));
 			break;
+			
+			case 8:
+				logger(LOGLEVEL.INFO,"Recieved join response from peer");
+				change_reader(new JoinPeerResponseRecieved(self));
+			break;
+			
+			case 9:
+				logger(LOGLEVEL.INFO,"Recieved secure packet confirmation");
+				change_reader(new SecurePacketConfirmationRecieved(self));
+			break;
 		}
 		
 		reader.read(_ip,_port,_buffer);
@@ -98,6 +115,10 @@ function CommunicatorUDP(_manager):ICommunicator(_manager) constructor{
 		switch(command){
 			case ProtocolUDPCases.OEPFNatTraversal:			
 				protocol_reader = new NATTraversalRecieved(self);			
+			break;
+			
+			case ProtocolUDPCases.NATPeerFinalizeJoin:
+				protocol_reader = new StationConfirmJoinToCommunity(self);
 			break;
 		}
 		
@@ -158,5 +179,26 @@ function CommunicatorUDP(_manager):ICommunicator(_manager) constructor{
 	execute_host_join_response = function(_community,_station_manager,_dIp,_dP){
 		change_writer(new JoinHostResolutionSend(_community,_station_manager,self,_dIp,_dP));
 		writer.write();
+	}
+
+	start_joining_confirmation = function(){
+		if(time_source_exists(join_confirmation_timer)){
+			time_source_start(join_confirmation_timer);
+		}
+	}
+	
+	execute_joining_confirmation = function(){
+		if(join_confirmation_max_attemps > join_confirmation_attemps){	
+			with(manager) handle_join_other_peer_confirmation_procedure();
+			join_confirmation_attemps++;
+		}else{
+			finalize_joining_confirmation();
+			//Not the correct case but still works
+			notify_manager(CommunicatorUDPNotificationCommands.PortAuthenticationFailed); 
+		}
+	}
+	
+	finalize_joining_confirmation = function(){
+		time_source_stop(join_confirmation_timer);
 	}
 }

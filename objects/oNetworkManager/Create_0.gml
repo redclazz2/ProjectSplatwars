@@ -178,12 +178,39 @@ function handle_communicator_udp_notification(command,data){
 										community_stations[i][0],
 										community_stations[i][1],
 										community_stations[i][2],
-										"");
+										"Searching ...");
 										
 				current_community.community_update_add_station(community_stations[i][0]);
 			}
 			
-			handle_join_other_peer_confirmation_procedure();
+			communicator_udp.start_joining_confirmation();
+		break;
+		
+		case CommunicatorUDPNotificationCommands.NATPeerJoinConfirmation:
+			var _id = data,
+				peer = station_manager.get_station(_id);
+				
+			if(peer != -1){
+				peer.set_station_data("connected",true);
+			}
+		break;
+		
+		case CommunicatorUDPNotificationCommands.SecurePacketConfirmation:
+			var station_id = data[0],
+				packet_id = data[1];
+				
+			packet_manager.register_reliable_confirmation(station_id,packet_id);
+		break;
+		
+		case CommunicatorUDPNotificationCommands.NATPeerFinalizeJoin:
+			var station_id = data[0],
+				username = data[1],
+				station = station_manager.get_station(station_id);
+				
+			if(station != -1){
+				station.set_station_data("coonected",true);
+				station.set_station_data("username",username);
+			}
 		break;
 	}
 }
@@ -282,37 +309,38 @@ function handle_communicator_tcp_notification(command,data){
 		case CommunicatorTCPNotificationCommands.NATFirewallBreaker:
 			var _peerid = data[0],
 				_probeIp = data[1],
-				_probePort = data[2],
+				_probePort = data[2];
+				
+			station_manager.register_station(
+										_peerid,
+										_probeIp,
+										_probePort,
+										"");
+			
+			traversal_manager.probe_peer(
+				0,
+				_peerid
+			);
 			
 			var _community = community_manager.get_community(community_manager.active_community);
 			if( _community != -1){
 				if(_community.community_leader == station_manager.local_station){
 					//Join request
-					logger(LOGLEVEL.INFO,"RECIEVED A JOIN REQUEST IM THE HOST","TCP-COMMUNICATOR");
-					
-					station_manager.register_station(
-										_peerid,
-										_probeIp,
-										_probePort,
-										"");
-										
+					logger(LOGLEVEL.INFO,"RECIEVED A JOIN REQUEST IM THE HOST","TCP-COMMUNICATOR");			
 					_community.community_update_add_station(_peerid);
 					
-					//TODO: AUTO DELETE STATIONS FROM COMMUNITY.
-					
-					traversal_manager.probe_peer(
-						0,
-						_peerid
-					);
-
+					//TODO: AUTO DELETE STATIONS FROM COMMUNITY
 					communicator_tcp.execute_nat_request(6,_probeIp,_probePort);
 					logger(LOGLEVEL.INFO,$"Ip: {_probeIp}, Port: {_probePort}","TCP-COMMUNICATOR");
 				}else{
 					//I'm just a peer in the world
+					logger(LOGLEVEL.INFO,"RECIEVED A JOIN REQUEST IM A STATION PEER","TCP-COMMUNICATOR");		
+					//communicator_tcp.execute_nat_request(7,_probeIp,_probePort);		
 				}
 			}
 		break;
 		
+		//Only when host finally sends a confirmation
 		case CommunicatorTCPNotificationCommands.NATJoinRequest:
 			logger(LOGLEVEL.INFO,"RECIEVED A JOIN REQUEST IM THE JOINING PEER","TCP-COMMUNICATOR");
 			station_manager.reset_non_connected_stations_timer();
@@ -349,7 +377,50 @@ function handle_community_manager_notification(command,data){
 function handle_join_other_peer_confirmation_procedure(){
 	var community = community_manager.get_community(community_manager.active_community),
 		stations = ds_map_keys_to_array(community.current_stations),
-		connected = false;
+		connected = true;
 	
-	//if()
+	station_manager.reset_non_connected_stations_timer();
+	
+	for(var i = 0; i < array_length(stations); i++){
+		var current_station = station_manager.get_station(stations[i]);
+		
+		if(current_station != -1){
+			if(!current_station.get_station_data("connected")){
+				traversal_manager.probe_peer(
+					0,
+					stations[i]
+				);
+				
+				communicator_tcp.execute_nat_request(
+					5,
+					current_station.get_station_data("ip"),
+					current_station.get_station_data("port"));
+					
+				traversal_manager.probe_peer(
+					3,
+					stations[i]
+				);
+			}
+		}
+	}
+	//Si esta conectado ok, decile al host q estas conectado
+	
+	if(connected){
+		logger("Connected to all stations. Sending confirmation to host ...","OEPF");
+		queue_secure_message([community_manager.community_leader],[
+			
+			station_manager.local_station,
+			configuration_get_gameplay_property("current_local_player_username")
+		]);
+	}
+}
+
+secure_protocol = protocol_manager.create_protocol(1,false);
+
+queue_secure_message = function(destinations,data){
+	protocol_manager.add_data_protocol(
+		secure_protocol,
+		destinations,
+		data		
+	);
 }

@@ -1,3 +1,4 @@
 enum ProtocolUDPCases{
-	OEPFNatTraversal,	
+	OEPFNatTraversal,
+	NATPeerFinalizeJoin
 }

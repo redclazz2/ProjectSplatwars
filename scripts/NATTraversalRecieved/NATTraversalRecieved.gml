@@ -17,6 +17,8 @@ function NATTraversalRecieved(_communicator):IReader(_communicator) constructor{
 			
 			case 3: //Peer Join Confirmation
 				logger(LOGLEVEL.INFO,"Recieved NAT traversal Peer Join Confirmation","UDP PROTOCOL READER");
+				communicator.change_writer(new JoinPeerResponseSend(communicator));
+				communicator.writer.write();
 			break;
 		}
 	}

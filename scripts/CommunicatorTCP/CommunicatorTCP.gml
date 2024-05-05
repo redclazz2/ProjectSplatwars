@@ -9,6 +9,7 @@ enum CommunicatorTCPNotificationCommands{
 	ServerLobbyCreationFailed,
 	NATFirewallBreaker,
 	NATJoinRequest,
+	NATPeerJoinConfirmation
 }
 
 function CommunicatorTCP(_manager):ICommunicator(_manager) constructor{

@@ -15,8 +15,12 @@ function ProtocolDataRecieved(_communicator):IReader(_communicator) constructor{
 			targets[$ string(station_manager.local_station)] != undefined ||
 			targets[$ "-1000"] != undefined	
 		){
-			communicator.assign_protocol_reader(_ip,_port,_buffer);
-			
+			if(is_reliable){
+				communicator.manager.packet_manager.register_recieved_packet(packet_id);
+				//TODO: send confirmation of packet arrival
+			}
+			else
+				communicator.assign_protocol_reader(_ip,_port,_buffer);
 			
 			//TODO: RELIABLE LOGIC
 		}	

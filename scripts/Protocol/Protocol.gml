@@ -98,6 +98,7 @@ function Protocol(
 					pop_latest_packet();
 				}else{
 					array_insert(_return,array_length(_return),_packet);
+					_packet.timeout ++;
 				}
 			}
 		}

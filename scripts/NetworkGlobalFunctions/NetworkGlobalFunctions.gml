@@ -28,3 +28,15 @@ function GetStationData(_id){
 		return station_manager.get_station(_id);
 	}
 }
+
+function QueueSecurePacket(destinations,data){
+	with(oNetworkManager){
+		queue_secure_message(destinations,data);
+	}
+}
+
+function QueueUnreliablePacket(){
+	with(oNetworkManager){
+		
+	}
+}
