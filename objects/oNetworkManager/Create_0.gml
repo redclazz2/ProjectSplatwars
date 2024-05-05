@@ -27,6 +27,8 @@ function initialize_network_framework(){
 	
 	communicator_udp = new CommunicatorUDP(self);
 	communicator_udp.create();
+	
+	secure_protocol = protocol_manager.create_protocol(1,false);
 }
 
 function destroy_network_framework(){
@@ -415,7 +417,7 @@ function handle_join_other_peer_confirmation_procedure(){
 	}
 }
 
-secure_protocol = protocol_manager.create_protocol(1,false);
+secure_protocol = -1;
 
 queue_secure_message = function(destinations,data){
 	protocol_manager.add_data_protocol(
