@@ -39,7 +39,7 @@ function PacketManager(_manager) constructor{
 	}
 	
 	register_recieved_packet = function(packet_id){
-		ds_map_add(recieved_packet_registry,packet_id,);
+		ds_map_add(recieved_packet_registry,packet_id,0);
 	}
 	
 	register_sent_packet = function(packet_id){
